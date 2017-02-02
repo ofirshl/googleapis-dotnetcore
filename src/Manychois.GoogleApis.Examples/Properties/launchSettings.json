@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Manychois.GoogleApis.Examples": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\private\\Manychois.GoogleApis.Examples\\appsettings.json"
+    }
+  }
+}
