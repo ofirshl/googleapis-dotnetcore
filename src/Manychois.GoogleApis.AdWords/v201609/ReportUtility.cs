@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
-	public class ReportUtility
+	public class ReportUtility : IReportUtility
 	{
 		private const string EndPoint = "https://adwords.google.com/api/adwords/reportdownload/v201609";
 		private readonly AdWordsApiConfig _config;
@@ -20,7 +20,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 			_logger = config.Logger;
 		}
 
-		public async Task<string> GetContentAsync(ReportDefinition definition)
+		public async Task<string> GetContentStringAsync(ReportDefinition definition)
 		{
 			using (var response = await GetResponseAsync(definition).ConfigureAwait(false))
 			{

@@ -34,7 +34,7 @@ namespace Manychois.GoogleApis.Examples.AdWords
 			});
 
 			ReportUtility reportUtil = new ReportUtility(config);
-			var content = await reportUtil.GetContentAsync(definition).ConfigureAwait(false);
+			var content = await reportUtil.GetContentStringAsync(definition).ConfigureAwait(false);
 
 			return content;
 		}
