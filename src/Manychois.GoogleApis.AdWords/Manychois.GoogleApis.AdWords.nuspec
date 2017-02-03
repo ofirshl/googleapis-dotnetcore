@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Manychois.GoogleApis.AdWords</id>
+		<version>2016.9.1</version>
+		<title>Manychois.GoogleApis.AdWords</title>
+		<authors>Siu Pang Tommy Choi</authors>
+		<owners>manychois</owners>
+		<licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>https://github.com/manychois/googleapis-dotnetcore/tree/master/src/Manychois.GoogleApis.AdWords</projectUrl>
+		<!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>A .Net Core client library for AdWords API.</description>
+		<releaseNotes>Support only version 201609, still in development phase.</releaseNotes>
+		<copyright>Copyright 2017 Siu Pang Tommy Choi</copyright>
+		<tags>google api adwords</tags>
+	</metadata>
+</package>

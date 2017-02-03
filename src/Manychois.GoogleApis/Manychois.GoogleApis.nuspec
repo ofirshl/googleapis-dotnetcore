@@ -12,7 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>It provides common utilities for other Google API client libraries.</description>
 		<!--<releaseNotes>Summary of changes made in this release of the package.</releaseNotes>-->
-		<copyright>Copyright 2017</copyright>
+		<copyright>Copyright 2017 Siu Pang Tommy Choi</copyright>
 		<tags>google api</tags>
 	</metadata>
 </package>
