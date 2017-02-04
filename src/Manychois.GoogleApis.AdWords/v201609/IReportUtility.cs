@@ -8,5 +8,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	public interface IReportUtility
 	{
 		Task<string> GetContentStringAsync(ReportDefinition definition);
+		Task<string> GetContentStringAsync(string awql, DownloadFormat format);
 	}
 }

@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Manychois.GoogleApis.AdWords.v201609.EnumExtensions;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
@@ -22,28 +24,41 @@ namespace Manychois.GoogleApis.AdWords.v201609
 
 		public async Task<string> GetContentStringAsync(ReportDefinition definition)
 		{
-			using (var response = await GetResponseAsync(definition).ConfigureAwait(false))
+			var xDoc = new XDocument(new XDeclaration("1.0", "UTF-8", "yes"));
+			var xE = new XElement(XName.Get("reportDefinition", "https://adwords.google.com/api/adwords/cm/v201609"));
+			definition.WriteTo(xE);
+			xDoc.Add(xE);
+
+			var reportParams = new Dictionary<string, string>();
+			reportParams.Add("__rdxml", XmlUtility.ConvertToString(xDoc, SaveOptions.DisableFormatting));
+
+			bool enableGzip = definition.DownloadFormat == DownloadFormat.GzippedCsv || definition.DownloadFormat == DownloadFormat.GzippedXml;
+
+			using (var response = await GetResponseAsync(reportParams, enableGzip).ConfigureAwait(false))
 			{
-				string responseText = await NetUtility.GetResponseTextAsync(response).ConfigureAwait(false);
-				if (_logger != null)
-				{
-					_logger.LogDebug("Response status code: {0}", (int)response.StatusCode);
-					if (response.StatusCode != HttpStatusCode.OK) // log only error message because successful report content can be very long
-					{
-						_logger.LogDebug("Response body:{0}{1}", Environment.NewLine, responseText);
-					}
-				}
-				if (response.StatusCode != HttpStatusCode.OK) throw GetReportDownloadError(responseText);
-				return responseText;
+				return await GetResponseTextAsync(response).ConfigureAwait(false);
 			}
 		}
 
-		private async Task<HttpWebResponse> GetResponseAsync(ReportDefinition definition)
+		public async Task<string> GetContentStringAsync(string awql, DownloadFormat format)
+		{
+			var reportParams = new Dictionary<string, string>();
+			reportParams.Add("__fmt", format.ToXmlValue());
+			reportParams.Add("__rdguery", awql);
+
+			bool enableGzip = format == DownloadFormat.GzippedCsv || format == DownloadFormat.GzippedXml;
+
+			using (var response = await GetResponseAsync(reportParams, enableGzip).ConfigureAwait(false))
+			{
+				return await GetResponseTextAsync(response).ConfigureAwait(false);
+			}
+		}
+
+		private async Task<HttpWebResponse> GetResponseAsync(IDictionary<string, string> reportParams, bool enableGzip)
 		{
 			var request = WebRequest.CreateHttp(EndPoint);
 			request.Method = "POST";
 			request.Accept = "*/*";
-			bool enableGzip = definition.DownloadFormat == DownloadFormat.GzippedCsv || definition.DownloadFormat == DownloadFormat.GzippedXml;
 			if (enableGzip) request.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
 			request.Headers[HttpRequestHeader.Authorization] = $"Bearer {_config.AccessToken}";
 			request.Headers["developerToken"] = _config.DeveloperToken;
@@ -56,18 +71,17 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				request.Headers[HttpRequestHeader.UserAgent] = _config.UserAgent;
 			}
 
-			var xDoc = new XDocument(new XDeclaration("1.0", "UTF-8", "yes"));
-			var xE = new XElement(XName.Get("reportDefinition", "https://adwords.google.com/api/adwords/cm/v201609"));
-			definition.WriteTo(xE);
-			xDoc.Add(xE);
-
 			var sb = new StringBuilder();
 			sb.Append("\r\n");
-			sb.AppendFormat("--{0}\r\n", formDataBoundary);
-			sb.Append("Content-Disposition: form-data; name=\"__rdxml\"\r\n");
-			sb.Append("\r\n");
-			sb.Append(XmlUtility.ConvertToString(xDoc, SaveOptions.DisableFormatting));
-			sb.Append("\r\n");
+			foreach (var kvp in reportParams)
+			{
+
+				sb.AppendFormat("--{0}\r\n", formDataBoundary);
+				sb.Append($"Content-Disposition: form-data; name=\"{kvp.Key}\"\r\n");
+				sb.Append("\r\n");
+				sb.Append(kvp.Value);
+				sb.Append("\r\n");
+			}
 			sb.AppendFormat("--{0}--", formDataBoundary);
 
 			string formData = sb.ToString();
@@ -87,6 +101,21 @@ namespace Manychois.GoogleApis.AdWords.v201609
 
 			var response = await NetUtility.GetSafeResponseAsync(request).ConfigureAwait(false);
 			return response;
+		}
+
+		private async Task<string> GetResponseTextAsync(HttpWebResponse response)
+		{
+			string responseText = await NetUtility.GetResponseTextAsync(response).ConfigureAwait(false);
+			if (_logger != null)
+			{
+				_logger.LogDebug("Response status code: {0}", (int)response.StatusCode);
+				if (response.StatusCode != HttpStatusCode.OK) // log only error message because successful report content can be very long
+				{
+					_logger.LogDebug("Response body:{0}{1}", Environment.NewLine, responseText);
+				}
+			}
+			if (response.StatusCode != HttpStatusCode.OK) throw GetReportDownloadError(responseText);
+			return responseText;
 		}
 
 		private Exception GetReportDownloadError(string responseText)

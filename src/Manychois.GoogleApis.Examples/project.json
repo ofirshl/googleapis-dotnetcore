@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "buildOptions": {
     "emitEntryPoint": true,
     "copyToOutput": {
@@ -8,8 +8,8 @@
   },
 
   "dependencies": {
-    "Manychois.GoogleApis": "1.0.0",
-    "Manychois.GoogleApis.AdWords": "2016.9.1",
+    "Manychois.GoogleApis": "1.0.1",
+    "Manychois.GoogleApis.AdWords": "2016.9.2",
     "Microsoft.Extensions.Configuration.Json": "1.1.0",
     "Microsoft.Extensions.Logging": "1.1.0",
     "Microsoft.Extensions.Logging.Abstractions": "1.1.0",
