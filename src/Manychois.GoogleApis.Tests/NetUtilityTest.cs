@@ -12,7 +12,7 @@ using Xunit.Extensions;
 
 namespace Manychois.GoogleApis.Tests
 {
-	public class TestNetUtility
+	public class NetUtilityTest
 	{
 		[Fact]
 		public void TestGetQueryString_EmptyInput_Passed()
