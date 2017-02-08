@@ -13,6 +13,25 @@ namespace Manychois.GoogleApis.Tests.OAuth2
 	public class OAuth2UtilityTest
 	{
 		[Fact]
+		public void GetAuthorizationCodeRequestUrl_CheckInvalidParams_Passed()
+		{
+			OAuth2Credential credential = null;
+			OAuth2TokenRequestSettings trSettings = null;
+			var oauth2 = new OAuth2Utility(new DummyNetUtility());
+
+			var argNullEx = Assert.Throws<ArgumentNullException>(() => oauth2.GetAuthorizationCodeRequestUrl(credential, trSettings));
+			Assert.Equal("credential", argNullEx.ParamName);
+
+			credential = new TestCredential();
+			argNullEx = Assert.Throws<ArgumentNullException>(() => oauth2.GetAuthorizationCodeRequestUrl(credential, trSettings));
+			Assert.Equal("requestSettings", argNullEx.ParamName);
+
+			trSettings = new OAuth2TokenRequestSettings();
+			var argEx = Assert.Throws<ArgumentException>(() => oauth2.GetAuthorizationCodeRequestUrl(credential, trSettings));
+			Assert.True(argEx.Message.Contains("RedirectUri must match one of the values in credential.RedirectUrls"));
+		}
+
+		[Fact]
 		public void TestGetAuthorizationCodeRequestUrl_StandardSettings_Passed()
 		{
 			var credential = new TestCredential();
@@ -62,12 +81,34 @@ namespace Manychois.GoogleApis.Tests.OAuth2
 ""expires_in"": 123
 }");
 			net.AddResponse(response);
-			var utility = new OAuth2Utility(net);
+			var oauth2 = new OAuth2Utility(net);
 			DateTime timeBefore = DateTime.UtcNow;
-			var tokenInfo = await utility.GetTokenInfoAsync(credential, refreshToken);
+			var tokenInfo = await oauth2.GetTokenInfoAsync(credential, refreshToken);
 			DateTime timeAfter = DateTime.UtcNow;
 
-			Assert.Equal("accessToken",tokenInfo.AccessToken);
+			Assert.Equal("accessToken", tokenInfo.AccessToken);
+			Assert.Equal(123, tokenInfo.ExpiresIn);
+			Assert.True(timeBefore <= tokenInfo.IssuedTime && tokenInfo.IssuedTime <= timeAfter, $"Expect {timeBefore} <= Issued Time {tokenInfo.IssuedTime} <= {timeAfter}");
+		}
+
+		[Fact]
+		public async Task TestGetTokenInfoAsync_ByAuthorizationCode_Passed()
+		{
+			var credential = new TestCredential();
+			var net = new DummyNetUtility();
+			var response = new DummyHttpWebResponse(HttpStatusCode.OK, @"{
+""refresh_token"": ""refreshToken"",
+""access_token"": ""accessToken"",
+""expires_in"": 123
+}");
+			net.AddResponse(response);
+			var oauth2 = new OAuth2Utility(net);
+			DateTime timeBefore = DateTime.UtcNow;
+			var tokenInfo = await oauth2.GetTokenInfoAsync(credential, credential.RedirectUrls[0], "AuthCode");
+			DateTime timeAfter = DateTime.UtcNow;
+
+			Assert.Equal("refreshToken", tokenInfo.RefreshToken);
+			Assert.Equal("accessToken", tokenInfo.AccessToken);
 			Assert.Equal(123, tokenInfo.ExpiresIn);
 			Assert.True(timeBefore <= tokenInfo.IssuedTime && tokenInfo.IssuedTime <= timeAfter, $"Expect {timeBefore} <= Issued Time {tokenInfo.IssuedTime} <= {timeAfter}");
 		}
