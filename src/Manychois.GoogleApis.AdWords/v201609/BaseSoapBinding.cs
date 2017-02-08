@@ -18,17 +18,19 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		public const string NsXsi = "http://www.w3.org/2001/XMLSchema-instance";
 		private static readonly XName SoapFaultXName = XName.Get("Fault", NsSoap);
 
+		private readonly INetUtility _net;
 		private readonly string _accessToken;
 		private readonly int _timeout;
 		private readonly bool _enableGzipCompression;
 		private readonly ILogger _logger;
 		private readonly string _soapLocation;
-		public BaseSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
+		public BaseSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
 		{
 			_soapLocation = soapLocation;
 			_accessToken = accessToken;
 			_timeout = timeout;
 			_enableGzipCompression = enableGzipCompression;
+			_net = net;
 			_logger = logger;
 		}
 
@@ -87,7 +89,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				_logger.LogDebug("Request Body:{0}{1}", Environment.NewLine, requestText);
 			}
 
-			var request = WebRequest.CreateHttp(_soapLocation);
+			var request = _net.CreateHttp(_soapLocation);
 			request.Method = "POST";
 			request.ContentType = "application/soap+xml; charset=utf-8";
 			if (_enableGzipCompression) request.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
@@ -102,9 +104,9 @@ namespace Manychois.GoogleApis.AdWords.v201609
 
 			cancellationToken.ThrowIfCancellationRequested();
 
-			using (var response = await NetUtility.GetSafeResponseAsync(request).ConfigureAwait(false))
+			using (var response = await request.GetResponseAsync().ConfigureAwait(false))
 			{
-				string responseText = await NetUtility.GetResponseTextAsync(response).ConfigureAwait(false);
+				string responseText = await _net.GetResponseTextAsync(response).ConfigureAwait(false);
 				if (_logger != null)
 				{
 					_logger.LogDebug("Response status code: {0}", (int)response.StatusCode);

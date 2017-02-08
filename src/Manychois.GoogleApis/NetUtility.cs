@@ -10,9 +10,15 @@ using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis
 {
-	public static class NetUtility
+	public class NetUtility : INetUtility
 	{
-		public static string GetQueryString(IDictionary<string, string> values)
+		public virtual IHttpWebRequest CreateHttp(string url)
+		{
+			var request = WebRequest.CreateHttp(url);
+			return new HttpWebRequestWrapper(request);
+		}
+
+		public string GetQueryString(IDictionary<string, string> values)
 		{
 			if (values == null || values.Count == 0) return "";
 			var sb = new StringBuilder();
@@ -24,21 +30,7 @@ namespace Manychois.GoogleApis
 			}
 			return sb.ToString();
 		}
-		public static async Task<HttpWebResponse> GetSafeResponseAsync(HttpWebRequest request)
-		{
-			HttpWebResponse response;
-			try
-			{
-				response = await request.GetResponseAsync().ConfigureAwait(false) as HttpWebResponse;
-			}
-			catch (WebException webEx)
-			{
-				response = webEx.Response as HttpWebResponse;
-			}
-			return response;
-		}
-
-		public static async Task<string> GetResponseTextAsync(WebResponse response)
+		public virtual async Task<string> GetResponseTextAsync(IHttpWebResponse response)
 		{
 			string encoding = response.Headers[HttpResponseHeader.ContentEncoding];
 			string contentType = response.Headers[HttpResponseHeader.ContentType];
@@ -63,6 +55,85 @@ namespace Manychois.GoogleApis
 				}
 			}
 			return responseText;
+		}
+
+		private class HttpWebRequestWrapper : IHttpWebRequest
+		{
+			private HttpWebRequest _request;
+
+			public HttpWebRequestWrapper(HttpWebRequest request)
+			{
+				_request = request;
+			}
+
+			public string Accept
+			{
+				get { return _request.Accept; }
+				set { _request.Accept = value; }
+			}
+
+			public string ContentType
+			{
+				get { return _request.ContentType; }
+				set { _request.ContentType = value; }
+			}
+
+			public WebHeaderCollection Headers { get { return _request.Headers; } }
+
+			public string Method
+			{
+				get { return _request.Method; }
+				set { _request.Method = value; }
+			}
+
+			public Task<Stream> GetRequestStreamAsync()
+			{
+				return _request.GetRequestStreamAsync();
+			}
+
+			public async Task<IHttpWebResponse> GetResponseAsync()
+			{
+				HttpWebResponse response;
+				try
+				{
+					response = await _request.GetResponseAsync().ConfigureAwait(false) as HttpWebResponse;
+				}
+				catch (WebException webEx)
+				{
+					response = webEx.Response as HttpWebResponse;
+				}
+				if (response == null)
+					return null;
+				else
+					return new HttpWebResponseWrapper(response);
+			}
+
+			public Uri RequestUri { get { return _request.RequestUri; } }
+		}
+
+		private class HttpWebResponseWrapper : IHttpWebResponse
+		{
+			private HttpWebResponse _response;
+
+			public HttpWebResponseWrapper(HttpWebResponse response)
+			{
+				_response = response;
+			}
+
+			public WebHeaderCollection Headers { get { return _response.Headers; } }
+
+			public void Dispose()
+			{
+				_response.Dispose();
+				_response = null;
+			}
+
+			public Stream GetResponseStream()
+			{
+				return _response.GetResponseStream();
+			}
+
+			public HttpStatusCode StatusCode { get { return _response.StatusCode; } }
 		}
 	}
 }

@@ -42,6 +42,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manychois.GoogleApis.DevCon
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Manychois.GoogleApis.Examples", "src\Manychois.GoogleApis.Examples\Manychois.GoogleApis.Examples.xproj", "{058D46D5-06B0-4085-9ACF-BE1EC90BD9C7}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Manychois.GoogleApis.Tests", "src\Manychois.GoogleApis.Tests\Manychois.GoogleApis.Tests.xproj", "{76CE39F2-6516-4F5F-8649-149BBB9ACF75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manychois.GoogleApis.CodeCoverage", "Manychois.GoogleApis.CodeCoverage\Manychois.GoogleApis.CodeCoverage.csproj", "{AE18A2C2-E91D-4EE6-9416-31C8F30222E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,14 @@ Global
 		{058D46D5-06B0-4085-9ACF-BE1EC90BD9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058D46D5-06B0-4085-9ACF-BE1EC90BD9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{058D46D5-06B0-4085-9ACF-BE1EC90BD9C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CE39F2-6516-4F5F-8649-149BBB9ACF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CE39F2-6516-4F5F-8649-149BBB9ACF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CE39F2-6516-4F5F-8649-149BBB9ACF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CE39F2-6516-4F5F-8649-149BBB9ACF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE18A2C2-E91D-4EE6-9416-31C8F30222E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE18A2C2-E91D-4EE6-9416-31C8F30222E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE18A2C2-E91D-4EE6-9416-31C8F30222E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE18A2C2-E91D-4EE6-9416-31C8F30222E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +88,6 @@ Global
 		{850635C6-D0BE-4527-8569-2F852E114C6C} = {F191EAD0-A34C-45B7-8235-3E9936E891DD}
 		{F3F9EEBC-3A51-40E1-9031-A764052EC8A3} = {F191EAD0-A34C-45B7-8235-3E9936E891DD}
 		{058D46D5-06B0-4085-9ACF-BE1EC90BD9C7} = {F191EAD0-A34C-45B7-8235-3E9936E891DD}
+		{76CE39F2-6516-4F5F-8649-149BBB9ACF75} = {F191EAD0-A34C-45B7-8235-3E9936E891DD}
 	EndGlobalSection
 EndGlobal

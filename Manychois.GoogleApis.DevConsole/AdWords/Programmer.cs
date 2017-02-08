@@ -205,7 +205,7 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 					Comment(op.Documentation);
 					WriteLine($"public async Task<{outputType}> {op.CodeName}Async({inputs})");
 					Open();
-					WriteLine($"var binding = new {p.Binding.CodeName}(\"{p.SoapLocation}\", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);");
+					WriteLine($"var binding = new {p.Binding.CodeName}(\"{p.SoapLocation}\", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);");
 					WriteLine($"var inData = new SoapData<{opBinding.InputSoapHeader.CodeName}, {op.InputElement.CodeName}>();");
 					WriteLine($"inData.Header = new {opBinding.InputSoapHeader.CodeName}();");
 					WriteLine("AssignHeaderValues(inData.Header);");
@@ -248,9 +248,9 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			Open();
 
 			// constructor
-			WriteLine($"public {binding.CodeName}(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)");
+			WriteLine($"public {binding.CodeName}(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)");
 			Indent();
-			WriteLine(": base(soapLocation, accessToken, timeout, enableGzipCompression, logger)");
+			WriteLine(": base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)");
 			Unindent();
 			Open();
 			Close();

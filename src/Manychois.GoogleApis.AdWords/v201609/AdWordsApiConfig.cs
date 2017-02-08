@@ -10,8 +10,9 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	{
 		private const string LogCategory = "AdWordsApi";
 
-		public AdWordsApiConfig(ILoggerFactory loggerFactory)
+		public AdWordsApiConfig(INetUtility net, ILoggerFactory loggerFactory)
 		{
+			NetUtility = net;
 			EnableGzipCompression = true;
 			if (loggerFactory != null)
 			{
@@ -19,6 +20,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 			}
 		}
 
+		public INetUtility NetUtility { get; }
 		public ILogger Logger { get; }
 
 		public string AccessToken { get; set; }

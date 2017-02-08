@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.Examples.OAuth2
 
 		public async Task RunAsync()
 		{
-			var apiConfig = new AdWordsApiConfig(_loggerFactory);
+			var apiConfig = new AdWordsApiConfig(new NetUtility(), _loggerFactory);
 			var configSection = _programConfig.GetSection("oauth2");
 			string credentialJsonPath = configSection["credentialJsonPath"];
 			string refreshToken = configSection["refreshToken"];
@@ -40,7 +40,8 @@ namespace Manychois.GoogleApis.Examples.OAuth2
 			OAuth2Credential credential = InstalledAppCredential.ReadFromFile(credentialJsonPath);
 			if (credential.ClientId == null) credential = WebAppCredential.ReadFromFile(credentialJsonPath);
 
-			var tokenInfo = await OAuth2Utility.GetTokenInfoAsync(credential, refreshToken).ConfigureAwait(false);
+			var oauth2Util = new OAuth2Utility(new NetUtility());
+			var tokenInfo = await oauth2Util.GetTokenInfoAsync(credential, refreshToken).ConfigureAwait(false);
 
 			_logger.LogInformation("New access token: {0}", tokenInfo.AccessToken);
 		}

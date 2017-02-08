@@ -18,7 +18,7 @@ namespace Manychois.GoogleApis.Examples.AdWords
 		{
 			_logger = loggerFactory.CreateLogger("AdWordsExamples");
 
-			_config = new AdWordsApiConfig(loggerFactory);
+			_config = new AdWordsApiConfig(new NetUtility(), loggerFactory);
 			var configSection = programConfig.GetSection("adwords");
 			_config.AccessToken = configSection["accessToken"];
 			_config.ClientCustomerId = configSection["clientCustomerId"];

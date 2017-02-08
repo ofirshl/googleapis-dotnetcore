@@ -65294,8 +65294,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AccountLabelServiceSoapBinding : BaseSoapBinding
 	{
-		public AccountLabelServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AccountLabelServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AccountLabelServiceResponseHeader, AccountLabelServiceGetResponse>> GetAsync(SoapData<AccountLabelServiceRequestHeader, AccountLabelServiceGet> inData)
@@ -65349,8 +65349,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdCustomizerFeedServiceSoapBinding : BaseSoapBinding
 	{
-		public AdCustomizerFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdCustomizerFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdCustomizerFeedServiceResponseHeader, AdCustomizerFeedServiceGetResponse>> GetAsync(SoapData<AdCustomizerFeedServiceRequestHeader, AdCustomizerFeedServiceGet> inData)
@@ -65404,8 +65404,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdGroupAdServiceSoapBinding : BaseSoapBinding
 	{
-		public AdGroupAdServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdGroupAdServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdGroupAdServiceResponseHeader, AdGroupAdServiceGetResponse>> GetAsync(SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceGet> inData)
@@ -65531,8 +65531,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdGroupBidModifierServiceSoapBinding : BaseSoapBinding
 	{
-		public AdGroupBidModifierServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdGroupBidModifierServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdGroupBidModifierServiceResponseHeader, AdGroupBidModifierServiceGetResponse>> GetAsync(SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceGet> inData)
@@ -65610,8 +65610,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdGroupCriterionServiceSoapBinding : BaseSoapBinding
 	{
-		public AdGroupCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdGroupCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdGroupCriterionServiceResponseHeader, AdGroupCriterionServiceGetResponse>> GetAsync(SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceGet> inData)
@@ -65713,8 +65713,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdGroupExtensionSettingServiceSoapBinding : BaseSoapBinding
 	{
-		public AdGroupExtensionSettingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdGroupExtensionSettingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdGroupExtensionSettingServiceResponseHeader, AdGroupExtensionSettingServiceGetResponse>> GetAsync(SoapData<AdGroupExtensionSettingServiceRequestHeader, AdGroupExtensionSettingServiceGet> inData)
@@ -65792,8 +65792,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdGroupFeedServiceSoapBinding : BaseSoapBinding
 	{
-		public AdGroupFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdGroupFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdGroupFeedServiceResponseHeader, AdGroupFeedServiceGetResponse>> GetAsync(SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceGet> inData)
@@ -65871,8 +65871,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdGroupServiceSoapBinding : BaseSoapBinding
 	{
-		public AdGroupServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdGroupServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdGroupServiceResponseHeader, AdGroupServiceGetResponse>> GetAsync(SoapData<AdGroupServiceRequestHeader, AdGroupServiceGet> inData)
@@ -65974,8 +65974,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdParamServiceSoapBinding : BaseSoapBinding
 	{
-		public AdParamServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdParamServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdParamServiceResponseHeader, AdParamServiceGetResponse>> GetAsync(SoapData<AdParamServiceRequestHeader, AdParamServiceGet> inData)
@@ -66029,8 +66029,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class AdwordsUserListServiceSoapBinding : BaseSoapBinding
 	{
-		public AdwordsUserListServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public AdwordsUserListServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<AdwordsUserListServiceResponseHeader, AdwordsUserListServiceGetResponse>> GetAsync(SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceGet> inData)
@@ -66132,8 +66132,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class BatchJobServiceSoapBinding : BaseSoapBinding
 	{
-		public BatchJobServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public BatchJobServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<BatchJobServiceResponseHeader, BatchJobServiceGetResponse>> GetAsync(SoapData<BatchJobServiceRequestHeader, BatchJobServiceGet> inData)
@@ -66211,8 +66211,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class BiddingStrategyServiceSoapBinding : BaseSoapBinding
 	{
-		public BiddingStrategyServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public BiddingStrategyServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<BiddingStrategyServiceResponseHeader, BiddingStrategyServiceGetResponse>> GetAsync(SoapData<BiddingStrategyServiceRequestHeader, BiddingStrategyServiceGet> inData)
@@ -66290,8 +66290,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class BudgetOrderServiceSoapBinding : BaseSoapBinding
 	{
-		public BudgetOrderServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public BudgetOrderServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<BudgetOrderServiceResponseHeader, BudgetOrderServiceGetResponse>> GetAsync(SoapData<BudgetOrderServiceRequestHeader, BudgetOrderServiceGet> inData)
@@ -66369,8 +66369,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class BudgetServiceSoapBinding : BaseSoapBinding
 	{
-		public BudgetServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public BudgetServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<BudgetServiceResponseHeader, BudgetServiceGetResponse>> GetAsync(SoapData<BudgetServiceRequestHeader, BudgetServiceGet> inData)
@@ -66448,8 +66448,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CampaignCriterionServiceSoapBinding : BaseSoapBinding
 	{
-		public CampaignCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CampaignCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CampaignCriterionServiceResponseHeader, CampaignCriterionServiceGetResponse>> GetAsync(SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceGet> inData)
@@ -66527,8 +66527,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CampaignExtensionSettingServiceSoapBinding : BaseSoapBinding
 	{
-		public CampaignExtensionSettingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CampaignExtensionSettingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CampaignExtensionSettingServiceResponseHeader, CampaignExtensionSettingServiceGetResponse>> GetAsync(SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceGet> inData)
@@ -66606,8 +66606,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CampaignFeedServiceSoapBinding : BaseSoapBinding
 	{
-		public CampaignFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CampaignFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CampaignFeedServiceResponseHeader, CampaignFeedServiceGetResponse>> GetAsync(SoapData<CampaignFeedServiceRequestHeader, CampaignFeedServiceGet> inData)
@@ -66685,8 +66685,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CampaignServiceSoapBinding : BaseSoapBinding
 	{
-		public CampaignServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CampaignServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CampaignServiceResponseHeader, CampaignServiceGetResponse>> GetAsync(SoapData<CampaignServiceRequestHeader, CampaignServiceGet> inData)
@@ -66788,8 +66788,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CampaignSharedSetServiceSoapBinding : BaseSoapBinding
 	{
-		public CampaignSharedSetServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CampaignSharedSetServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CampaignSharedSetServiceResponseHeader, CampaignSharedSetServiceGetResponse>> GetAsync(SoapData<CampaignSharedSetServiceRequestHeader, CampaignSharedSetServiceGet> inData)
@@ -66867,8 +66867,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class ConstantDataServiceSoapBinding : BaseSoapBinding
 	{
-		public ConstantDataServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public ConstantDataServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<ConstantDataServiceResponseHeader, ConstantDataServiceGetAgeRangeCriterionResponse>> GetAgeRangeCriterionAsync(SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetAgeRangeCriterion> inData)
@@ -67114,8 +67114,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class ConversionTrackerServiceSoapBinding : BaseSoapBinding
 	{
-		public ConversionTrackerServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public ConversionTrackerServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<ConversionTrackerServiceResponseHeader, ConversionTrackerServiceGetResponse>> GetAsync(SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceGet> inData)
@@ -67193,8 +67193,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CustomerExtensionSettingServiceSoapBinding : BaseSoapBinding
 	{
-		public CustomerExtensionSettingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CustomerExtensionSettingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CustomerExtensionSettingServiceResponseHeader, CustomerExtensionSettingServiceGetResponse>> GetAsync(SoapData<CustomerExtensionSettingServiceRequestHeader, CustomerExtensionSettingServiceGet> inData)
@@ -67272,8 +67272,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CustomerFeedServiceSoapBinding : BaseSoapBinding
 	{
-		public CustomerFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CustomerFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CustomerFeedServiceResponseHeader, CustomerFeedServiceGetResponse>> GetAsync(SoapData<CustomerFeedServiceRequestHeader, CustomerFeedServiceGet> inData)
@@ -67351,8 +67351,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CustomerServiceSoapBinding : BaseSoapBinding
 	{
-		public CustomerServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CustomerServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CustomerServiceResponseHeader, CustomerServiceGetCustomersResponse>> GetCustomersAsync(SoapData<CustomerServiceRequestHeader, CustomerServiceGetCustomers> inData)
@@ -67454,8 +67454,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class CustomerSyncServiceSoapBinding : BaseSoapBinding
 	{
-		public CustomerSyncServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public CustomerSyncServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<CustomerSyncServiceResponseHeader, CustomerSyncServiceGetResponse>> GetAsync(SoapData<CustomerSyncServiceRequestHeader, CustomerSyncServiceGet> inData)
@@ -67485,8 +67485,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class DataServiceSoapBinding : BaseSoapBinding
 	{
-		public DataServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public DataServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<DataServiceResponseHeader, DataServiceGetAdGroupBidLandscapeResponse>> GetAdGroupBidLandscapeAsync(SoapData<DataServiceRequestHeader, DataServiceGetAdGroupBidLandscape> inData)
@@ -67684,8 +67684,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class DraftAsyncErrorServiceSoapBinding : BaseSoapBinding
 	{
-		public DraftAsyncErrorServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public DraftAsyncErrorServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<DraftAsyncErrorServiceResponseHeader, DraftAsyncErrorServiceGetResponse>> GetAsync(SoapData<DraftAsyncErrorServiceRequestHeader, DraftAsyncErrorServiceGet> inData)
@@ -67739,8 +67739,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class DraftServiceSoapBinding : BaseSoapBinding
 	{
-		public DraftServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public DraftServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<DraftServiceResponseHeader, DraftServiceGetResponse>> GetAsync(SoapData<DraftServiceRequestHeader, DraftServiceGet> inData)
@@ -67818,8 +67818,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class FeedItemServiceSoapBinding : BaseSoapBinding
 	{
-		public FeedItemServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public FeedItemServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<FeedItemServiceResponseHeader, FeedItemServiceGetResponse>> GetAsync(SoapData<FeedItemServiceRequestHeader, FeedItemServiceGet> inData)
@@ -67897,8 +67897,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class FeedMappingServiceSoapBinding : BaseSoapBinding
 	{
-		public FeedMappingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public FeedMappingServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<FeedMappingServiceResponseHeader, FeedMappingServiceGetResponse>> GetAsync(SoapData<FeedMappingServiceRequestHeader, FeedMappingServiceGet> inData)
@@ -67976,8 +67976,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class FeedServiceSoapBinding : BaseSoapBinding
 	{
-		public FeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public FeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<FeedServiceResponseHeader, FeedServiceGetResponse>> GetAsync(SoapData<FeedServiceRequestHeader, FeedServiceGet> inData)
@@ -68055,8 +68055,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class LabelServiceSoapBinding : BaseSoapBinding
 	{
-		public LabelServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public LabelServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<LabelServiceResponseHeader, LabelServiceGetResponse>> GetAsync(SoapData<LabelServiceRequestHeader, LabelServiceGet> inData)
@@ -68134,8 +68134,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class LocationCriterionServiceSoapBinding : BaseSoapBinding
 	{
-		public LocationCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public LocationCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<LocationCriterionServiceResponseHeader, LocationCriterionServiceGetResponse>> GetAsync(SoapData<LocationCriterionServiceRequestHeader, LocationCriterionServiceGet> inData)
@@ -68189,8 +68189,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class ManagedCustomerServiceSoapBinding : BaseSoapBinding
 	{
-		public ManagedCustomerServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public ManagedCustomerServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<ManagedCustomerServiceResponseHeader, ManagedCustomerServiceGetResponse>> GetAsync(SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceGet> inData)
@@ -68340,8 +68340,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class MediaServiceSoapBinding : BaseSoapBinding
 	{
-		public MediaServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public MediaServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<MediaServiceResponseHeader, MediaServiceGetResponse>> GetAsync(SoapData<MediaServiceRequestHeader, MediaServiceGet> inData)
@@ -68419,8 +68419,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class OfflineCallConversionFeedServiceSoapBinding : BaseSoapBinding
 	{
-		public OfflineCallConversionFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public OfflineCallConversionFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<OfflineCallConversionFeedServiceResponseHeader, OfflineCallConversionFeedServiceMutateResponse>> MutateAsync(SoapData<OfflineCallConversionFeedServiceRequestHeader, OfflineCallConversionFeedServiceMutate> inData)
@@ -68450,8 +68450,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class OfflineConversionFeedServiceSoapBinding : BaseSoapBinding
 	{
-		public OfflineConversionFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public OfflineConversionFeedServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<OfflineConversionFeedServiceResponseHeader, OfflineConversionFeedServiceMutateResponse>> MutateAsync(SoapData<OfflineConversionFeedServiceRequestHeader, OfflineConversionFeedServiceMutate> inData)
@@ -68481,8 +68481,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class ReportDefinitionServiceSoapBinding : BaseSoapBinding
 	{
-		public ReportDefinitionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public ReportDefinitionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<ReportDefinitionServiceResponseHeader, ReportDefinitionServiceGetReportFieldsResponse>> GetReportFieldsAsync(SoapData<ReportDefinitionServiceRequestHeader, ReportDefinitionServiceGetReportFields> inData)
@@ -68512,8 +68512,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class SharedCriterionServiceSoapBinding : BaseSoapBinding
 	{
-		public SharedCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public SharedCriterionServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<SharedCriterionServiceResponseHeader, SharedCriterionServiceGetResponse>> GetAsync(SoapData<SharedCriterionServiceRequestHeader, SharedCriterionServiceGet> inData)
@@ -68591,8 +68591,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class SharedSetServiceSoapBinding : BaseSoapBinding
 	{
-		public SharedSetServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public SharedSetServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<SharedSetServiceResponseHeader, SharedSetServiceGetResponse>> GetAsync(SoapData<SharedSetServiceRequestHeader, SharedSetServiceGet> inData)
@@ -68670,8 +68670,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class TargetingIdeaServiceSoapBinding : BaseSoapBinding
 	{
-		public TargetingIdeaServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public TargetingIdeaServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<TargetingIdeaServiceResponseHeader, TargetingIdeaServiceGetResponse>> GetAsync(SoapData<TargetingIdeaServiceRequestHeader, TargetingIdeaServiceGet> inData)
@@ -68701,8 +68701,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class TrafficEstimatorServiceSoapBinding : BaseSoapBinding
 	{
-		public TrafficEstimatorServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public TrafficEstimatorServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<TrafficEstimatorServiceResponseHeader, TrafficEstimatorServiceGetResponse>> GetAsync(SoapData<TrafficEstimatorServiceRequestHeader, TrafficEstimatorServiceGet> inData)
@@ -68732,8 +68732,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class TrialAsyncErrorServiceSoapBinding : BaseSoapBinding
 	{
-		public TrialAsyncErrorServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public TrialAsyncErrorServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<TrialAsyncErrorServiceResponseHeader, TrialAsyncErrorServiceGetResponse>> GetAsync(SoapData<TrialAsyncErrorServiceRequestHeader, TrialAsyncErrorServiceGet> inData)
@@ -68787,8 +68787,8 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	}
 	internal class TrialServiceSoapBinding : BaseSoapBinding
 	{
-		public TrialServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, ILogger logger)
-			: base(soapLocation, accessToken, timeout, enableGzipCompression, logger)
+		public TrialServiceSoapBinding(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)
+			: base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)
 		{
 		}
 		public async Task<SoapData<TrialServiceResponseHeader, TrialServiceGetResponse>> GetAsync(SoapData<TrialServiceRequestHeader, TrialServiceGet> inData)
@@ -68880,7 +68880,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AccountLabelPage> GetAsync(Selector selector)
 		{
-			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AccountLabelServiceRequestHeader, AccountLabelServiceGet>();
 			inData.Header = new AccountLabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -68905,7 +68905,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AccountLabelReturnValue> MutateAsync(IEnumerable<AccountLabelOperation> operations)
 		{
-			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AccountLabelServiceRequestHeader, AccountLabelServiceMutate>();
 			inData.Header = new AccountLabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -68940,7 +68940,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdCustomizerFeedPage> GetAsync(Selector selector)
 		{
-			var binding = new AdCustomizerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdCustomizerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdCustomizerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdCustomizerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdCustomizerFeedServiceRequestHeader, AdCustomizerFeedServiceGet>();
 			inData.Header = new AdCustomizerFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -68958,7 +68958,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdCustomizerFeedReturnValue> MutateAsync(IEnumerable<AdCustomizerFeedOperation> operations)
 		{
-			var binding = new AdCustomizerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdCustomizerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdCustomizerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdCustomizerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdCustomizerFeedServiceRequestHeader, AdCustomizerFeedServiceMutate>();
 			inData.Header = new AdCustomizerFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -68993,7 +68993,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceGet>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69027,7 +69027,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdReturnValue> MutateAsync(IEnumerable<AdGroupAdOperation> operations)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceMutate>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69054,7 +69054,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupAdLabelOperation> operations)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceMutateLabel>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69072,7 +69072,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceQuery>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69088,7 +69088,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Ad>> UpgradeUrlAsync(IEnumerable<AdUrlUpgrade> operations)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceUpgradeUrl>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69122,7 +69122,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidModifierPage> GetAsync(Selector selector)
 		{
-			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceGet>();
 			inData.Header = new AdGroupBidModifierServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69140,7 +69140,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidModifierReturnValue> MutateAsync(IEnumerable<AdGroupBidModifierOperation> operations)
 		{
-			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceMutate>();
 			inData.Header = new AdGroupBidModifierServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69157,7 +69157,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidModifierPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceQuery>();
 			inData.Header = new AdGroupBidModifierServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69191,7 +69191,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceGet>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69210,7 +69210,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionReturnValue> MutateAsync(IEnumerable<AdGroupCriterionOperation> operations)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceMutate>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69238,7 +69238,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupCriterionLabelOperation> operations)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceMutateLabel>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69256,7 +69256,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceQuery>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69291,7 +69291,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupExtensionSettingPage> GetAsync(Selector selector)
 		{
-			var binding = new AdGroupExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupExtensionSettingServiceRequestHeader, AdGroupExtensionSettingServiceGet>();
 			inData.Header = new AdGroupExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69315,7 +69315,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupExtensionSettingReturnValue> MutateAsync(IEnumerable<AdGroupExtensionSettingOperation> operations)
 		{
-			var binding = new AdGroupExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupExtensionSettingServiceRequestHeader, AdGroupExtensionSettingServiceMutate>();
 			inData.Header = new AdGroupExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69333,7 +69333,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupExtensionSettingPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupExtensionSettingServiceRequestHeader, AdGroupExtensionSettingServiceQuery>();
 			inData.Header = new AdGroupExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69368,7 +69368,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupFeedPage> GetAsync(Selector selector)
 		{
-			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceGet>();
 			inData.Header = new AdGroupFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69386,7 +69386,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupFeedReturnValue> MutateAsync(IEnumerable<AdGroupFeedOperation> operations)
 		{
-			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceMutate>();
 			inData.Header = new AdGroupFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69404,7 +69404,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupFeedPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceQuery>();
 			inData.Header = new AdGroupFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69439,7 +69439,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupServiceRequestHeader, AdGroupServiceGet>();
 			inData.Header = new AdGroupServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69460,7 +69460,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupReturnValue> MutateAsync(IEnumerable<AdGroupOperation> operations)
 		{
-			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupServiceRequestHeader, AdGroupServiceMutate>();
 			inData.Header = new AdGroupServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69487,7 +69487,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupLabelOperation> operations)
 		{
-			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupServiceRequestHeader, AdGroupServiceMutateLabel>();
 			inData.Header = new AdGroupServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69505,7 +69505,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdGroupServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdGroupServiceRequestHeader, AdGroupServiceQuery>();
 			inData.Header = new AdGroupServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69539,7 +69539,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdParamPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdParamServiceRequestHeader, AdParamServiceGet>();
 			inData.Header = new AdParamServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69569,7 +69569,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<AdParam>> MutateAsync(IEnumerable<AdParamOperation> operations)
 		{
-			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdParamServiceRequestHeader, AdParamServiceMutate>();
 			inData.Header = new AdParamServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69603,7 +69603,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<UserListPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceGet>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69624,7 +69624,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<UserListReturnValue> MutateAsync(IEnumerable<UserListOperation> operations)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceMutate>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69645,7 +69645,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MutateMembersReturnValue> MutateMembersAsync(IEnumerable<MutateMembersOperation> operations)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceMutateMembers>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69663,7 +69663,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<UserListPage> QueryAsync(string query)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceQuery>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69697,7 +69697,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BatchJobPage> GetAsync(Selector selector)
 		{
-			var binding = new BatchJobServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BatchJobService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BatchJobServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BatchJobService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BatchJobServiceRequestHeader, BatchJobServiceGet>();
 			inData.Header = new BatchJobServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69718,7 +69718,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BatchJobReturnValue> MutateAsync(IEnumerable<BatchJobOperation> operations)
 		{
-			var binding = new BatchJobServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BatchJobService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BatchJobServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BatchJobService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BatchJobServiceRequestHeader, BatchJobServiceMutate>();
 			inData.Header = new BatchJobServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69737,7 +69737,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BatchJobPage> QueryAsync(string query)
 		{
-			var binding = new BatchJobServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BatchJobService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BatchJobServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BatchJobService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BatchJobServiceRequestHeader, BatchJobServiceQuery>();
 			inData.Header = new BatchJobServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69771,7 +69771,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BiddingStrategyPage> GetAsync(Selector selector)
 		{
-			var binding = new BiddingStrategyServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BiddingStrategyService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BiddingStrategyServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BiddingStrategyService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BiddingStrategyServiceRequestHeader, BiddingStrategyServiceGet>();
 			inData.Header = new BiddingStrategyServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69789,7 +69789,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BiddingStrategyReturnValue> MutateAsync(IEnumerable<BiddingStrategyOperation> operations)
 		{
-			var binding = new BiddingStrategyServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BiddingStrategyService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BiddingStrategyServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BiddingStrategyService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BiddingStrategyServiceRequestHeader, BiddingStrategyServiceMutate>();
 			inData.Header = new BiddingStrategyServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69806,7 +69806,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BiddingStrategyPage> QueryAsync(string query)
 		{
-			var binding = new BiddingStrategyServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BiddingStrategyService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BiddingStrategyServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BiddingStrategyService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BiddingStrategyServiceRequestHeader, BiddingStrategyServiceQuery>();
 			inData.Header = new BiddingStrategyServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69840,7 +69840,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BudgetOrderPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new BudgetOrderServiceSoapBinding("https://adwords.google.com/api/adwords/billing/v201609/BudgetOrderService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BudgetOrderServiceSoapBinding("https://adwords.google.com/api/adwords/billing/v201609/BudgetOrderService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BudgetOrderServiceRequestHeader, BudgetOrderServiceGet>();
 			inData.Header = new BudgetOrderServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69857,7 +69857,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<BillingAccount>> GetBillingAccountsAsync()
 		{
-			var binding = new BudgetOrderServiceSoapBinding("https://adwords.google.com/api/adwords/billing/v201609/BudgetOrderService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BudgetOrderServiceSoapBinding("https://adwords.google.com/api/adwords/billing/v201609/BudgetOrderService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BudgetOrderServiceRequestHeader, BudgetOrderServiceGetBillingAccounts>();
 			inData.Header = new BudgetOrderServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69882,7 +69882,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BudgetOrderReturnValue> MutateAsync(IEnumerable<BudgetOrderOperation> operations)
 		{
-			var binding = new BudgetOrderServiceSoapBinding("https://adwords.google.com/api/adwords/billing/v201609/BudgetOrderService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BudgetOrderServiceSoapBinding("https://adwords.google.com/api/adwords/billing/v201609/BudgetOrderService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BudgetOrderServiceRequestHeader, BudgetOrderServiceMutate>();
 			inData.Header = new BudgetOrderServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69916,7 +69916,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BudgetPage> GetAsync(Selector selector)
 		{
-			var binding = new BudgetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BudgetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BudgetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BudgetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BudgetServiceRequestHeader, BudgetServiceGet>();
 			inData.Header = new BudgetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69934,7 +69934,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BudgetReturnValue> MutateAsync(IEnumerable<BudgetOperation> operations)
 		{
-			var binding = new BudgetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BudgetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BudgetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BudgetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BudgetServiceRequestHeader, BudgetServiceMutate>();
 			inData.Header = new BudgetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69952,7 +69952,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<BudgetPage> QueryAsync(string query)
 		{
-			var binding = new BudgetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BudgetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new BudgetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/BudgetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<BudgetServiceRequestHeader, BudgetServiceQuery>();
 			inData.Header = new BudgetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -69986,7 +69986,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignCriterionPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceGet>();
 			inData.Header = new CampaignCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70004,7 +70004,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignCriterionReturnValue> MutateAsync(IEnumerable<CampaignCriterionOperation> operations)
 		{
-			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceMutate>();
 			inData.Header = new CampaignCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70022,7 +70022,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignCriterionPage> QueryAsync(string query)
 		{
-			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceQuery>();
 			inData.Header = new CampaignCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70057,7 +70057,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignExtensionSettingPage> GetAsync(Selector selector)
 		{
-			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceGet>();
 			inData.Header = new CampaignExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70081,7 +70081,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignExtensionSettingReturnValue> MutateAsync(IEnumerable<CampaignExtensionSettingOperation> operations)
 		{
-			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceMutate>();
 			inData.Header = new CampaignExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70099,7 +70099,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignExtensionSettingPage> QueryAsync(string query)
 		{
-			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceQuery>();
 			inData.Header = new CampaignExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70134,7 +70134,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignFeedPage> GetAsync(Selector selector)
 		{
-			var binding = new CampaignFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignFeedServiceRequestHeader, CampaignFeedServiceGet>();
 			inData.Header = new CampaignFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70152,7 +70152,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignFeedReturnValue> MutateAsync(IEnumerable<CampaignFeedOperation> operations)
 		{
-			var binding = new CampaignFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignFeedServiceRequestHeader, CampaignFeedServiceMutate>();
 			inData.Header = new CampaignFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70170,7 +70170,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignFeedPage> QueryAsync(string query)
 		{
-			var binding = new CampaignFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignFeedServiceRequestHeader, CampaignFeedServiceQuery>();
 			inData.Header = new CampaignFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70204,7 +70204,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceGet>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70226,7 +70226,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignReturnValue> MutateAsync(IEnumerable<CampaignOperation> operations)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceMutate>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70253,7 +70253,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignLabelReturnValue> MutateLabelAsync(IEnumerable<CampaignLabelOperation> operations)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceMutateLabel>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70272,7 +70272,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignPage> QueryAsync(string query)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceQuery>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70306,7 +70306,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignSharedSetPage> GetAsync(Selector selector)
 		{
-			var binding = new CampaignSharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignSharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignSharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignSharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignSharedSetServiceRequestHeader, CampaignSharedSetServiceGet>();
 			inData.Header = new CampaignSharedSetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70323,7 +70323,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignSharedSetReturnValue> MutateAsync(IEnumerable<CampaignSharedSetOperation> operations)
 		{
-			var binding = new CampaignSharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignSharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignSharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignSharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignSharedSetServiceRequestHeader, CampaignSharedSetServiceMutate>();
 			inData.Header = new CampaignSharedSetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70341,7 +70341,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignSharedSetPage> QueryAsync(string query)
 		{
-			var binding = new CampaignSharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignSharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CampaignSharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignSharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CampaignSharedSetServiceRequestHeader, CampaignSharedSetServiceQuery>();
 			inData.Header = new CampaignSharedSetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70374,7 +70374,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<AgeRange>> GetAgeRangeCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetAgeRangeCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70390,7 +70390,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Carrier>> GetCarrierCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetCarrierCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70406,7 +70406,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Gender>> GetGenderCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetGenderCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70422,7 +70422,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Language>> GetLanguageCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetLanguageCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70438,7 +70438,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<MobileAppCategory>> GetMobileAppCategoryCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetMobileAppCategoryCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70454,7 +70454,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<MobileDevice>> GetMobileDeviceCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetMobileDeviceCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70470,7 +70470,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<OperatingSystemVersion>> GetOperatingSystemVersionCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetOperatingSystemVersionCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70490,7 +70490,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ProductBiddingCategoryData>> GetProductBiddingCategoryDataAsync(Selector selector)
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetProductBiddingCategoryData>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70508,7 +70508,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<CriterionUserInterest>> GetUserInterestCriterionAsync(ConstantDataServiceUserInterestTaxonomyType? userInterestTaxonomyType)
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetUserInterestCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70525,7 +70525,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Vertical>> GetVerticalCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetVerticalCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70562,7 +70562,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ConversionTrackerPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceGet>();
 			inData.Header = new ConversionTrackerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70594,7 +70594,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ConversionTrackerReturnValue> MutateAsync(IEnumerable<ConversionTrackerOperation> operations)
 		{
-			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceMutate>();
 			inData.Header = new ConversionTrackerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70612,7 +70612,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ConversionTrackerPage> QueryAsync(string query)
 		{
-			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceQuery>();
 			inData.Header = new ConversionTrackerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70647,7 +70647,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerExtensionSettingPage> GetAsync(Selector selector)
 		{
-			var binding = new CustomerExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerExtensionSettingServiceRequestHeader, CustomerExtensionSettingServiceGet>();
 			inData.Header = new CustomerExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70671,7 +70671,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerExtensionSettingReturnValue> MutateAsync(IEnumerable<CustomerExtensionSettingOperation> operations)
 		{
-			var binding = new CustomerExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerExtensionSettingServiceRequestHeader, CustomerExtensionSettingServiceMutate>();
 			inData.Header = new CustomerExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70689,7 +70689,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerExtensionSettingPage> QueryAsync(string query)
 		{
-			var binding = new CustomerExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerExtensionSettingServiceRequestHeader, CustomerExtensionSettingServiceQuery>();
 			inData.Header = new CustomerExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70724,7 +70724,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerFeedPage> GetAsync(Selector selector)
 		{
-			var binding = new CustomerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerFeedServiceRequestHeader, CustomerFeedServiceGet>();
 			inData.Header = new CustomerFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70742,7 +70742,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerFeedReturnValue> MutateAsync(IEnumerable<CustomerFeedOperation> operations)
 		{
-			var binding = new CustomerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerFeedServiceRequestHeader, CustomerFeedServiceMutate>();
 			inData.Header = new CustomerFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70760,7 +70760,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerFeedPage> QueryAsync(string query)
 		{
-			var binding = new CustomerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CustomerFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerFeedServiceRequestHeader, CustomerFeedServiceQuery>();
 			inData.Header = new CustomerFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70794,7 +70794,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Customer>> GetCustomersAsync()
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceGetCustomers>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70811,7 +70811,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ServiceLink>> GetServiceLinksAsync(Selector selector)
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceGetServiceLinks>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70832,7 +70832,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<Customer> MutateAsync(Customer customer)
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceMutate>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70850,7 +70850,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ServiceLink>> MutateServiceLinksAsync(IEnumerable<ServiceLinkOperation> operations)
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceMutateServiceLinks>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70885,7 +70885,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerChangeData> GetAsync(CustomerSyncSelector selector)
 		{
-			var binding = new CustomerSyncServiceSoapBinding("https://adwords.google.com/api/adwords/ch/v201609/CustomerSyncService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new CustomerSyncServiceSoapBinding("https://adwords.google.com/api/adwords/ch/v201609/CustomerSyncService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<CustomerSyncServiceRequestHeader, CustomerSyncServiceGet>();
 			inData.Header = new CustomerSyncServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70922,7 +70922,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidLandscapePage> GetAdGroupBidLandscapeAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetAdGroupBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70944,7 +70944,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> GetCampaignCriterionBidLandscapeAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetCampaignCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70965,7 +70965,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> GetCriterionBidLandscapeAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -70983,7 +70983,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DomainCategoryPage> GetDomainCategoryAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetDomainCategory>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71004,7 +71004,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidLandscapePage> QueryAdGroupBidLandscapeAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryAdGroupBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71026,7 +71026,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> QueryCampaignCriterionBidLandscapeAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryCampaignCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71047,7 +71047,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> QueryCriterionBidLandscapeAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71066,7 +71066,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DomainCategoryPage> QueryDomainCategoryAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryDomainCategory>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71099,7 +71099,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftAsyncErrorPage> GetAsync(Selector selector)
 		{
-			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DraftAsyncErrorServiceRequestHeader, DraftAsyncErrorServiceGet>();
 			inData.Header = new DraftAsyncErrorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71116,7 +71116,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftAsyncErrorPage> QueryAsync(string query)
 		{
-			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DraftAsyncErrorServiceRequestHeader, DraftAsyncErrorServiceQuery>();
 			inData.Header = new DraftAsyncErrorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71149,7 +71149,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftPage> GetAsync(Selector selector)
 		{
-			var binding = new DraftServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DraftServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DraftServiceRequestHeader, DraftServiceGet>();
 			inData.Header = new DraftServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71168,7 +71168,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftReturnValue> MutateAsync(IEnumerable<DraftOperation> operations)
 		{
-			var binding = new DraftServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DraftServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DraftServiceRequestHeader, DraftServiceMutate>();
 			inData.Header = new DraftServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71185,7 +71185,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftPage> QueryAsync(string query)
 		{
-			var binding = new DraftServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new DraftServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<DraftServiceRequestHeader, DraftServiceQuery>();
 			inData.Header = new DraftServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71220,7 +71220,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedItemPage> GetAsync(Selector selector)
 		{
-			var binding = new FeedItemServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedItemService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedItemServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedItemService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedItemServiceRequestHeader, FeedItemServiceGet>();
 			inData.Header = new FeedItemServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71238,7 +71238,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedItemReturnValue> MutateAsync(IEnumerable<FeedItemOperation> operations)
 		{
-			var binding = new FeedItemServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedItemService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedItemServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedItemService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedItemServiceRequestHeader, FeedItemServiceMutate>();
 			inData.Header = new FeedItemServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71256,7 +71256,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedItemPage> QueryAsync(string query)
 		{
-			var binding = new FeedItemServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedItemService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedItemServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedItemService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedItemServiceRequestHeader, FeedItemServiceQuery>();
 			inData.Header = new FeedItemServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71291,7 +71291,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedMappingPage> GetAsync(Selector selector)
 		{
-			var binding = new FeedMappingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedMappingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedMappingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedMappingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedMappingServiceRequestHeader, FeedMappingServiceGet>();
 			inData.Header = new FeedMappingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71310,7 +71310,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedMappingReturnValue> MutateAsync(IEnumerable<FeedMappingOperation> operations)
 		{
-			var binding = new FeedMappingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedMappingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedMappingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedMappingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedMappingServiceRequestHeader, FeedMappingServiceMutate>();
 			inData.Header = new FeedMappingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71328,7 +71328,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedMappingPage> QueryAsync(string query)
 		{
-			var binding = new FeedMappingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedMappingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedMappingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedMappingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedMappingServiceRequestHeader, FeedMappingServiceQuery>();
 			inData.Header = new FeedMappingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71363,7 +71363,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedPage> GetAsync(Selector selector)
 		{
-			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedServiceRequestHeader, FeedServiceGet>();
 			inData.Header = new FeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71381,7 +71381,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedReturnValue> MutateAsync(IEnumerable<FeedOperation> operations)
 		{
-			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedServiceRequestHeader, FeedServiceMutate>();
 			inData.Header = new FeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71399,7 +71399,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedPage> QueryAsync(string query)
 		{
-			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<FeedServiceRequestHeader, FeedServiceQuery>();
 			inData.Header = new FeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71434,7 +71434,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<LabelPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<LabelServiceRequestHeader, LabelServiceGet>();
 			inData.Header = new LabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71453,7 +71453,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<LabelReturnValue> MutateAsync(IEnumerable<LabelOperation> operations)
 		{
-			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<LabelServiceRequestHeader, LabelServiceMutate>();
 			inData.Header = new LabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71471,7 +71471,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<LabelPage> QueryAsync(string query)
 		{
-			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<LabelServiceRequestHeader, LabelServiceQuery>();
 			inData.Header = new LabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71505,7 +71505,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<LocationCriterion>> GetAsync(Selector selector)
 		{
-			var binding = new LocationCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LocationCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new LocationCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LocationCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<LocationCriterionServiceRequestHeader, LocationCriterionServiceGet>();
 			inData.Header = new LocationCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71523,7 +71523,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<LocationCriterion>> QueryAsync(string query)
 		{
-			var binding = new LocationCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LocationCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new LocationCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LocationCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<LocationCriterionServiceRequestHeader, LocationCriterionServiceQuery>();
 			inData.Header = new LocationCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71557,7 +71557,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ManagedCustomerPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceGet>();
 			inData.Header = new ManagedCustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71573,7 +71573,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<PendingInvitation>> GetPendingInvitationsAsync(PendingInvitationSelector selector)
 		{
-			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceGetPendingInvitations>();
 			inData.Header = new ManagedCustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71593,7 +71593,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ManagedCustomerReturnValue> MutateAsync(IEnumerable<ManagedCustomerOperation> operations)
 		{
-			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceMutate>();
 			inData.Header = new ManagedCustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71620,7 +71620,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ManagedCustomerLabelReturnValue> MutateLabelAsync(IEnumerable<ManagedCustomerLabelOperation> operations)
 		{
-			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceMutateLabel>();
 			inData.Header = new ManagedCustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71655,7 +71655,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MutateLinkResults> MutateLinkAsync(IEnumerable<LinkOperation> operations)
 		{
-			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceMutateLink>();
 			inData.Header = new ManagedCustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71678,7 +71678,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MutateManagerResults> MutateManagerAsync(IEnumerable<MoveOperation> operations)
 		{
-			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ManagedCustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/ManagedCustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ManagedCustomerServiceRequestHeader, ManagedCustomerServiceMutateManager>();
 			inData.Header = new ManagedCustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71713,7 +71713,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MediaPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<MediaServiceRequestHeader, MediaServiceGet>();
 			inData.Header = new MediaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71731,7 +71731,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MediaPage> QueryAsync(string query)
 		{
-			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<MediaServiceRequestHeader, MediaServiceQuery>();
 			inData.Header = new MediaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71749,7 +71749,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Media>> UploadAsync(IEnumerable<Media> media)
 		{
-			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<MediaServiceRequestHeader, MediaServiceUpload>();
 			inData.Header = new MediaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71786,7 +71786,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<OfflineCallConversionFeedReturnValue> MutateAsync(IEnumerable<OfflineCallConversionFeedOperation> operations)
 		{
-			var binding = new OfflineCallConversionFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/OfflineCallConversionFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new OfflineCallConversionFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/OfflineCallConversionFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<OfflineCallConversionFeedServiceRequestHeader, OfflineCallConversionFeedServiceMutate>();
 			inData.Header = new OfflineCallConversionFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71823,7 +71823,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<OfflineConversionFeedReturnValue> MutateAsync(IEnumerable<OfflineConversionFeedOperation> operations)
 		{
-			var binding = new OfflineConversionFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/OfflineConversionFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new OfflineConversionFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/OfflineConversionFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<OfflineConversionFeedServiceRequestHeader, OfflineConversionFeedServiceMutate>();
 			inData.Header = new OfflineConversionFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71866,7 +71866,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ReportDefinitionField>> GetReportFieldsAsync(ReportDefinitionReportType? reportType)
 		{
-			var binding = new ReportDefinitionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ReportDefinitionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new ReportDefinitionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ReportDefinitionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<ReportDefinitionServiceRequestHeader, ReportDefinitionServiceGetReportFields>();
 			inData.Header = new ReportDefinitionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71900,7 +71900,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<SharedCriterionPage> GetAsync(Selector selector)
 		{
-			var binding = new SharedCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new SharedCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<SharedCriterionServiceRequestHeader, SharedCriterionServiceGet>();
 			inData.Header = new SharedCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71919,7 +71919,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<SharedCriterionReturnValue> MutateAsync(IEnumerable<SharedCriterionOperation> operations)
 		{
-			var binding = new SharedCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new SharedCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<SharedCriterionServiceRequestHeader, SharedCriterionServiceMutate>();
 			inData.Header = new SharedCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71937,7 +71937,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<SharedCriterionPage> QueryAsync(string query)
 		{
-			var binding = new SharedCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new SharedCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<SharedCriterionServiceRequestHeader, SharedCriterionServiceQuery>();
 			inData.Header = new SharedCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71971,7 +71971,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<SharedSetPage> GetAsync(Selector selector)
 		{
-			var binding = new SharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new SharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<SharedSetServiceRequestHeader, SharedSetServiceGet>();
 			inData.Header = new SharedSetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -71988,7 +71988,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<SharedSetReturnValue> MutateAsync(IEnumerable<SharedSetOperation> operations)
 		{
-			var binding = new SharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new SharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<SharedSetServiceRequestHeader, SharedSetServiceMutate>();
 			inData.Header = new SharedSetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72006,7 +72006,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<SharedSetPage> QueryAsync(string query)
 		{
-			var binding = new SharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new SharedSetServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/SharedSetService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<SharedSetServiceRequestHeader, SharedSetServiceQuery>();
 			inData.Header = new SharedSetServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72048,7 +72048,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TargetingIdeaPage> GetAsync(TargetingIdeaSelector selector)
 		{
-			var binding = new TargetingIdeaServiceSoapBinding("https://adwords.google.com/api/adwords/o/v201609/TargetingIdeaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TargetingIdeaServiceSoapBinding("https://adwords.google.com/api/adwords/o/v201609/TargetingIdeaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TargetingIdeaServiceRequestHeader, TargetingIdeaServiceGet>();
 			inData.Header = new TargetingIdeaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72083,7 +72083,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrafficEstimatorResult> GetAsync(TrafficEstimatorSelector selector)
 		{
-			var binding = new TrafficEstimatorServiceSoapBinding("https://adwords.google.com/api/adwords/o/v201609/TrafficEstimatorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TrafficEstimatorServiceSoapBinding("https://adwords.google.com/api/adwords/o/v201609/TrafficEstimatorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TrafficEstimatorServiceRequestHeader, TrafficEstimatorServiceGet>();
 			inData.Header = new TrafficEstimatorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72116,7 +72116,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialAsyncErrorPage> GetAsync(Selector selector)
 		{
-			var binding = new TrialAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TrialAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TrialAsyncErrorServiceRequestHeader, TrialAsyncErrorServiceGet>();
 			inData.Header = new TrialAsyncErrorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72133,7 +72133,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialAsyncErrorPage> QueryAsync(string query)
 		{
-			var binding = new TrialAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TrialAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TrialAsyncErrorServiceRequestHeader, TrialAsyncErrorServiceQuery>();
 			inData.Header = new TrialAsyncErrorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72170,7 +72170,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialPage> GetAsync(Selector selector)
 		{
-			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TrialServiceRequestHeader, TrialServiceGet>();
 			inData.Header = new TrialServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72189,7 +72189,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialReturnValue> MutateAsync(IEnumerable<TrialOperation> operations)
 		{
-			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TrialServiceRequestHeader, TrialServiceMutate>();
 			inData.Header = new TrialServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -72210,7 +72210,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialPage> QueryAsync(string query)
 		{
-			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression,  Config.Logger);
+			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
 			var inData = new SoapData<TrialServiceRequestHeader, TrialServiceQuery>();
 			inData.Header = new TrialServiceRequestHeader();
 			AssignHeaderValues(inData.Header);

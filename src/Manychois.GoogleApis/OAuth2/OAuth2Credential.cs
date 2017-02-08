@@ -1,4 +1,6 @@
-﻿namespace Manychois.GoogleApis.OAuth2
+﻿using System.Collections.Generic;
+
+namespace Manychois.GoogleApis.OAuth2
 {
 	public abstract class OAuth2Credential
 	{
@@ -9,6 +11,6 @@
 		public string TokenUri { get; protected set; }
 		public string AuthProviderX509CertUrl { get; protected set; }
 		public string ClientSecret { get; protected set; }
-		public string[] RedirectUrls { get; protected set; }
+		public IList<string> RedirectUrls { get; protected set; }
 	}
 }
