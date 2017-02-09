@@ -25,7 +25,7 @@ namespace Manychois.GoogleApis
 				return value;
 			}
 		}
-		public static void SetXsiType(XElement xE, string namespaceName, string typeName)
+		public static XAttribute SetXsiType(XElement xE, string namespaceName, string typeName)
 		{
 			var xAttr = xE.Attribute(XsiTypeXName);
 			string value;
@@ -63,6 +63,7 @@ namespace Manychois.GoogleApis
 			{
 				xAttr.Value = value;
 			}
+			return xAttr;
 		}
 		public static string ConvertToString(XDocument xDoc, SaveOptions saveOptions)
 		{
