@@ -18,101 +18,118 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			"abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", "checked", "class", "const", "continue", "decimal", "default", "delegate", "do", "double", "else", "enum", "event", "explicit", "extern", "false", "finally", "fixed", "float", "for", "foreach", "goto", "if", "implicit", "in", "int", "interface", "internal", "is", "lock", "long", "namespace", "new", "null", "object", "operator", "out", "override", "params", "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", "static", "string", "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort", "using", "virtual", "void", "volatile", "while"
 		};
 
-		private string _indent = "";
-
-		private StreamWriter _writer = null;
-
-		public void Code(string path, WsdlStructure wsdl, string namespaceName)
+		public void Code(WsdlStructure wsdl, string directory, string namespaceName)
 		{
+			/*
+			WriteLine("using Manychois.GoogleApis.AdWords.v201609.EnumExtensions;");
+			WriteLine("using Microsoft.Extensions.Logging;");
+			WriteLine("using System;");
+			WriteLine("using System.Collections.Generic;");
+			WriteLine("using System.Threading.Tasks;");
+			WriteLine("using System.Xml.Linq;");
+			WriteLine("");
+			WriteLine($"namespace {namespaceName}");
+			Ocb();
+			*/
 			SetCodeNames(wsdl);
-
-			using (_writer = new StreamWriter(path, false, Encoding.UTF8))
+			CodeInstanceCreator(wsdl, directory, namespaceName);
+			CodeEnums(wsdl, directory, namespaceName);
+			foreach (var t in wsdl.Types.OrderBy(x => x.CodeName))
 			{
-				WriteLine("using Manychois.GoogleApis.AdWords.v201609.EnumExtensions;");
-				WriteLine("using Microsoft.Extensions.Logging;");
-				WriteLine("using System;");
-				WriteLine("using System.Collections.Generic;");
-				WriteLine("using System.Threading.Tasks;");
-				WriteLine("using System.Xml.Linq;");
-				WriteLine("");
-				WriteLine($"namespace {namespaceName}");
-				Open();
-
-				CodeInstanceCreator(wsdl);
-				foreach (var t in wsdl.Types.OrderBy(x => x.CodeName))
+				if (t is WsdlEnumType) continue;
+				if (t.XName.Name == "ApiError")
 				{
-					if (t is WsdlEnumType)
+					CodeApiError(t, directory, namespaceName);
+				}
+				else
+				{
+					CodeComplexType(t, true, directory, namespaceName);
+				}
+
+			}
+			foreach (var e in wsdl.Elements.OrderBy(x => x.CodeName))
+			{
+				CodeComplexType(e, e.Wsdl.Name == "", directory, namespaceName);
+			}
+			foreach (var pt in wsdl.PortTypes.OrderBy(x => x.CodeName))
+			{
+				CodePortType(pt, directory, namespaceName);
+			}
+			foreach (var b in wsdl.Bindings.OrderBy(x => x.CodeName))
+			{
+				CodeBinding(b, directory, namespaceName);
+			}
+			foreach (var s in wsdl.Services.OrderBy(x => x.CodeName))
+			{
+				CodeService(s, directory, namespaceName);
+			}
+			CodeEnumExtensions(wsdl, directory, namespaceName);
+		}
+
+		private void CodeEnums(WsdlStructure wsdl, string directory, string namespaceName)
+		{
+			using (var file = new CodeFile(directory, "Enums.cs"))
+			{
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
+				{
+					foreach (var t in wsdl.Types.OfType<WsdlEnumType>().OrderBy(x => x.CodeName))
 					{
-						CodeEnumType(t as WsdlEnumType);
-					}
-					else
-					{
-						if (t.XName.Name == "ApiError")
+
+						file.Comment(t.Documentation);
+						file.WriteLine($"public enum {t.CodeName}");
+						file.Ocb();
+						var lastItem = t.Items.Last();
+						foreach (var enumItem in t.Items)
 						{
-							CodeApiError(t);
+							file.Comment(enumItem.Documentation);
+							file.WriteLine(enumItem.CodeName + (enumItem == lastItem ? "" : ","));
 						}
-						else
-						{
-							CodeComplexType(t, true);
-						}
+						file.Ccb();
+						file.WriteLine("");
 					}
 				}
-				foreach (var e in wsdl.Elements.OrderBy(x => x.CodeName))
-				{
-					CodeComplexType(e, e.Wsdl.Name == "");
-				}
-				foreach (var pt in wsdl.PortTypes.OrderBy(x => x.CodeName))
-				{
-					CodePortType(pt);
-				}
-				foreach (var b in wsdl.Bindings.OrderBy(x => x.CodeName))
-				{
-					CodeBinding(b);
-				}
-				foreach (var s in wsdl.Services.OrderBy(x => x.CodeName))
-				{
-					CodeService(s);
-				}
-
-				using (var nsScope = new CodeScope(this, "namespace EnumExtensions"))
-				{
-					foreach (var et in wsdl.Types.OfType<WsdlEnumType>().OrderBy(x => x.CodeName))
-					{
-						CodeEnumExtensions(et);
-					}
-				}
-
-				Close();
 			}
 		}
 
-		private void CodeEnumExtensions(WsdlEnumType et)
+		private void CodeEnumExtensions(WsdlStructure wsdl, string directory, string namespaceName)
 		{
-			WriteLine($"public static class {et.CodeName}Extensions");
-			Open();
-			using (var methodScope = new CodeScope(this, $"public static string ToXmlValue(this {et.CodeName} enumValue)"))
+			using (var file = new CodeFile(directory, "EnumExtensions.cs"))
 			{
-				WriteLine("switch (enumValue)");
-				Open();
-				foreach (var item in et.Items)
+				file.WriteLine("using System;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					WriteLine($"case {et.CodeName}.{item.CodeName}: return \"{item.Name}\";");
+					foreach (var et in wsdl.Types.OfType<WsdlEnumType>().OrderBy(x => x.CodeName))
+					{
+						using (var classScope = file.CreateClassScope("public static", $"{et.CodeName}Extensions"))
+						{
+							using (var methodScope = file.CreateMethodScope("public static", "string", "ToXmlValue", $"this {et.CodeName} enumValue"))
+							{
+								file.WriteLine("switch (enumValue)");
+								file.Ocb();
+								foreach (var item in et.Items)
+								{
+									file.WriteLine($"case {et.CodeName}.{item.CodeName}: return \"{item.Name}\";");
+								}
+								file.WriteLine("default: return null;");
+								file.Ccb();
+							}
+							using (var methodScope = file.CreateMethodScope("public static", et.CodeName, "Parse", "string xmlValue"))
+							{
+								file.WriteLine("switch (xmlValue)");
+								file.Ocb();
+								foreach (var item in et.Items)
+								{
+									file.WriteLine($"case \"{item.Name}\": return {et.CodeName}.{item.CodeName};");
+								}
+								file.WriteLine($"default: throw new ArgumentException($\"Unknown value \\\"{{xmlValue}}\\\" for type {et.CodeName}.\", nameof(xmlValue));");
+								file.Ccb();
+							}
+						}
+
+					}
 				}
-				WriteLine("default: return null;");
-				Close();
 			}
-			using (var methodScope = new CodeScope(this, $"public static {et.CodeName} Parse(string xmlValue)"))
-			{
-				WriteLine("switch (xmlValue)");
-				Open();
-				foreach (var item in et.Items)
-				{
-					WriteLine($"case \"{item.Name}\": return {et.CodeName}.{item.CodeName};");
-				}
-				WriteLine($"default: throw new ArgumentException($\"Unknown value \\\"{{xmlValue}}\\\" for type {et.CodeName}.\", nameof(xmlValue));");
-				Close();
-			}
-			Close();
 		}
 
 		private void SetCodeNames(WsdlStructure wsdl)
@@ -163,312 +180,333 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			}
 		}
 
-		private void CodeService(WsdlService s)
+		private void CodeService(WsdlService s, string directory, string namespaceName)
 		{
-			var sb = new StringBuilder();
-			sb.Append($"public class {s.CodeName} : ");
-			bool isFirst = true;
-			foreach (var p in s.Ports)
+			using (var file = new CodeFile(directory, $"{s.CodeName}.cs"))
 			{
-				if (!isFirst) sb.Append(", ");
-				sb.Append(p.Binding.PortType.CodeName);
-				isFirst = false;
-			}
-			WriteLine(sb.ToString());
-			Open();
-
-			WriteLine("public AdWordsApiConfig Config { get; }");
-
-			// constructor
-			WriteLine($"public {s.CodeName}(AdWordsApiConfig config)");
-			Open();
-			WriteLine("Config = config;");
-			Close();
-
-			foreach (var p in s.Ports)
-			{
-				var headerElements = new List<WsdlType>();
-				foreach (var opBinding in p.Binding.Operations)
+				file.WriteLine("using System.Collections.Generic;");
+				file.WriteLine("using System.Threading.Tasks;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					var pt = p.Binding.PortType;
-					var op = pt.Operations.First(x => x.Name == opBinding.Name);
-
-					var outputType = GetPropertyTypeCode(op.OutputElement.Properties[0], true);
-					string inputs = null;
-					string inputParamName = null;
-					if (op.InputElement.Properties.Count > 0)
+					using (var classScope = file.CreateClassScope("public", s.CodeName, s.Ports.Select(x => x.Binding.PortType.CodeName).ToArray()))
 					{
-						var prop = op.InputElement.Properties[0];
-						inputParamName = EscapeKeyword(StringUtil.ToCamelCaseName(prop.CodeName));
-						inputs = GetPropertyTypeCode(prop, true) + " " + inputParamName;
+						file.WriteLine("public AdWordsApiConfig Config { get; }");
+
+						// constructor
+						file.WriteLine($"public {s.CodeName}(AdWordsApiConfig config)");
+						file.Ocb();
+						file.WriteLine("Config = config;");
+						file.Ccb();
+
+						foreach (var p in s.Ports)
+						{
+							var headerElements = new List<WsdlType>();
+							foreach (var opBinding in p.Binding.Operations)
+							{
+								var pt = p.Binding.PortType;
+								var op = pt.Operations.First(x => x.Name == opBinding.Name);
+
+								var outputType = GetPropertyTypeCode(op.OutputElement.Properties[0], true);
+								string inputs = null;
+								string inputParamName = null;
+								if (op.InputElement.Properties.Count > 0)
+								{
+									var prop = op.InputElement.Properties[0];
+									inputParamName = EscapeKeyword(StringUtil.ToCamelCaseName(prop.CodeName));
+									inputs = GetPropertyTypeCode(prop, true) + " " + inputParamName;
+								}
+								file.Comment(op.Documentation);
+								file.WriteLine($"public async Task<{outputType}> {op.CodeName}Async({inputs})");
+								file.Ocb();
+								file.WriteLine($"var binding = new {p.Binding.CodeName}(\"{p.SoapLocation}\", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);");
+								file.WriteLine($"var inData = new SoapData<{opBinding.InputSoapHeader.CodeName}, {op.InputElement.CodeName}>();");
+								file.WriteLine($"inData.Header = new {opBinding.InputSoapHeader.CodeName}();");
+								file.WriteLine("AssignHeaderValues(inData.Header);");
+								if (!headerElements.Contains(opBinding.InputSoapHeader)) headerElements.Add(opBinding.InputSoapHeader);
+								file.WriteLine($"inData.Body = new {op.InputElement.CodeName}();");
+								if (inputParamName != null)
+								{
+									var prop = op.InputElement.Properties[0];
+									if (prop.AllowMultiple)
+									{
+										file.WriteLine($"inData.Body.{prop.CodeName} = new {GetPropertyTypeCode(prop, false)}({inputParamName});");
+									}
+									else
+									{
+										file.WriteLine($"inData.Body.{prop.CodeName} = {inputParamName};");
+									}
+								}
+								file.WriteLine($"var outData = await binding.{op.CodeName}Async(inData).ConfigureAwait(false);");
+								file.WriteLine($"return outData.Body.{op.OutputElement.Properties[0].CodeName};");
+								file.Ccb();
+							}
+							foreach (var hEle in headerElements)
+							{
+								file.WriteLine($"private void AssignHeaderValues({hEle.CodeName} header)");
+								file.Ocb();
+								file.WriteLine("header.ClientCustomerId = Config.ClientCustomerId;");
+								file.WriteLine("header.DeveloperToken = Config.DeveloperToken;");
+								file.WriteLine("header.PartialFailure = Config.PartialFailure;");
+								file.WriteLine("header.UserAgent = Config.UserAgent;");
+								file.WriteLine("header.ValidateOnly = Config.ValidateOnly;");
+								file.Ccb();
+							}
+						}
 					}
-					Comment(op.Documentation);
-					WriteLine($"public async Task<{outputType}> {op.CodeName}Async({inputs})");
-					Open();
-					WriteLine($"var binding = new {p.Binding.CodeName}(\"{p.SoapLocation}\", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);");
-					WriteLine($"var inData = new SoapData<{opBinding.InputSoapHeader.CodeName}, {op.InputElement.CodeName}>();");
-					WriteLine($"inData.Header = new {opBinding.InputSoapHeader.CodeName}();");
-					WriteLine("AssignHeaderValues(inData.Header);");
-					if (!headerElements.Contains(opBinding.InputSoapHeader)) headerElements.Add(opBinding.InputSoapHeader);
-					WriteLine($"inData.Body = new {op.InputElement.CodeName}();");
-					if (inputParamName != null)
+				}
+			}
+		}
+
+		private void CodeBinding(WsdlBinding binding, string directory, string namespaceName)
+		{
+			using (var file = new CodeFile(directory, $"{binding.CodeName}.cs"))
+			{
+				file.WriteLine("using Microsoft.Extensions.Logging;");
+				file.WriteLine("using System;");
+				file.WriteLine("using System.Threading.Tasks;");
+				file.WriteLine("using System.Xml.Linq;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
+				{
+					using (var classScope = file.CreateClassScope("internal", binding.CodeName, "BaseSoapBinding"))
 					{
-						var prop = op.InputElement.Properties[0];
-						if (prop.AllowMultiple)
+						// constructor
+						file.WriteLine($"public {binding.CodeName}(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)");
+						file.Indent();
+						file.WriteLine(": base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)");
+						file.Unindent();
+						file.Ocb();
+						file.Ccb();
+
+						foreach (var op in binding.Operations)
 						{
-							WriteLine($"inData.Body.{prop.CodeName} = new {GetPropertyTypeCode(prop, false)}({inputParamName});");
-						}
-						else
-						{
-							WriteLine($"inData.Body.{prop.CodeName} = {inputParamName};");
+							var portTypeOperation = binding.PortType.Operations.First(x => x.Name == op.Name);
+							var inputHeaderType = op.InputSoapHeader.CodeName;
+							var outputHeaderType = op.OutputSoapHeader.CodeName;
+							var inputType = portTypeOperation.InputElement.CodeName;
+							var outputType = portTypeOperation.OutputElement.CodeName;
+							file.WriteLine($"public async Task<SoapData<{outputHeaderType}, {outputType}>> {StringUtil.ToPascalCaseName(op.Name)}Async(SoapData<{inputHeaderType}, {inputType}> inData)");
+							file.Ocb();
+							file.WriteLine($"var xHeaderData = new XElement(XName.Get(\"{op.InputSoapHeader.XName.Name}\", \"{op.InputSoapHeader.XName.Namespace}\"));");
+							file.WriteLine("inData.Header.WriteTo(xHeaderData);");
+							file.WriteLine($"var xBodyData = new XElement(XName.Get(\"{portTypeOperation.InputElement.XName.Name}\", \"{portTypeOperation.InputElement.XName.Namespace}\"));");
+							file.WriteLine("inData.Body.WriteTo(xBodyData);");
+							file.WriteLine($"var outData = new SoapData<{outputHeaderType}, {outputType}>();");
+							file.WriteLine($"outData.Header = new {outputHeaderType}();");
+							file.WriteLine($"outData.Body = new {outputType}();");
+							file.WriteLine($"var faultData = new {portTypeOperation.FaultElement.CodeName}();");
+							file.WriteLine($"var isSuccessful = await GetSoapResultAsync(\"{op.SoapAction}\", xHeaderData, xBodyData, outData, faultData).ConfigureAwait(false);");
+
+							using (var ifScope = file.CreateScope("if (!isSuccessful)"))
+							{
+								file.WriteLine("if (faultData.Errors.Count == 1)");
+								file.Ocb();
+								file.WriteLine("throw faultData.Errors[0];");
+								file.Ccb();
+								file.WriteLine("else");
+								file.Ocb();
+								file.WriteLine("throw new AggregateException(faultData.Errors);");
+								file.Ccb();
+							}
+
+							file.WriteLine("return outData;");
+							file.Ccb();
 						}
 					}
-					WriteLine($"var outData = await binding.{op.CodeName}Async(inData).ConfigureAwait(false);");
-					WriteLine($"return outData.Body.{op.OutputElement.Properties[0].CodeName};");
-					Close();
 				}
-				foreach (var hEle in headerElements)
+			}
+		}
+
+		private void CodePortType(WsdlPortType portType, string directory, string namespaceName)
+		{
+			using (var file = new CodeFile(directory, $"{portType.CodeName}.cs"))
+			{
+				file.WriteLine("using System.Collections.Generic;");
+				file.WriteLine("using System.Threading.Tasks;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					WriteLine($"private void AssignHeaderValues({hEle.CodeName} header)");
-					Open();
-					WriteLine("header.ClientCustomerId = Config.ClientCustomerId;");
-					WriteLine("header.DeveloperToken = Config.DeveloperToken;");
-					WriteLine("header.PartialFailure = Config.PartialFailure;");
-					WriteLine("header.UserAgent = Config.UserAgent;");
-					WriteLine("header.ValidateOnly = Config.ValidateOnly;");
-					Close();
+					file.Comment(portType.Documentation);
+					file.WriteLine($"public interface {portType.CodeName}");
+					file.Ocb();
+					foreach (var op in portType.Operations)
+					{
+						var outputType = GetPropertyTypeCode(op.OutputElement.Properties[0], true);
+						string inputs = null;
+						if (op.InputElement.Properties.Count > 0)
+						{
+							inputs = GetPropertyTypeCode(op.InputElement.Properties[0], true) + " " + EscapeKeyword(op.InputElement.Properties[0].CodeName);
+						}
+						file.Comment(op.Documentation);
+						file.WriteLine($"Task<{outputType}> {op.CodeName}Async({inputs});");
+					}
+					file.Ccb();
 				}
 			}
-			Close();
 		}
 
-		private void CodeBinding(WsdlBinding binding)
+		private void CodeInstanceCreator(WsdlStructure wsdl, string directory, string namespaceName)
 		{
-			WriteLine($"internal class {binding.CodeName} : BaseSoapBinding");
-			Open();
-
-			// constructor
-			WriteLine($"public {binding.CodeName}(string soapLocation, string accessToken, int timeout, bool enableGzipCompression, INetUtility net, ILogger logger)");
-			Indent();
-			WriteLine(": base(soapLocation, accessToken, timeout, enableGzipCompression, net, logger)");
-			Unindent();
-			Open();
-			Close();
-
-			foreach (var op in binding.Operations)
+			using (var file = new CodeFile(directory, "InstanceCreator.cs"))
 			{
-				var portTypeOperation = binding.PortType.Operations.First(x => x.Name == op.Name);
-				var inputHeaderType = op.InputSoapHeader.CodeName;
-				var outputHeaderType = op.OutputSoapHeader.CodeName;
-				var inputType = portTypeOperation.InputElement.CodeName;
-				var outputType = portTypeOperation.OutputElement.CodeName;
-				WriteLine($"public async Task<SoapData<{outputHeaderType}, {outputType}>> {StringUtil.ToPascalCaseName(op.Name)}Async(SoapData<{inputHeaderType}, {inputType}> inData)");
-				Open();
-				WriteLine($"var xHeaderData = new XElement(XName.Get(\"{op.InputSoapHeader.XName.Name}\", \"{op.InputSoapHeader.XName.Namespace}\"));");
-				WriteLine("inData.Header.WriteTo(xHeaderData);");
-				WriteLine($"var xBodyData = new XElement(XName.Get(\"{portTypeOperation.InputElement.XName.Name}\", \"{portTypeOperation.InputElement.XName.Namespace}\"));");
-				WriteLine("inData.Body.WriteTo(xBodyData);");
-				WriteLine($"var outData = new SoapData<{outputHeaderType}, {outputType}>();");
-				WriteLine($"outData.Header = new {outputHeaderType}();");
-				WriteLine($"outData.Body = new {outputType}();");
-				WriteLine($"var faultData = new {portTypeOperation.FaultElement.CodeName}();");
-				WriteLine($"var isSuccessful = await GetSoapResultAsync(\"{op.SoapAction}\", xHeaderData, xBodyData, outData, faultData).ConfigureAwait(false);");
-
-				using (var isScope = new CodeScope(this, "if (!isSuccessful)"))
+				file.WriteLine("using System;");
+				file.WriteLine("using System.Xml.Linq;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					WriteLine("if (faultData.Errors.Count == 1)");
-					Open();
-					WriteLine("throw faultData.Errors[0];");
-					Close();
-					WriteLine("else");
-					Open();
-					WriteLine("throw new AggregateException(faultData.Errors);");
-					Close();
+					var allAbstractTypes = wsdl.Types.Where(x => x.IsAbstract).OrderBy(x => x.CodeName).ToList();
+					using (var classScope = file.CreateClassScope("internal static", "InstanceCreator"))
+					{
+						foreach (var t in allAbstractTypes)
+						{
+							using (var methodScope = file.CreateMethodScope("public static", t.CodeName, $"Create{t.CodeName}", "XElement xElement"))
+							{
+								file.WriteLine("var type = XmlUtility.GetXmlTypeLocalName(xElement);");
+								bool isFirst = true;
+								foreach (var concreteType in wsdl.GetConcreteTypes(t).OrderBy(x => x.CodeName))
+								{
+									var elseKeyword = isFirst ? "" : "else ";
+									file.WriteLine($"{elseKeyword}if (type == \"{concreteType.XName.Name}\")");
+									file.Ocb();
+									file.WriteLine($"return new {concreteType.CodeName}();");
+									file.Ccb();
+									isFirst = false;
+								}
+								file.WriteLine("throw new ArgumentException($\"Unknown type {type}\", \"xElement\");");
+							}
+						}
+					}
 				}
-
-				WriteLine("return outData;");
-				Close();
 			}
-			Close();
 		}
 
-		private void CodePortType(WsdlPortType portType)
+		private void CodeApiError(WsdlType t, string directory, string namespaceName)
 		{
-			Comment(portType.Documentation);
-			WriteLine($"public interface {portType.CodeName}");
-			Open();
-			foreach (var op in portType.Operations)
+			using (var file = new CodeFile(directory, $"{t.CodeName}.cs"))
 			{
-				var outputType = GetPropertyTypeCode(op.OutputElement.Properties[0], true);
-				string inputs = null;
-				if (op.InputElement.Properties.Count > 0)
+				file.WriteLine("using System;");
+				file.WriteLine("using System.Xml.Linq;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					inputs = GetPropertyTypeCode(op.InputElement.Properties[0], true) + " " + EscapeKeyword(op.InputElement.Properties[0].CodeName);
+					file.Comment(t.Documentation);
+					var abstractKeyword = t.IsAbstract ? " abstract" : "";
+					using (var classScope = file.CreateClassScope($"public{abstractKeyword}", t.CodeName, "Exception", "ISoapable"))
+					{
+						file.WriteLine("public override string Message { get { return ErrorString; } }");
+						foreach (var p in t.Properties)
+						{
+							file.Comment(p.Documentation);
+							file.WriteLine($"public {GetPropertyTypeCode(p, false)} {p.CodeName} {{ get; set; }}");
+						}
+						ImplementISoapableReadFrom(t, file);
+						ImplementISoapableWriteTo(t, file);
+					}
 				}
-				Comment(op.Documentation);
-				WriteLine($"Task<{outputType}> {op.CodeName}Async({inputs});");
 			}
-			Close();
 		}
 
-		private void CodeInstanceCreator(WsdlStructure wsdl)
+		private void CodeComplexType(WsdlType t, bool isPublic, string directory, string namespaceName)
 		{
-			var allAbstractTypes = wsdl.Types.Where(x => x.IsAbstract).OrderBy(x => x.CodeName).ToList();
-			WriteLine($"internal static class InstanceCreator");
-			Open();
-			foreach (var t in allAbstractTypes)
+			using (var file = new CodeFile(directory, $"{t.CodeName}.cs"))
 			{
-				WriteLine($"public static {t.CodeName} Create{t.CodeName}(XElement xElement)");
-				Open();
-				WriteLine("var type = XmlUtility.GetXmlTypeLocalName(xElement);");
-				bool isFirst = true;
-				foreach (var concreteType in wsdl.GetConcreteTypes(t).OrderBy(x => x.CodeName))
+				file.WriteLine("using System;");
+				file.WriteLine("using System.Collections.Generic;");
+				file.WriteLine("using System.Xml.Linq;");
+				file.WriteLine("");
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					var elseKeyword = isFirst ? "" : "else ";
-					WriteLine($"{elseKeyword}if (type == \"{concreteType.XName.Name}\")");
-					Open();
-					WriteLine($"return new {concreteType.CodeName}();");
-					Close();
-					isFirst = false;
+					file.Comment(t.Documentation);
+					string modifier = isPublic ? "public" : "internal";
+					if (t.IsAbstract) modifier += " abstract";
+					var inherits = new List<string>();
+					if (t.BaseType != null) inherits.Add(t.BaseType.CodeName);
+					inherits.Add("ISoapable");
+					using (var classScope = file.CreateClassScope(modifier, t.CodeName, inherits.ToArray()))
+					{
+						foreach (var p in t.Properties)
+						{
+							file.Comment(p.Documentation);
+							file.WriteLine($"public {GetPropertyTypeCode(p, false)} {p.CodeName} {{ get; set; }}");
+						}
+						ImplementISoapableReadFrom(t, file);
+						ImplementISoapableWriteTo(t, file);
+					}
 				}
-				WriteLine("throw new ArgumentException($\"Unknown type {type}\", \"xElement\");");
-				Close();
 			}
-			Close();
 		}
 
-		private void Comment(string comment)
-		{
-			if (string.IsNullOrWhiteSpace(comment)) return;
-			var lines = comment.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-			WriteLine("/// <summary>");
-			foreach (var line in lines)
-			{
-				WriteLine($"/// {line}".Trim());
-			}
-			WriteLine("/// </summary>");
-		}
-
-
-		private void CodeEnumType(WsdlEnumType t)
-		{
-			Comment(t.Documentation);
-			WriteLine($"public enum {t.CodeName}");
-			Open();
-			var lastItem = t.Items.Last();
-			foreach (var enumItem in t.Items)
-			{
-				Comment(enumItem.Documentation);
-				WriteLine(enumItem.CodeName + (enumItem == lastItem ? "" : ","));
-			}
-			Close();
-		}
-
-		private void CodeApiError(WsdlType t)
-		{
-			Comment(t.Documentation);
-			var abstractKeyword = t.IsAbstract ? "abstract " : "";
-			WriteLine($"public {abstractKeyword}class {t.CodeName} : Exception, ISoapable");
-			Open();
-			WriteLine("public override string Message { get { return ErrorString; } }");
-			foreach (var p in t.Properties)
-			{
-				Comment(p.Documentation);
-				WriteLine($"public {GetPropertyTypeCode(p, false)} {p.CodeName} {{ get; set; }}");
-			}
-			ImplementISoapableReadFrom(t);
-			ImplementISoapableWriteTo(t);
-			Close();
-		}
-
-		private void CodeComplexType(WsdlType t, bool isPublic)
-		{
-			Comment(t.Documentation);
-			var publicKeyword = isPublic ? "public" : "internal";
-			var abstractKeyword = t.IsAbstract ? "abstract " : "";
-			var baseClassDeclaration = t.BaseType == null ? "" : $"{t.BaseType.CodeName}, ";
-			WriteLine($"{publicKeyword} {abstractKeyword}class {t.CodeName} : {baseClassDeclaration}ISoapable");
-			Open();
-			foreach (var p in t.Properties)
-			{
-				Comment(p.Documentation);
-				WriteLine($"public {GetPropertyTypeCode(p, false)} {p.CodeName} {{ get; set; }}");
-			}
-			ImplementISoapableReadFrom(t);
-			ImplementISoapableWriteTo(t);
-			Close();
-		}
-
-		private void ImplementISoapableReadFrom(WsdlType t)
+		private void ImplementISoapableReadFrom(WsdlType t, CodeFile f)
 		{
 			var overrideKeyword = t.BaseType == null ? "virtual" : "override";
-			WriteLine($"public {overrideKeyword} void ReadFrom(XElement xE)");
-			Open();
-			if (t.BaseType != null)
+			using (var methodScope = f.CreateMethodScope($"public {overrideKeyword}", "void", "ReadFrom", "XElement xE"))
 			{
-				WriteLine("base.ReadFrom(xE);");
-			}
-			foreach (var p in t.Properties)
-			{
-				if (p.AllowMultiple || p.AllowNull)
+				if (t.BaseType != null)
 				{
-					WriteLine($"{p.CodeName} = null;");
+					f.WriteLine("base.ReadFrom(xE);");
 				}
-			}
-			WriteLine("foreach (var xItem in xE.Elements())");
-			Open();
-			WriteLine("var localName = xItem.Name.LocalName;");
-			bool isFirst = true;
-			foreach (var p in t.Properties)
-			{
-				WriteLine((isFirst ? "" : "else ") + $"if (localName == \"{p.XName.Name}\")");
-				Open();
-				if (p.AllowMultiple)
+				foreach (var p in t.Properties)
 				{
-					WriteLine($"if ({p.CodeName} == null) {p.CodeName} = new {GetPropertyTypeCode(p, false)}();");
-					if (p.DataType.IsPrimitiveType)
+					if (p.AllowMultiple || p.AllowNull)
 					{
-						WriteLine($"{p.CodeName}.Add({GetSinglePrimitiveTypeConversionExpression(p, "xItem.Value")});");
+						f.WriteLine($"{p.CodeName} = null;");
 					}
-					else
+				}
+				f.WriteLine("foreach (var xItem in xE.Elements())");
+				f.Ocb();
+				f.WriteLine("var localName = xItem.Name.LocalName;");
+				bool isFirst = true;
+				foreach (var p in t.Properties)
+				{
+					f.WriteLine((isFirst ? "" : "else ") + $"if (localName == \"{p.XName.Name}\")");
+					f.Ocb();
+					if (p.AllowMultiple)
 					{
-						string ItemVarName = StringUtil.ToCamelCaseName(p.CodeName + "Item");
-						if (p.DataType.IsAbstract)
+						f.WriteLine($"if ({p.CodeName} == null) {p.CodeName} = new {GetPropertyTypeCode(p, false)}();");
+						if (p.DataType.IsPrimitiveType)
 						{
-							WriteLine($"var {ItemVarName} = InstanceCreator.Create{p.DataType.CodeName}(xItem);");
+							f.WriteLine($"{p.CodeName}.Add({GetSinglePrimitiveTypeConversionExpression(p, "xItem.Value")});");
 						}
 						else
 						{
-							WriteLine($"var {ItemVarName} = new {p.DataType.CodeName}();");
+							string ItemVarName = StringUtil.ToCamelCaseName(p.CodeName + "Item");
+							if (p.DataType.IsAbstract)
+							{
+								f.WriteLine($"var {ItemVarName} = InstanceCreator.Create{p.DataType.CodeName}(xItem);");
+							}
+							else
+							{
+								f.WriteLine($"var {ItemVarName} = new {p.DataType.CodeName}();");
+							}
+							f.WriteLine($"{ItemVarName}.ReadFrom(xItem);");
+							f.WriteLine($"{p.CodeName}.Add({ItemVarName});");
 						}
-						WriteLine($"{ItemVarName}.ReadFrom(xItem);");
-						WriteLine($"{p.CodeName}.Add({ItemVarName});");
-					}
-				}
-				else
-				{
-					if (p.DataType.IsPrimitiveType)
-					{
-						WriteLine($"{p.CodeName} = {GetSinglePrimitiveTypeConversionExpression(p, "xItem.Value")};");
 					}
 					else
 					{
-						if (p.DataType.IsAbstract)
+						if (p.DataType.IsPrimitiveType)
 						{
-							WriteLine($"{p.CodeName} = InstanceCreator.Create{p.DataType.CodeName}(xItem);");
+							f.WriteLine($"{p.CodeName} = {GetSinglePrimitiveTypeConversionExpression(p, "xItem.Value")};");
 						}
 						else
 						{
-							WriteLine($"{p.CodeName} = new {p.DataType.CodeName}();");
+							if (p.DataType.IsAbstract)
+							{
+								f.WriteLine($"{p.CodeName} = InstanceCreator.Create{p.DataType.CodeName}(xItem);");
+							}
+							else
+							{
+								f.WriteLine($"{p.CodeName} = new {p.DataType.CodeName}();");
+							}
+							f.WriteLine($"{p.CodeName}.ReadFrom(xItem);");
 						}
-						WriteLine($"{p.CodeName}.ReadFrom(xItem);");
 					}
+					f.Ccb();
+					isFirst = false;
 				}
-				Close();
-				isFirst = false;
+				f.Ccb(); // close foreach
 			}
-			Close(); // close foreach
-			Close(); // close method
 		}
 
 		private string GetSinglePrimitiveTypeConversionExpression(WsdlTypeProperty prop, string valueExpression)
@@ -494,59 +532,59 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			return expression;
 		}
 
-		private void ImplementISoapableWriteTo(WsdlType t)
+		private void ImplementISoapableWriteTo(WsdlType t, CodeFile f)
 		{
 			var overrideKeyword = t.BaseType == null ? "virtual" : "override";
-			WriteLine($"public {overrideKeyword} void WriteTo(XElement xE)");
-			Open();
-			if (t.BaseType != null)
+			using (var methodScope = f.CreateMethodScope($"public {overrideKeyword}", "void", "WriteTo", "XElement xE"))
 			{
-				WriteLine("base.WriteTo(xE);");
-				WriteLine($"XmlUtility.SetXsiType(xE, \"{t.XName.Namespace}\", \"{t.XName.Name}\");");
-			}
-			if (t.Properties.Count > 0)
-			{
-				WriteLine("XElement xItem = null;");
-			}
-			foreach (var p in t.Properties)
-			{
-				bool checkNull = p.AllowMultiple || p.AllowNull;
-				if (checkNull)
+				if (t.BaseType != null)
 				{
-					WriteLine($"if ({p.CodeName} != null)");
-					Open();
+					f.WriteLine("base.WriteTo(xE);");
+					f.WriteLine($"XmlUtility.SetXsiType(xE, \"{t.XName.Namespace}\", \"{t.XName.Name}\");");
 				}
-				string valueExpr = null;
-				if (p.AllowMultiple)
+				if (t.Properties.Count > 0)
 				{
-					valueExpr = StringUtil.ToCamelCaseName(p.CodeName + "Item");
-					WriteLine($"foreach (var {valueExpr} in {p.CodeName})");
-					Open();
+					f.WriteLine("XElement xItem = null;");
 				}
-				else
+				foreach (var p in t.Properties)
 				{
-					valueExpr = p.CodeName;
-					if (p.AllowNull && p.DataType.IsPrimitiveType && p.DataType.CodeName != "string" && p.DataType.CodeName != "byte[]")
+					bool checkNull = p.AllowMultiple || p.AllowNull;
+					if (checkNull)
 					{
-						valueExpr += ".Value";
+						f.WriteLine($"if ({p.CodeName} != null)");
+						f.Ocb();
 					}
-				}
-				WriteLine($"xItem = new XElement(XName.Get(\"{p.XName.Name}\", \"{p.XName.Namespace}\"));");
-				if (p.DataType.IsPrimitiveType)
-				{
-					WriteLine($"xItem.Add({GetSinglePrimitiveTypeToXmlValueExpression(p, valueExpr)});");
-				}
-				else
-				{
-					WriteLine($"{valueExpr}.WriteTo(xItem);");
-				}
-				WriteLine("xE.Add(xItem);");
+					string valueExpr = null;
+					if (p.AllowMultiple)
+					{
+						valueExpr = StringUtil.ToCamelCaseName(p.CodeName + "Item");
+						f.WriteLine($"foreach (var {valueExpr} in {p.CodeName})");
+						f.Ocb();
+					}
+					else
+					{
+						valueExpr = p.CodeName;
+						if (p.AllowNull && p.DataType.IsPrimitiveType && p.DataType.CodeName != "string" && p.DataType.CodeName != "byte[]")
+						{
+							valueExpr += ".Value";
+						}
+					}
+					f.WriteLine($"xItem = new XElement(XName.Get(\"{p.XName.Name}\", \"{p.XName.Namespace}\"));");
+					if (p.DataType.IsPrimitiveType)
+					{
+						f.WriteLine($"xItem.Add({GetSinglePrimitiveTypeToXmlValueExpression(p, valueExpr)});");
+					}
+					else
+					{
+						f.WriteLine($"{valueExpr}.WriteTo(xItem);");
+					}
+					f.WriteLine("xE.Add(xItem);");
 
-				if (p.AllowMultiple) Close(); // close foreach
+					if (p.AllowMultiple) f.Ccb(); // close foreach
 
-				if (checkNull) Close(); // close check if null
+					if (checkNull) f.Ccb(); // close check if null
+				}
 			}
-			Close();
 		}
 
 		private string GetSinglePrimitiveTypeToXmlValueExpression(WsdlTypeProperty prop, string valueExpression)
@@ -601,51 +639,6 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			else
 			{
 				return text;
-			}
-		}
-
-		private void Indent()
-		{
-			_indent += '\t';
-		}
-		private void Close()
-		{
-			Unindent();
-			WriteLine("}");
-		}
-
-		private void Open()
-		{
-			WriteLine("{");
-			Indent();
-		}
-
-		private void Unindent()
-		{
-			if (_indent.Length > 0)
-			{
-				_indent = _indent.Substring(1);
-			}
-		}
-
-		private void WriteLine(string line)
-		{
-			_writer.Write(_indent);
-			_writer.WriteLine(line);
-		}
-
-		private class CodeScope : IDisposable
-		{
-			private Programmer _p;
-			public CodeScope(Programmer p, string line)
-			{
-				_p = p;
-				p.WriteLine(line);
-				p.Open();
-			}
-			public void Dispose()
-			{
-				_p.Close();
 			}
 		}
 	}

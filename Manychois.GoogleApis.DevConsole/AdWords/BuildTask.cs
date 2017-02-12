@@ -37,7 +37,7 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			wsdl.Compile();
 
 			var programmer = new Programmer();
-			programmer.Code(@"AdWords\v201609\v201609.cs", wsdl, "Manychois.GoogleApis.AdWords.v201609");
+			programmer.Code(wsdl, @"Manychois.GoogleApis.AdWords\v201609\generated", "Manychois.GoogleApis.AdWords.v201609");
 		}
 	}
 }

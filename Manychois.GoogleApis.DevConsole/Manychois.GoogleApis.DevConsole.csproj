@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdWords\BuildTask.cs" />
+    <Compile Include="AdWords\CodeFile.cs" />
     <Compile Include="AdWords\Programmer.cs" />
     <Compile Include="AdWords\StringUtil.cs" />
     <Compile Include="AdWords\WsdlBinding.cs" />
