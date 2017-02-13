@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AdGroupCriterionService : IAdGroupCriterionService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AdGroupCriterionService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AdGroupCriterionService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AdGroupCriterionService>();
 		}
 		/// <summary>
 		/// Gets adgroup criteria.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceGet>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -38,7 +43,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionReturnValue> MutateAsync(IEnumerable<AdGroupCriterionOperation> operations)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceMutate>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -66,7 +71,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupCriterionLabelOperation> operations)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceMutateLabel>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -84,7 +89,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupCriterionPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupCriterionServiceRequestHeader, AdGroupCriterionServiceQuery>();
 			inData.Header = new AdGroupCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -95,11 +100,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AdGroupCriterionServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class LabelService : ILabelService
 	{
-		public AdWordsApiConfig Config { get; }
-		public LabelService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public LabelService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<LabelService>();
 		}
 		/// <summary>
 		/// Returns a list of {@link Label}s.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<LabelPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<LabelServiceRequestHeader, LabelServiceGet>();
 			inData.Header = new LabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -39,7 +44,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<LabelReturnValue> MutateAsync(IEnumerable<LabelOperation> operations)
 		{
-			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<LabelServiceRequestHeader, LabelServiceMutate>();
 			inData.Header = new LabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -57,7 +62,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<LabelPage> QueryAsync(string query)
 		{
-			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new LabelServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/LabelService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<LabelServiceRequestHeader, LabelServiceQuery>();
 			inData.Header = new LabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -68,11 +73,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(LabelServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

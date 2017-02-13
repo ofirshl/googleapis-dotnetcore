@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class TargetingIdeaService : ITargetingIdeaService
 	{
-		public AdWordsApiConfig Config { get; }
-		public TargetingIdeaService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public TargetingIdeaService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<TargetingIdeaService>();
 		}
 		/// <summary>
 		/// Returns a page of ideas that match the query described by the specified
@@ -27,7 +32,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TargetingIdeaPage> GetAsync(TargetingIdeaSelector selector)
 		{
-			var binding = new TargetingIdeaServiceSoapBinding("https://adwords.google.com/api/adwords/o/v201609/TargetingIdeaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new TargetingIdeaServiceSoapBinding("https://adwords.google.com/api/adwords/o/v201609/TargetingIdeaService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<TargetingIdeaServiceRequestHeader, TargetingIdeaServiceGet>();
 			inData.Header = new TargetingIdeaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -38,11 +43,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(TargetingIdeaServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

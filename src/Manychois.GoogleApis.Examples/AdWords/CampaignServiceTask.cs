@@ -9,17 +9,19 @@ namespace Manychois.GoogleApis.Examples.AdWords
 {
 	public class CampaignServiceTask
 	{
+		private readonly ILoggerFactory _loggerFactory;
 		private readonly ILogger _logger;
 
-		public CampaignServiceTask(ILogger logger)
+		public CampaignServiceTask(ILoggerFactory loggerFactory)
 		{
-			_logger = logger;
+			_loggerFactory = loggerFactory;
+			_logger = loggerFactory.CreateLogger<CampaignServiceTask>();
 		}
 
 		public async Task<string> ChangeCampaignNameAsync(AdWordsApiConfig config, long campaignId)
 		{
 			string randomName = $"New Campaign Name {DateTime.Now.Ticks}";
-			ICampaignService service = new CampaignService(config);
+			ICampaignService service = new CampaignService(config, new NetUtility(), _loggerFactory);
 			var operation = new CampaignOperation();
 			operation.Operand = new Campaign
 			{

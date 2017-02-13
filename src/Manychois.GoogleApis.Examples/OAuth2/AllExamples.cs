@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.Examples.OAuth2
 
 		public async Task RunAsync()
 		{
-			var apiConfig = new AdWordsApiConfig(new NetUtility(), _loggerFactory);
+			var apiConfig = new AdWordsApiConfig();
 			var configSection = _programConfig.GetSection("oauth2");
 			string credentialJsonPath = configSection["credentialJsonPath"];
 			string refreshToken = configSection["refreshToken"];

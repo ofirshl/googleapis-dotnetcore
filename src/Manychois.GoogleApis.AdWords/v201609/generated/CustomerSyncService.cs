@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class CustomerSyncService : ICustomerSyncService
 	{
-		public AdWordsApiConfig Config { get; }
-		public CustomerSyncService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public CustomerSyncService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<CustomerSyncService>();
 		}
 		/// <summary>
 		/// Returns information about changed entities inside a customer's account.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CustomerChangeData> GetAsync(CustomerSyncSelector selector)
 		{
-			var binding = new CustomerSyncServiceSoapBinding("https://adwords.google.com/api/adwords/ch/v201609/CustomerSyncService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CustomerSyncServiceSoapBinding("https://adwords.google.com/api/adwords/ch/v201609/CustomerSyncService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CustomerSyncServiceRequestHeader, CustomerSyncServiceGet>();
 			inData.Header = new CustomerSyncServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -31,11 +36,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(CustomerSyncServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

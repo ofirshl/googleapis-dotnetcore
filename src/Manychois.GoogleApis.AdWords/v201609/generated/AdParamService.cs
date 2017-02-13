@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AdParamService : IAdParamService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AdParamService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AdParamService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AdParamService>();
 		}
 		/// <summary>
 		/// Returns the ad parameters that match the criteria specified in the
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdParamPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdParamServiceRequestHeader, AdParamServiceGet>();
 			inData.Header = new AdParamServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -49,7 +54,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<AdParam>> MutateAsync(IEnumerable<AdParamOperation> operations)
 		{
-			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdParamServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdParamService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdParamServiceRequestHeader, AdParamServiceMutate>();
 			inData.Header = new AdParamServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -60,11 +65,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AdParamServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

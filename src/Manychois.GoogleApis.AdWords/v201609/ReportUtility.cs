@@ -13,14 +13,14 @@ namespace Manychois.GoogleApis.AdWords.v201609
 	{
 		private const string EndPoint = "https://adwords.google.com/api/adwords/reportdownload/v201609";
 		private readonly AdWordsApiConfig _config;
-		private readonly INetUtility _net;
+		private readonly INetUtility _netUtil;
 		private readonly ILogger _logger;
 
-		public ReportUtility(AdWordsApiConfig config)
+		public ReportUtility(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
 			_config = config;
-			_net = config.NetUtility;
-			_logger = config.Logger;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<ReportUtility>();
 		}
 
 		public async Task<string> GetContentStringAsync(ReportDefinition definition)
@@ -57,7 +57,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 
 		private async Task<IHttpWebResponse> GetResponseAsync(IDictionary<string, string> reportParams, bool enableGzip)
 		{
-			var request = _net.CreateHttp(EndPoint);
+			var request = _netUtil.CreateHttp(EndPoint);
 			request.Method = "POST";
 			request.Accept = "*/*";
 			if (enableGzip) request.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
@@ -106,7 +106,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 
 		private async Task<string> GetResponseTextAsync(IHttpWebResponse response)
 		{
-			string responseText = await _net.GetResponseTextAsync(response).ConfigureAwait(false);
+			string responseText = await _netUtil.GetResponseTextAsync(response).ConfigureAwait(false);
 			if (_logger != null)
 			{
 				_logger.LogDebug("Response status code: {0}", (int)response.StatusCode);

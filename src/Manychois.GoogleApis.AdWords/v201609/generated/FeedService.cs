@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class FeedService : IFeedService
 	{
-		public AdWordsApiConfig Config { get; }
-		public FeedService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public FeedService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<FeedService>();
 		}
 		/// <summary>
 		/// Returns a list of Feeds that meet the selector criteria.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedPage> GetAsync(Selector selector)
 		{
-			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<FeedServiceRequestHeader, FeedServiceGet>();
 			inData.Header = new FeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -38,7 +43,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedReturnValue> MutateAsync(IEnumerable<FeedOperation> operations)
 		{
-			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<FeedServiceRequestHeader, FeedServiceMutate>();
 			inData.Header = new FeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -56,7 +61,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<FeedPage> QueryAsync(string query)
 		{
-			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new FeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/FeedService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<FeedServiceRequestHeader, FeedServiceQuery>();
 			inData.Header = new FeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -67,11 +72,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(FeedServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

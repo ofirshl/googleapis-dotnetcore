@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class CampaignExtensionSettingService : ICampaignExtensionSettingService
 	{
-		public AdWordsApiConfig Config { get; }
-		public CampaignExtensionSettingService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public CampaignExtensionSettingService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<CampaignExtensionSettingService>();
 		}
 		/// <summary>
 		/// Returns a list of CampaignExtensionSettings that meet the selector criteria.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignExtensionSettingPage> GetAsync(Selector selector)
 		{
-			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceGet>();
 			inData.Header = new CampaignExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -44,7 +49,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignExtensionSettingReturnValue> MutateAsync(IEnumerable<CampaignExtensionSettingOperation> operations)
 		{
-			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceMutate>();
 			inData.Header = new CampaignExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -62,7 +67,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignExtensionSettingPage> QueryAsync(string query)
 		{
-			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignExtensionSettingServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignExtensionSettingService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignExtensionSettingServiceRequestHeader, CampaignExtensionSettingServiceQuery>();
 			inData.Header = new CampaignExtensionSettingServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -73,11 +78,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(CampaignExtensionSettingServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

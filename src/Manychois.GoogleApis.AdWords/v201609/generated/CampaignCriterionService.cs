@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class CampaignCriterionService : ICampaignCriterionService
 	{
-		public AdWordsApiConfig Config { get; }
-		public CampaignCriterionService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public CampaignCriterionService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<CampaignCriterionService>();
 		}
 		/// <summary>
 		/// Gets campaign criteria.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignCriterionPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceGet>();
 			inData.Header = new CampaignCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -37,7 +42,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignCriterionReturnValue> MutateAsync(IEnumerable<CampaignCriterionOperation> operations)
 		{
-			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceMutate>();
 			inData.Header = new CampaignCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -55,7 +60,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignCriterionPage> QueryAsync(string query)
 		{
-			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignCriterionServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignCriterionService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignCriterionServiceRequestHeader, CampaignCriterionServiceQuery>();
 			inData.Header = new CampaignCriterionServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -66,11 +71,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(CampaignCriterionServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class ConversionTrackerService : IConversionTrackerService
 	{
-		public AdWordsApiConfig Config { get; }
-		public ConversionTrackerService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public ConversionTrackerService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<ConversionTrackerService>();
 		}
 		/// <summary>
 		/// Returns a list of the conversion trackers that match the selector. The
@@ -23,7 +28,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ConversionTrackerPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceGet>();
 			inData.Header = new ConversionTrackerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -55,7 +60,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ConversionTrackerReturnValue> MutateAsync(IEnumerable<ConversionTrackerOperation> operations)
 		{
-			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceMutate>();
 			inData.Header = new ConversionTrackerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -73,7 +78,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<ConversionTrackerPage> QueryAsync(string query)
 		{
-			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConversionTrackerServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConversionTrackerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConversionTrackerServiceRequestHeader, ConversionTrackerServiceQuery>();
 			inData.Header = new ConversionTrackerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -84,11 +89,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(ConversionTrackerServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class ConstantDataService : IConstantDataService
 	{
-		public AdWordsApiConfig Config { get; }
-		public ConstantDataService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public ConstantDataService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<ConstantDataService>();
 		}
 		/// <summary>
 		/// Returns a list of all age range criteria.
@@ -18,7 +23,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<AgeRange>> GetAgeRangeCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetAgeRangeCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -34,7 +39,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Carrier>> GetCarrierCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetCarrierCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -50,7 +55,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Gender>> GetGenderCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetGenderCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -66,7 +71,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Language>> GetLanguageCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetLanguageCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -82,7 +87,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<MobileAppCategory>> GetMobileAppCategoryCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetMobileAppCategoryCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -98,7 +103,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<MobileDevice>> GetMobileDeviceCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetMobileDeviceCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -114,7 +119,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<OperatingSystemVersion>> GetOperatingSystemVersionCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetOperatingSystemVersionCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -134,7 +139,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ProductBiddingCategoryData>> GetProductBiddingCategoryDataAsync(Selector selector)
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetProductBiddingCategoryData>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -152,7 +157,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<CriterionUserInterest>> GetUserInterestCriterionAsync(ConstantDataServiceUserInterestTaxonomyType? userInterestTaxonomyType)
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetUserInterestCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -169,7 +174,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Vertical>> GetVerticalCriterionAsync()
 		{
-			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new ConstantDataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/ConstantDataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<ConstantDataServiceRequestHeader, ConstantDataServiceGetVerticalCriterion>();
 			inData.Header = new ConstantDataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -179,11 +184,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(ConstantDataServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AdGroupAdService : IAdGroupAdService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AdGroupAdService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AdGroupAdService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AdGroupAdService>();
 		}
 		/// <summary>
 		/// Returns a list of AdGroupAds.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceGet>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -54,7 +59,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdReturnValue> MutateAsync(IEnumerable<AdGroupAdOperation> operations)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceMutate>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -81,7 +86,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupAdLabelOperation> operations)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceMutateLabel>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -99,7 +104,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupAdPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceQuery>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -115,7 +120,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Ad>> UpgradeUrlAsync(IEnumerable<AdUrlUpgrade> operations)
 		{
-			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupAdServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupAdService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupAdServiceRequestHeader, AdGroupAdServiceUpgradeUrl>();
 			inData.Header = new AdGroupAdServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -126,11 +131,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AdGroupAdServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

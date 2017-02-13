@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class CampaignService : ICampaignService
 	{
-		public AdWordsApiConfig Config { get; }
-		public CampaignService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public CampaignService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<CampaignService>();
 		}
 		/// <summary>
 		/// Returns the list of campaigns that meet the selector criteria.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceGet>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -41,7 +46,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignReturnValue> MutateAsync(IEnumerable<CampaignOperation> operations)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceMutate>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -68,7 +73,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignLabelReturnValue> MutateLabelAsync(IEnumerable<CampaignLabelOperation> operations)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceMutateLabel>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -87,7 +92,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CampaignPage> QueryAsync(string query)
 		{
-			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CampaignServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/CampaignService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CampaignServiceRequestHeader, CampaignServiceQuery>();
 			inData.Header = new CampaignServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -98,11 +103,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(CampaignServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

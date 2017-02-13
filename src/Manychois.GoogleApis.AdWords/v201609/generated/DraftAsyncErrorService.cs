@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class DraftAsyncErrorService : IDraftAsyncErrorService
 	{
-		public AdWordsApiConfig Config { get; }
-		public DraftAsyncErrorService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public DraftAsyncErrorService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<DraftAsyncErrorService>();
 		}
 		/// <summary>
 		/// Returns a DraftAsyncErrorPage that contains a list of DraftAsyncErrors matching the selector.
@@ -18,7 +23,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftAsyncErrorPage> GetAsync(Selector selector)
 		{
-			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DraftAsyncErrorServiceRequestHeader, DraftAsyncErrorServiceGet>();
 			inData.Header = new DraftAsyncErrorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -35,7 +40,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DraftAsyncErrorPage> QueryAsync(string query)
 		{
-			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DraftAsyncErrorServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DraftAsyncErrorService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DraftAsyncErrorServiceRequestHeader, DraftAsyncErrorServiceQuery>();
 			inData.Header = new DraftAsyncErrorServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -46,11 +51,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(DraftAsyncErrorServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

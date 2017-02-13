@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AccountLabelService : IAccountLabelService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AccountLabelService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AccountLabelService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AccountLabelService>();
 		}
 		/// <summary>
 		/// Returns a list of labels specified by the selector for the authenticated user.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AccountLabelPage> GetAsync(Selector selector)
 		{
-			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AccountLabelServiceRequestHeader, AccountLabelServiceGet>();
 			inData.Header = new AccountLabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -44,7 +49,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AccountLabelReturnValue> MutateAsync(IEnumerable<AccountLabelOperation> operations)
 		{
-			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AccountLabelServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/AccountLabelService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AccountLabelServiceRequestHeader, AccountLabelServiceMutate>();
 			inData.Header = new AccountLabelServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -55,11 +60,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AccountLabelServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

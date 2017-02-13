@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AdwordsUserListService : IAdwordsUserListService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AdwordsUserListService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AdwordsUserListService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AdwordsUserListService>();
 		}
 		/// <summary>
 		/// Returns the list of user lists that meet the selector criteria.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<UserListPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceGet>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -40,7 +45,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<UserListReturnValue> MutateAsync(IEnumerable<UserListOperation> operations)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceMutate>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -61,7 +66,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MutateMembersReturnValue> MutateMembersAsync(IEnumerable<MutateMembersOperation> operations)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceMutateMembers>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -79,7 +84,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<UserListPage> QueryAsync(string query)
 		{
-			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdwordsUserListServiceSoapBinding("https://adwords.google.com/api/adwords/rm/v201609/AdwordsUserListService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdwordsUserListServiceRequestHeader, AdwordsUserListServiceQuery>();
 			inData.Header = new AdwordsUserListServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -90,11 +95,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AdwordsUserListServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

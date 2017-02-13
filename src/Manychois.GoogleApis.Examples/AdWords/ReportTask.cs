@@ -1,4 +1,5 @@
 ﻿using Manychois.GoogleApis.AdWords.v201609;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Manychois.GoogleApis.Examples.AdWords
 {
 	public class ReportTask
 	{
-		public async Task<string> GetGzippedXmlContentAsync(AdWordsApiConfig config)
+		public async Task<string> GetGzippedXmlContentAsync(AdWordsApiConfig config, ILoggerFactory loggerFactory)
 		{
 			var definition = new ReportDefinition();
 			definition.DateRangeType = ReportDefinitionDateRangeType.AllTime;
@@ -33,7 +34,7 @@ namespace Manychois.GoogleApis.Examples.AdWords
 				Values = new List<string>(new string[] { CampaignStatus.Removed.ToString().ToUpperInvariant() })
 			});
 
-			ReportUtility reportUtil = new ReportUtility(config);
+			ReportUtility reportUtil = new ReportUtility(config, new NetUtility(), loggerFactory);
 			var content = await reportUtil.GetContentStringAsync(definition).ConfigureAwait(false);
 
 			return content;

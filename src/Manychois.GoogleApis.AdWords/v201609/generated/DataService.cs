@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class DataService : IDataService
 	{
-		public AdWordsApiConfig Config { get; }
-		public DataService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public DataService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<DataService>();
 		}
 		/// <summary>
 		/// Returns a list of {@link AdGroupBidLandscape}s for the ad groups specified in the selector.
@@ -22,7 +27,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidLandscapePage> GetAdGroupBidLandscapeAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetAdGroupBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -44,7 +49,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> GetCampaignCriterionBidLandscapeAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetCampaignCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -65,7 +70,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> GetCriterionBidLandscapeAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -83,7 +88,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DomainCategoryPage> GetDomainCategoryAsync(Selector serviceSelector)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceGetDomainCategory>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -104,7 +109,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidLandscapePage> QueryAdGroupBidLandscapeAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryAdGroupBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -126,7 +131,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> QueryCampaignCriterionBidLandscapeAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryCampaignCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -147,7 +152,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<CriterionBidLandscapePage> QueryCriterionBidLandscapeAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryCriterionBidLandscape>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -166,7 +171,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<DomainCategoryPage> QueryDomainCategoryAsync(string query)
 		{
-			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new DataServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/DataService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<DataServiceRequestHeader, DataServiceQueryDomainCategory>();
 			inData.Header = new DataServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -177,11 +182,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(DataServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

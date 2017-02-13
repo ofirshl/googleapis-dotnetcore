@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AdGroupFeedService : IAdGroupFeedService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AdGroupFeedService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AdGroupFeedService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AdGroupFeedService>();
 		}
 		/// <summary>
 		/// Returns a list of AdGroupFeeds that meet the selector criteria.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupFeedPage> GetAsync(Selector selector)
 		{
-			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceGet>();
 			inData.Header = new AdGroupFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -38,7 +43,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupFeedReturnValue> MutateAsync(IEnumerable<AdGroupFeedOperation> operations)
 		{
-			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceMutate>();
 			inData.Header = new AdGroupFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -56,7 +61,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupFeedPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupFeedServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupFeedService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupFeedServiceRequestHeader, AdGroupFeedServiceQuery>();
 			inData.Header = new AdGroupFeedServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -67,11 +72,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AdGroupFeedServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

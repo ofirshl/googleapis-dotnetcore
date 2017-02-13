@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class MediaService : IMediaService
 	{
-		public AdWordsApiConfig Config { get; }
-		public MediaService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public MediaService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<MediaService>();
 		}
 		/// <summary>
 		/// Returns a list of media that meet the criteria specified by the selector.
@@ -20,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MediaPage> GetAsync(Selector serviceSelector)
 		{
-			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<MediaServiceRequestHeader, MediaServiceGet>();
 			inData.Header = new MediaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -38,7 +43,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<MediaPage> QueryAsync(string query)
 		{
-			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<MediaServiceRequestHeader, MediaServiceQuery>();
 			inData.Header = new MediaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -56,7 +61,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Media>> UploadAsync(IEnumerable<Media> media)
 		{
-			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new MediaServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/MediaService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<MediaServiceRequestHeader, MediaServiceUpload>();
 			inData.Header = new MediaServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -67,11 +72,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(MediaServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

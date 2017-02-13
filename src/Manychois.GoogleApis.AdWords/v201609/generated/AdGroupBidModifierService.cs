@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class AdGroupBidModifierService : IAdGroupBidModifierService
 	{
-		public AdWordsApiConfig Config { get; }
-		public AdGroupBidModifierService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public AdGroupBidModifierService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<AdGroupBidModifierService>();
 		}
 		/// <summary>
 		/// Gets ad group level criterion bid modifiers.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidModifierPage> GetAsync(Selector selector)
 		{
-			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceGet>();
 			inData.Header = new AdGroupBidModifierServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -37,7 +42,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidModifierReturnValue> MutateAsync(IEnumerable<AdGroupBidModifierOperation> operations)
 		{
-			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceMutate>();
 			inData.Header = new AdGroupBidModifierServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -54,7 +59,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<AdGroupBidModifierPage> QueryAsync(string query)
 		{
-			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new AdGroupBidModifierServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/AdGroupBidModifierService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<AdGroupBidModifierServiceRequestHeader, AdGroupBidModifierServiceQuery>();
 			inData.Header = new AdGroupBidModifierServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -65,11 +70,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(AdGroupBidModifierServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

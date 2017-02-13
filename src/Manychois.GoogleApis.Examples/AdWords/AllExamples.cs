@@ -10,15 +10,17 @@ namespace Manychois.GoogleApis.Examples.AdWords
 {
 	public class AllExamples
 	{
+		private readonly ILoggerFactory _loggerFactory;
 		private readonly ILogger _logger;
 		private readonly AdWordsApiConfig _config;
 		private readonly long _targetCampaignId;
 
 		public AllExamples(IConfigurationRoot programConfig, ILoggerFactory loggerFactory)
 		{
-			_logger = loggerFactory.CreateLogger("AdWordsExamples");
+			_loggerFactory = loggerFactory;
+			_logger = loggerFactory.CreateLogger<AllExamples>();
 
-			_config = new AdWordsApiConfig(new NetUtility(), loggerFactory);
+			_config = new AdWordsApiConfig();
 			var configSection = programConfig.GetSection("adwords");
 			_config.AccessToken = configSection["accessToken"];
 			_config.ClientCustomerId = configSection["clientCustomerId"];
@@ -33,7 +35,7 @@ namespace Manychois.GoogleApis.Examples.AdWords
 
 			// comment out the examples you want to skip
 
-			var campaignServiceTask = new CampaignServiceTask(_logger);
+			var campaignServiceTask = new CampaignServiceTask(_loggerFactory);
 			_logger.LogInformation("Renaming campaign (ID: {0})", _targetCampaignId);
 			var newCampaignName = await campaignServiceTask.ChangeCampaignNameAsync(_config, _targetCampaignId).ConfigureAwait(false);
 			_logger.LogInformation("Campaign name is changed to {0}", newCampaignName);

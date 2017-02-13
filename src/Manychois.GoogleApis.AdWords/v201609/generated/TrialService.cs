@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class TrialService : ITrialService
 	{
-		public AdWordsApiConfig Config { get; }
-		public TrialService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public TrialService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<TrialService>();
 		}
 		/// <summary>
 		/// Loads a TrialPage containing a list of {@link Trial} objects matching the selector.
@@ -22,7 +27,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialPage> GetAsync(Selector selector)
 		{
-			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<TrialServiceRequestHeader, TrialServiceGet>();
 			inData.Header = new TrialServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -41,7 +46,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialReturnValue> MutateAsync(IEnumerable<TrialOperation> operations)
 		{
-			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<TrialServiceRequestHeader, TrialServiceMutate>();
 			inData.Header = new TrialServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -62,7 +67,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<TrialPage> QueryAsync(string query)
 		{
-			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new TrialServiceSoapBinding("https://adwords.google.com/api/adwords/cm/v201609/TrialService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<TrialServiceRequestHeader, TrialServiceQuery>();
 			inData.Header = new TrialServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -73,11 +78,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(TrialServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }

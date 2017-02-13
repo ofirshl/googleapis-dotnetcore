@@ -20,17 +20,6 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 
 		public void Code(WsdlStructure wsdl, string directory, string namespaceName)
 		{
-			/*
-			WriteLine("using Manychois.GoogleApis.AdWords.v201609.EnumExtensions;");
-			WriteLine("using Microsoft.Extensions.Logging;");
-			WriteLine("using System;");
-			WriteLine("using System.Collections.Generic;");
-			WriteLine("using System.Threading.Tasks;");
-			WriteLine("using System.Xml.Linq;");
-			WriteLine("");
-			WriteLine($"namespace {namespaceName}");
-			Ocb();
-			*/
 			SetCodeNames(wsdl);
 			CodeInstanceCreator(wsdl, directory, namespaceName);
 			CodeEnums(wsdl, directory, namespaceName);
@@ -184,6 +173,7 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 		{
 			using (var file = new CodeFile(directory, $"{s.CodeName}.cs"))
 			{
+				file.WriteLine("using Microsoft.Extensions.Logging;");
 				file.WriteLine("using System.Collections.Generic;");
 				file.WriteLine("using System.Threading.Tasks;");
 				file.WriteLine("");
@@ -191,12 +181,16 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 				{
 					using (var classScope = file.CreateClassScope("public", s.CodeName, s.Ports.Select(x => x.Binding.PortType.CodeName).ToArray()))
 					{
-						file.WriteLine("public AdWordsApiConfig Config { get; }");
+						file.WriteLine("private readonly AdWordsApiConfig _config;");
+						file.WriteLine("private readonly INetUtility _netUtil;");
+						file.WriteLine("private readonly ILogger _logger;");
 
 						// constructor
-						file.WriteLine($"public {s.CodeName}(AdWordsApiConfig config)");
+						file.WriteLine($"public {s.CodeName}(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)");
 						file.Ocb();
-						file.WriteLine("Config = config;");
+						file.WriteLine("_config = config;");
+						file.WriteLine("_netUtil = netUtil;");
+						file.WriteLine($"_logger = loggerFactory?.CreateLogger<{s.CodeName}>();");
 						file.Ccb();
 
 						foreach (var p in s.Ports)
@@ -219,7 +213,7 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 								file.Comment(op.Documentation);
 								file.WriteLine($"public async Task<{outputType}> {op.CodeName}Async({inputs})");
 								file.Ocb();
-								file.WriteLine($"var binding = new {p.Binding.CodeName}(\"{p.SoapLocation}\", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);");
+								file.WriteLine($"var binding = new {p.Binding.CodeName}(\"{p.SoapLocation}\", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);");
 								file.WriteLine($"var inData = new SoapData<{opBinding.InputSoapHeader.CodeName}, {op.InputElement.CodeName}>();");
 								file.WriteLine($"inData.Header = new {opBinding.InputSoapHeader.CodeName}();");
 								file.WriteLine("AssignHeaderValues(inData.Header);");
@@ -245,11 +239,11 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 							{
 								file.WriteLine($"private void AssignHeaderValues({hEle.CodeName} header)");
 								file.Ocb();
-								file.WriteLine("header.ClientCustomerId = Config.ClientCustomerId;");
-								file.WriteLine("header.DeveloperToken = Config.DeveloperToken;");
-								file.WriteLine("header.PartialFailure = Config.PartialFailure;");
-								file.WriteLine("header.UserAgent = Config.UserAgent;");
-								file.WriteLine("header.ValidateOnly = Config.ValidateOnly;");
+								file.WriteLine("header.ClientCustomerId = _config.ClientCustomerId;");
+								file.WriteLine("header.DeveloperToken = _config.DeveloperToken;");
+								file.WriteLine("header.PartialFailure = _config.PartialFailure;");
+								file.WriteLine("header.UserAgent = _config.UserAgent;");
+								file.WriteLine("header.ValidateOnly = _config.ValidateOnly;");
 								file.Ccb();
 							}
 						}

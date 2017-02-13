@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.AdWords.v201609
 {
 	public class CustomerService : ICustomerService
 	{
-		public AdWordsApiConfig Config { get; }
-		public CustomerService(AdWordsApiConfig config)
+		private readonly AdWordsApiConfig _config;
+		private readonly INetUtility _netUtil;
+		private readonly ILogger _logger;
+		public CustomerService(AdWordsApiConfig config, INetUtility netUtil, ILoggerFactory loggerFactory)
 		{
-			Config = config;
+			_config = config;
+			_netUtil = netUtil;
+			_logger = loggerFactory?.CreateLogger<CustomerService>();
 		}
 		/// <summary>
 		/// Returns details of all the customers directly accessible by the user authenticating the call.
@@ -19,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<Customer>> GetCustomersAsync()
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceGetCustomers>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -36,7 +41,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ServiceLink>> GetServiceLinksAsync(Selector selector)
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceGetServiceLinks>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -57,7 +62,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<Customer> MutateAsync(Customer customer)
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceMutate>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -75,7 +80,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// </summary>
 		public async Task<IEnumerable<ServiceLink>> MutateServiceLinksAsync(IEnumerable<ServiceLinkOperation> operations)
 		{
-			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", Config.AccessToken, Config.Timeout, Config.EnableGzipCompression, Config.NetUtility, Config.Logger);
+			var binding = new CustomerServiceSoapBinding("https://adwords.google.com/api/adwords/mcm/v201609/CustomerService", _config.AccessToken, _config.Timeout, _config.EnableGzipCompression, _netUtil, _logger);
 			var inData = new SoapData<CustomerServiceRequestHeader, CustomerServiceMutateServiceLinks>();
 			inData.Header = new CustomerServiceRequestHeader();
 			AssignHeaderValues(inData.Header);
@@ -86,11 +91,11 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		}
 		private void AssignHeaderValues(CustomerServiceRequestHeader header)
 		{
-			header.ClientCustomerId = Config.ClientCustomerId;
-			header.DeveloperToken = Config.DeveloperToken;
-			header.PartialFailure = Config.PartialFailure;
-			header.UserAgent = Config.UserAgent;
-			header.ValidateOnly = Config.ValidateOnly;
+			header.ClientCustomerId = _config.ClientCustomerId;
+			header.DeveloperToken = _config.DeveloperToken;
+			header.PartialFailure = _config.PartialFailure;
+			header.UserAgent = _config.UserAgent;
+			header.ValidateOnly = _config.ValidateOnly;
 		}
 	}
 }
