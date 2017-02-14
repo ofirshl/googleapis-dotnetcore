@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "rval")
 				{
 					if (Rval == null) Rval = new List<Media>();
-					var rvalItem = new Media();
+					var rvalItem = InstanceCreator.CreateMedia(xItem);
 					rvalItem.ReadFrom(xItem);
 					Rval.Add(rvalItem);
 				}

@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "entries")
 				{
 					if (Entries == null) Entries = new List<CampaignCriterion>();
-					var entriesItem = new CampaignCriterion();
+					var entriesItem = InstanceCreator.CreateCampaignCriterion(xItem);
 					entriesItem.ReadFrom(xItem);
 					Entries.Add(entriesItem);
 				}

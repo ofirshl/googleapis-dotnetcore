@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "rval")
 				{
 					if (Rval == null) Rval = new List<Ad>();
-					var rvalItem = new Ad();
+					var rvalItem = InstanceCreator.CreateAd(xItem);
 					rvalItem.ReadFrom(xItem);
 					Rval.Add(rvalItem);
 				}

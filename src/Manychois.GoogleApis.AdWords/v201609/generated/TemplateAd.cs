@@ -81,7 +81,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				}
 				else if (localName == "adUnionId")
 				{
-					AdUnionId = new AdUnionId();
+					AdUnionId = InstanceCreator.CreateAdUnionId(xItem);
 					AdUnionId.ReadFrom(xItem);
 				}
 				else if (localName == "templateElements")

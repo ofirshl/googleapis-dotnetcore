@@ -22,7 +22,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				var localName = xItem.Name.LocalName;
 				if (localName == "operand")
 				{
-					Operand = new Label();
+					Operand = InstanceCreator.CreateLabel(xItem);
 					Operand.ReadFrom(xItem);
 				}
 			}

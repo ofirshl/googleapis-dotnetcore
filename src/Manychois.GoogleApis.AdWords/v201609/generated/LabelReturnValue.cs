@@ -20,7 +20,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "value")
 				{
 					if (Value == null) Value = new List<Label>();
-					var valueItem = new Label();
+					var valueItem = InstanceCreator.CreateLabel(xItem);
 					valueItem.ReadFrom(xItem);
 					Value.Add(valueItem);
 				}

@@ -125,7 +125,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				else if (localName == "criteria")
 				{
 					if (Criteria == null) Criteria = new List<Criterion>();
-					var criteriaItem = new Criterion();
+					var criteriaItem = InstanceCreator.CreateCriterion(xItem);
 					criteriaItem.ReadFrom(xItem);
 					Criteria.Add(criteriaItem);
 				}

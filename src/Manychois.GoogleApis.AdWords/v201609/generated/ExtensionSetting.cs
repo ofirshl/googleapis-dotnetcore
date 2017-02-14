@@ -32,7 +32,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "extensions")
 				{
 					if (Extensions == null) Extensions = new List<ExtensionFeedItem>();
-					var extensionsItem = new ExtensionFeedItem();
+					var extensionsItem = InstanceCreator.CreateExtensionFeedItem(xItem);
 					extensionsItem.ReadFrom(xItem);
 					Extensions.Add(extensionsItem);
 				}

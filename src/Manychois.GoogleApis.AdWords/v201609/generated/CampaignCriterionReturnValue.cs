@@ -25,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "value")
 				{
 					if (Value == null) Value = new List<CampaignCriterion>();
-					var valueItem = new CampaignCriterion();
+					var valueItem = InstanceCreator.CreateCampaignCriterion(xItem);
 					valueItem.ReadFrom(xItem);
 					Value.Add(valueItem);
 				}

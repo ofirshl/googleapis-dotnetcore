@@ -23,7 +23,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "userLists")
 				{
 					if (UserLists == null) UserLists = new List<UserList>();
-					var userListsItem = new UserList();
+					var userListsItem = InstanceCreator.CreateUserList(xItem);
 					userListsItem.ReadFrom(xItem);
 					UserLists.Add(userListsItem);
 				}

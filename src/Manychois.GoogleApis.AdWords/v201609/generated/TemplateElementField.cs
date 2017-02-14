@@ -56,7 +56,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				}
 				else if (localName == "fieldMedia")
 				{
-					FieldMedia = new Media();
+					FieldMedia = InstanceCreator.CreateMedia(xItem);
 					FieldMedia.ReadFrom(xItem);
 				}
 			}

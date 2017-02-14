@@ -156,7 +156,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				else if (localName == "labels")
 				{
 					if (Labels == null) Labels = new List<Label>();
-					var labelsItem = new Label();
+					var labelsItem = InstanceCreator.CreateLabel(xItem);
 					labelsItem.ReadFrom(xItem);
 					Labels.Add(labelsItem);
 				}

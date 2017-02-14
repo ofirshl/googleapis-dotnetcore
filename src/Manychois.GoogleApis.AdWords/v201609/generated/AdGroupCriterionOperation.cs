@@ -31,7 +31,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				var localName = xItem.Name.LocalName;
 				if (localName == "operand")
 				{
-					Operand = new AdGroupCriterion();
+					Operand = InstanceCreator.CreateAdGroupCriterion(xItem);
 					Operand.ReadFrom(xItem);
 				}
 				else if (localName == "exemptionRequests")

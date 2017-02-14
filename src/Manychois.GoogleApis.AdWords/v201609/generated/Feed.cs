@@ -87,7 +87,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				}
 				else if (localName == "systemFeedGenerationData")
 				{
-					SystemFeedGenerationData = new SystemFeedGenerationData();
+					SystemFeedGenerationData = InstanceCreator.CreateSystemFeedGenerationData(xItem);
 					SystemFeedGenerationData.ReadFrom(xItem);
 				}
 			}

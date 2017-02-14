@@ -257,14 +257,14 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			}
 		}
 
-		public IEnumerable<WsdlType> GetConcreteTypes(WsdlType abstractType)
+		public IEnumerable<WsdlType> GetConcreteChildTypes(WsdlType parentType)
 		{
-			var subclasses = _typeLookup.Values.Where(x => x.BaseType == abstractType);
+			var subclasses = _typeLookup.Values.Where(x => x.BaseType == parentType);
 			foreach (var sc in subclasses)
 			{
 				if (sc.IsAbstract)
 				{
-					foreach (var secondSubclass in GetConcreteTypes(sc))
+					foreach (var secondSubclass in GetConcreteChildTypes(sc))
 					{
 						yield return secondSubclass;
 					}

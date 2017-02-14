@@ -22,7 +22,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				var localName = xItem.Name.LocalName;
 				if (localName == "value")
 				{
-					Value = new Criterion();
+					Value = InstanceCreator.CreateCriterion(xItem);
 					Value.ReadFrom(xItem);
 				}
 			}

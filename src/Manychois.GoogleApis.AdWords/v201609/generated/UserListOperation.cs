@@ -25,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				var localName = xItem.Name.LocalName;
 				if (localName == "operand")
 				{
-					Operand = new UserList();
+					Operand = InstanceCreator.CreateUserList(xItem);
 					Operand.ReadFrom(xItem);
 				}
 			}

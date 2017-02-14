@@ -36,7 +36,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				}
 				else if (localName == "criterion")
 				{
-					Criterion = new Criterion();
+					Criterion = InstanceCreator.CreateCriterion(xItem);
 					Criterion.ReadFrom(xItem);
 				}
 				else if (localName == "negative")

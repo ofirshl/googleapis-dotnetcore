@@ -28,7 +28,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "value")
 				{
 					if (Value == null) Value = new List<AdGroupCriterion>();
-					var valueItem = new AdGroupCriterion();
+					var valueItem = InstanceCreator.CreateAdGroupCriterion(xItem);
 					valueItem.ReadFrom(xItem);
 					Value.Add(valueItem);
 				}

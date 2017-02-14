@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				if (localName == "entries")
 				{
 					if (Entries == null) Entries = new List<Label>();
-					var entriesItem = new Label();
+					var entriesItem = InstanceCreator.CreateLabel(xItem);
 					entriesItem.ReadFrom(xItem);
 					Entries.Add(entriesItem);
 				}

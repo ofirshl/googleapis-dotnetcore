@@ -5,6 +5,82 @@ namespace Manychois.GoogleApis.AdWords.v201609
 {
 	internal static class InstanceCreator
 	{
+		public static Ad CreateAd(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "CallOnlyAd")
+			{
+				return new CallOnlyAd();
+			}
+			else if (type == "DeprecatedAd")
+			{
+				return new DeprecatedAd();
+			}
+			else if (type == "DynamicSearchAd")
+			{
+				return new DynamicSearchAd();
+			}
+			else if (type == "ExpandedTextAd")
+			{
+				return new ExpandedTextAd();
+			}
+			else if (type == "ImageAd")
+			{
+				return new ImageAd();
+			}
+			else if (type == "ProductAd")
+			{
+				return new ProductAd();
+			}
+			else if (type == "ResponsiveDisplayAd")
+			{
+				return new ResponsiveDisplayAd();
+			}
+			else if (type == "TemplateAd")
+			{
+				return new TemplateAd();
+			}
+			else if (type == "TextAd")
+			{
+				return new TextAd();
+			}
+			else if (type == "ThirdPartyRedirectAd")
+			{
+				return new ThirdPartyRedirectAd();
+			}
+			else
+			{
+				return new Ad();
+			}
+		}
+		public static AdGroupCriterion CreateAdGroupCriterion(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "BiddableAdGroupCriterion")
+			{
+				return new BiddableAdGroupCriterion();
+			}
+			else if (type == "NegativeAdGroupCriterion")
+			{
+				return new NegativeAdGroupCriterion();
+			}
+			else
+			{
+				return new AdGroupCriterion();
+			}
+		}
+		public static AdUnionId CreateAdUnionId(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "TempAdUnionId")
+			{
+				return new TempAdUnionId();
+			}
+			else
+			{
+				return new AdUnionId();
+			}
+		}
 		public static ApiError CreateApiError(XElement xElement)
 		{
 			var type = XmlUtility.GetXmlTypeLocalName(xElement);
@@ -394,6 +470,18 @@ namespace Manychois.GoogleApis.AdWords.v201609
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
 		}
+		public static ApplicationException CreateApplicationException(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "ApiException")
+			{
+				return new ApiException();
+			}
+			else
+			{
+				return new ApplicationException();
+			}
+		}
 		public static Attribute CreateAttribute(XElement xElement)
 		{
 			var type = XmlUtility.GetXmlTypeLocalName(xElement);
@@ -526,6 +614,18 @@ namespace Manychois.GoogleApis.AdWords.v201609
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
 		}
+		public static CampaignCriterion CreateCampaignCriterion(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "NegativeCampaignCriterion")
+			{
+				return new NegativeCampaignCriterion();
+			}
+			else
+			{
+				return new CampaignCriterion();
+			}
+		}
 		public static ComparableValue CreateComparableValue(XElement xElement)
 		{
 			var type = XmlUtility.GetXmlTypeLocalName(xElement);
@@ -546,6 +646,18 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				return new MoneyWithCurrency();
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
+		}
+		public static ConstantData CreateConstantData(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "ProductBiddingCategoryData")
+			{
+				return new ProductBiddingCategoryData();
+			}
+			else
+			{
+				return new ConstantData();
+			}
 		}
 		public static ConversionTracker CreateConversionTracker(XElement xElement)
 		{
@@ -575,6 +687,126 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				return new WebsiteCallMetricsConversion();
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
+		}
+		public static Criterion CreateCriterion(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "AdSchedule")
+			{
+				return new AdSchedule();
+			}
+			else if (type == "AgeRange")
+			{
+				return new AgeRange();
+			}
+			else if (type == "AppPaymentModel")
+			{
+				return new AppPaymentModel();
+			}
+			else if (type == "Carrier")
+			{
+				return new Carrier();
+			}
+			else if (type == "ContentLabel")
+			{
+				return new ContentLabel();
+			}
+			else if (type == "CriterionUserInterest")
+			{
+				return new CriterionUserInterest();
+			}
+			else if (type == "CriterionUserList")
+			{
+				return new CriterionUserList();
+			}
+			else if (type == "Gender")
+			{
+				return new Gender();
+			}
+			else if (type == "IpBlock")
+			{
+				return new IpBlock();
+			}
+			else if (type == "Keyword")
+			{
+				return new Keyword();
+			}
+			else if (type == "Language")
+			{
+				return new Language();
+			}
+			else if (type == "Location")
+			{
+				return new Location();
+			}
+			else if (type == "LocationGroups")
+			{
+				return new LocationGroups();
+			}
+			else if (type == "MobileAppCategory")
+			{
+				return new MobileAppCategory();
+			}
+			else if (type == "MobileApplication")
+			{
+				return new MobileApplication();
+			}
+			else if (type == "MobileDevice")
+			{
+				return new MobileDevice();
+			}
+			else if (type == "OperatingSystemVersion")
+			{
+				return new OperatingSystemVersion();
+			}
+			else if (type == "Parent")
+			{
+				return new Parent();
+			}
+			else if (type == "Placement")
+			{
+				return new Placement();
+			}
+			else if (type == "Platform")
+			{
+				return new Platform();
+			}
+			else if (type == "PreferredContent")
+			{
+				return new PreferredContent();
+			}
+			else if (type == "ProductPartition")
+			{
+				return new ProductPartition();
+			}
+			else if (type == "ProductScope")
+			{
+				return new ProductScope();
+			}
+			else if (type == "Proximity")
+			{
+				return new Proximity();
+			}
+			else if (type == "Vertical")
+			{
+				return new Vertical();
+			}
+			else if (type == "Webpage")
+			{
+				return new Webpage();
+			}
+			else if (type == "YouTubeChannel")
+			{
+				return new YouTubeChannel();
+			}
+			else if (type == "YouTubeVideo")
+			{
+				return new YouTubeVideo();
+			}
+			else
+			{
+				return new Criterion();
+			}
 		}
 		public static CriterionParameter CreateCriterionParameter(XElement xElement)
 		{
@@ -611,6 +843,26 @@ namespace Manychois.GoogleApis.AdWords.v201609
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
 		}
+		public static Estimate CreateEstimate(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "AdGroupEstimate")
+			{
+				return new AdGroupEstimate();
+			}
+			else if (type == "CampaignEstimate")
+			{
+				return new CampaignEstimate();
+			}
+			else if (type == "KeywordEstimate")
+			{
+				return new KeywordEstimate();
+			}
+			else
+			{
+				return new Estimate();
+			}
+		}
 		public static EstimateRequest CreateEstimateRequest(XElement xElement)
 		{
 			var type = XmlUtility.GetXmlTypeLocalName(xElement);
@@ -627,6 +879,42 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				return new KeywordEstimateRequest();
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
+		}
+		public static ExtensionFeedItem CreateExtensionFeedItem(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "AppFeedItem")
+			{
+				return new AppFeedItem();
+			}
+			else if (type == "CallFeedItem")
+			{
+				return new CallFeedItem();
+			}
+			else if (type == "CalloutFeedItem")
+			{
+				return new CalloutFeedItem();
+			}
+			else if (type == "PriceFeedItem")
+			{
+				return new PriceFeedItem();
+			}
+			else if (type == "ReviewFeedItem")
+			{
+				return new ReviewFeedItem();
+			}
+			else if (type == "SitelinkFeedItem")
+			{
+				return new SitelinkFeedItem();
+			}
+			else if (type == "StructuredSnippetFeedItem")
+			{
+				return new StructuredSnippetFeedItem();
+			}
+			else
+			{
+				return new ExtensionFeedItem();
+			}
 		}
 		public static FunctionArgumentOperand CreateFunctionArgumentOperand(XElement xElement)
 		{
@@ -664,6 +952,30 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				return new RequestContextOperand();
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
+		}
+		public static Label CreateLabel(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "TextLabel")
+			{
+				return new TextLabel();
+			}
+			else
+			{
+				return new Label();
+			}
+		}
+		public static LabelAttribute CreateLabelAttribute(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "DisplayAttribute")
+			{
+				return new DisplayAttribute();
+			}
+			else
+			{
+				return new LabelAttribute();
+			}
 		}
 		public static ListReturnValue CreateListReturnValue(XElement xElement)
 		{
@@ -805,6 +1117,30 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				return new UserListReturnValue();
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
+		}
+		public static Media CreateMedia(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "Audio")
+			{
+				return new Audio();
+			}
+			else if (type == "Image")
+			{
+				return new Image();
+			}
+			else if (type == "MediaBundle")
+			{
+				return new MediaBundle();
+			}
+			else if (type == "Video")
+			{
+				return new Video();
+			}
+			else
+			{
+				return new Media();
+			}
 		}
 		public static NoStatsPage CreateNoStatsPage(XElement xElement)
 		{
@@ -1195,6 +1531,18 @@ namespace Manychois.GoogleApis.AdWords.v201609
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
 		}
+		public static PolicyData CreatePolicyData(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "FeedItemPolicyData")
+			{
+				return new FeedItemPolicyData();
+			}
+			else
+			{
+				return new PolicyData();
+			}
+		}
 		public static ProductDimension CreateProductDimension(XElement xElement)
 		{
 			var type = XmlUtility.GetXmlTypeLocalName(xElement);
@@ -1346,6 +1694,46 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				return new UniversalAppCampaignSetting();
 			}
 			throw new ArgumentException($"Unknown type {type}", "xElement");
+		}
+		public static SystemFeedGenerationData CreateSystemFeedGenerationData(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "PlacesLocationFeedData")
+			{
+				return new PlacesLocationFeedData();
+			}
+			else
+			{
+				return new SystemFeedGenerationData();
+			}
+		}
+		public static UserList CreateUserList(XElement xElement)
+		{
+			var type = XmlUtility.GetXmlTypeLocalName(xElement);
+			if (type == "BasicUserList")
+			{
+				return new BasicUserList();
+			}
+			else if (type == "CrmBasedUserList")
+			{
+				return new CrmBasedUserList();
+			}
+			else if (type == "LogicalUserList")
+			{
+				return new LogicalUserList();
+			}
+			else if (type == "RuleBasedUserList")
+			{
+				return new RuleBasedUserList();
+			}
+			else if (type == "SimilarUserList")
+			{
+				return new SimilarUserList();
+			}
+			else
+			{
+				return new UserList();
+			}
 		}
 	}
 }

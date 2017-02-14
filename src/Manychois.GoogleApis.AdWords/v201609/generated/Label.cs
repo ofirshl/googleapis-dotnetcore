@@ -64,7 +64,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 				}
 				else if (localName == "attribute")
 				{
-					Attribute = new LabelAttribute();
+					Attribute = InstanceCreator.CreateLabelAttribute(xItem);
 					Attribute.ReadFrom(xItem);
 				}
 				else if (localName == "Label.Type")

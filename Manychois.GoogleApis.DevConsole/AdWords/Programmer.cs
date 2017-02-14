@@ -350,16 +350,16 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 				file.WriteLine("");
 				using (var nsScope = file.CreateNamespaceScope(namespaceName))
 				{
-					var allAbstractTypes = wsdl.Types.Where(x => x.IsAbstract).OrderBy(x => x.CodeName).ToList();
+					var allParentTypes = wsdl.Types.Where(x => x.IsAbstract || x.Properties.Any(y => y.IsTypeProperty)).OrderBy(x => x.CodeName).ToList();
 					using (var classScope = file.CreateClassScope("internal static", "InstanceCreator"))
 					{
-						foreach (var t in allAbstractTypes)
+						foreach (var parent in allParentTypes)
 						{
-							using (var methodScope = file.CreateMethodScope("public static", t.CodeName, $"Create{t.CodeName}", "XElement xElement"))
+							using (var methodScope = file.CreateMethodScope("public static", parent.CodeName, $"Create{parent.CodeName}", "XElement xElement"))
 							{
 								file.WriteLine("var type = XmlUtility.GetXmlTypeLocalName(xElement);");
 								bool isFirst = true;
-								foreach (var concreteType in wsdl.GetConcreteTypes(t).OrderBy(x => x.CodeName))
+								foreach (var concreteType in wsdl.GetConcreteChildTypes(parent).OrderBy(x => x.CodeName))
 								{
 									var elseKeyword = isFirst ? "" : "else ";
 									file.WriteLine($"{elseKeyword}if (type == \"{concreteType.XName.Name}\")");
@@ -368,7 +368,17 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 									file.Ccb();
 									isFirst = false;
 								}
-								file.WriteLine("throw new ArgumentException($\"Unknown type {type}\", \"xElement\");");
+								if (parent.IsAbstract)
+								{
+									file.WriteLine("throw new ArgumentException($\"Unknown type {type}\", \"xElement\");");
+								}
+								else
+								{
+									file.WriteLine("else");
+									file.Ocb();
+									file.WriteLine($"return new {parent.CodeName}();");
+									file.Ccb();
+								}
 							}
 						}
 					}
@@ -466,7 +476,7 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 						else
 						{
 							string ItemVarName = StringUtil.ToCamelCaseName(p.CodeName + "Item");
-							if (p.DataType.IsAbstract)
+							if (p.DataType.IsAbstract || p.DataType.Properties.Any(x => x.IsTypeProperty))
 							{
 								f.WriteLine($"var {ItemVarName} = InstanceCreator.Create{p.DataType.CodeName}(xItem);");
 							}
@@ -486,7 +496,7 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 						}
 						else
 						{
-							if (p.DataType.IsAbstract)
+							if (p.DataType.IsAbstract || p.DataType.Properties.Any(x => x.IsTypeProperty))
 							{
 								f.WriteLine($"{p.CodeName} = InstanceCreator.Create{p.DataType.CodeName}(xItem);");
 							}
