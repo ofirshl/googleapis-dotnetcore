@@ -37,6 +37,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws ApiException if a problem occurred while fetching the
 		/// ReportDefinitionField information.
 		/// </summary>
-		Task<IEnumerable<ReportDefinitionField>> GetReportFieldsAsync(ReportDefinitionReportType? ReportType);
+		Task<IEnumerable<ReportDefinitionField>> GetReportFieldsAsync(ReportDefinitionReportType? reportType);
 	}
 }

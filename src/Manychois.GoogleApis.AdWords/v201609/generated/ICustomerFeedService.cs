@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of customer feeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CustomerFeedPage> GetAsync(Selector Selector);
+		Task<CustomerFeedPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Adds, sets, or removes customer feeds.
 		///
@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The resulting feeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CustomerFeedReturnValue> MutateAsync(IEnumerable<CustomerFeedOperation> Operations);
+		Task<CustomerFeedReturnValue> MutateAsync(IEnumerable<CustomerFeedOperation> operations);
 		/// <summary>
 		/// Returns the list of customer feeds that match the query.
 		///
@@ -32,6 +32,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of CustomerFeed.
 		/// @throws ApiException If problems occur while parsing the query or fetching CustomerFeed.
 		/// </summary>
-		Task<CustomerFeedPage> QueryAsync(string Query);
+		Task<CustomerFeedPage> QueryAsync(string query);
 	}
 }

@@ -20,7 +20,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// All BudgetOrder fields are returned. Stats are not yet supported.
 		/// @throws ApiException
 		/// </summary>
-		Task<BudgetOrderPage> GetAsync(Selector ServiceSelector);
+		Task<BudgetOrderPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns all the open/active BillingAccounts associated with the current
 		/// manager.
@@ -43,6 +43,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return BudgetOrders affected by the mutate operation.
 		/// @throws ApiException
 		/// </summary>
-		Task<BudgetOrderReturnValue> MutateAsync(IEnumerable<BudgetOrderOperation> Operations);
+		Task<BudgetOrderReturnValue> MutateAsync(IEnumerable<BudgetOrderOperation> operations);
 	}
 }

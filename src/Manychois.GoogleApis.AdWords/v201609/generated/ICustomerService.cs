@@ -23,7 +23,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param selector describing which links to retrieve
 		/// @throws ApiException
 		/// </summary>
-		Task<IEnumerable<ServiceLink>> GetServiceLinksAsync(Selector Selector);
+		Task<IEnumerable<ServiceLink>> GetServiceLinksAsync(Selector selector);
 		/// <summary>
 		/// Update the authorized customer.
 		///
@@ -34,7 +34,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param customer the requested updated value for the customer.
 		/// @throws ApiException
 		/// </summary>
-		Task<Customer> MutateAsync(Customer Customer);
+		Task<Customer> MutateAsync(Customer customer);
 		/// <summary>
 		/// Modifies links to other services for the authorized customer.
 		/// See {@link ServiceType} for information on the various linking types supported.
@@ -42,6 +42,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param operations to perform
 		/// @throws ApiException
 		/// </summary>
-		Task<IEnumerable<ServiceLink>> MutateServiceLinksAsync(IEnumerable<ServiceLinkOperation> Operations);
+		Task<IEnumerable<ServiceLink>> MutateServiceLinksAsync(IEnumerable<ServiceLinkOperation> operations);
 	}
 }

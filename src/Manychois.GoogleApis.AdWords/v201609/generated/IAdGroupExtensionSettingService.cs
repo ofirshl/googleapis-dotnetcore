@@ -18,7 +18,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of AdGroupExtensionSettings specified by the selector.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdGroupExtensionSettingPage> GetAsync(Selector Selector);
+		Task<AdGroupExtensionSettingPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Applies the list of mutate operations (add, remove, and set).
 		///
@@ -32,7 +32,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The changed {@link AdGroupExtensionSetting}s.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdGroupExtensionSettingReturnValue> MutateAsync(IEnumerable<AdGroupExtensionSettingOperation> Operations);
+		Task<AdGroupExtensionSettingReturnValue> MutateAsync(IEnumerable<AdGroupExtensionSettingOperation> operations);
 		/// <summary>
 		/// Returns a list of AdGroupExtensionSettings that match the query.
 		///
@@ -40,6 +40,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of AdGroupExtensionSettings specified by the query.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdGroupExtensionSettingPage> QueryAsync(string Query);
+		Task<AdGroupExtensionSettingPage> QueryAsync(string query);
 	}
 }

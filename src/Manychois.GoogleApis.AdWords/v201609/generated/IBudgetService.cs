@@ -15,7 +15,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if problems
 		/// occurred while retrieving results.
 		/// </summary>
-		Task<BudgetPage> GetAsync(Selector Selector);
+		Task<BudgetPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Applies the list of mutate operations.
 		///
@@ -23,7 +23,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The modified list of Budgets, returned in the same order as <code>operations</code>.
 		/// @throws ApiException
 		/// </summary>
-		Task<BudgetReturnValue> MutateAsync(IEnumerable<BudgetOperation> Operations);
+		Task<BudgetReturnValue> MutateAsync(IEnumerable<BudgetOperation> operations);
 		/// <summary>
 		/// Returns the list of budgets that match the query.
 		///
@@ -31,6 +31,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns A list of Budget
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<BudgetPage> QueryAsync(string Query);
+		Task<BudgetPage> QueryAsync(string query);
 	}
 }

@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of AdgroupFeeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdGroupFeedPage> GetAsync(Selector Selector);
+		Task<AdGroupFeedPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Adds, updates or removes AdGroupFeeds.
 		///
@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The resulting Feeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdGroupFeedReturnValue> MutateAsync(IEnumerable<AdGroupFeedOperation> Operations);
+		Task<AdGroupFeedReturnValue> MutateAsync(IEnumerable<AdGroupFeedOperation> operations);
 		/// <summary>
 		/// Returns the list of AdGroupFeeds that match the query.
 		///
@@ -32,6 +32,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns A list of AdGroupFeed.
 		/// @throws ApiException if problems occur while parsing the query or fetching AdGroupFeed.
 		/// </summary>
-		Task<AdGroupFeedPage> QueryAsync(string Query);
+		Task<AdGroupFeedPage> QueryAsync(string query);
 	}
 }

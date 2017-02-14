@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of FeedMappings.
 		/// @throws ApiException indicates a problem with the request.
 		/// </summary>
-		Task<FeedMappingPage> GetAsync(Selector Selector);
+		Task<FeedMappingPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Add and remove FeedMappings.
 		/// The following {@link Operator}s are supported: ADD, REMOVE.
@@ -25,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The resulting FeedMappings.
 		/// @throws ApiException indicates a problem with the request.
 		/// </summary>
-		Task<FeedMappingReturnValue> MutateAsync(IEnumerable<FeedMappingOperation> Operations);
+		Task<FeedMappingReturnValue> MutateAsync(IEnumerable<FeedMappingOperation> operations);
 		/// <summary>
 		/// Returns the list of FeedMappings that match the query.
 		///
@@ -33,6 +33,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns The list of FeedMappings
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<FeedMappingPage> QueryAsync(string Query);
+		Task<FeedMappingPage> QueryAsync(string query);
 	}
 }

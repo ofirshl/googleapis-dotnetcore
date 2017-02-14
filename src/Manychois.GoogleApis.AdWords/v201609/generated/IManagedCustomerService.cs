@@ -15,13 +15,13 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return List of customers identified by the selector.
 		/// @throws ApiException When there is at least one error with the request.
 		/// </summary>
-		Task<ManagedCustomerPage> GetAsync(Selector ServiceSelector);
+		Task<ManagedCustomerPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns the pending invitations for the customer IDs in the selector.
 		/// @param selector the manager customer ids (inviters) or the client customer ids (invitees)
 		/// @throws ApiException when there is at least one error with the request
 		/// </summary>
-		Task<IEnumerable<PendingInvitation>> GetPendingInvitationsAsync(PendingInvitationSelector Selector);
+		Task<IEnumerable<PendingInvitation>> GetPendingInvitationsAsync(PendingInvitationSelector selector);
 		/// <summary>
 		/// Modifies or creates new {@link ManagedCustomer}s.
 		///
@@ -31,7 +31,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of updated managed customers, returned in the same order as the
 		/// <code>operations</code> array.
 		/// </summary>
-		Task<ManagedCustomerReturnValue> MutateAsync(IEnumerable<ManagedCustomerOperation> Operations);
+		Task<ManagedCustomerReturnValue> MutateAsync(IEnumerable<ManagedCustomerOperation> operations);
 		/// <summary>
 		/// Adds {@linkplain AccountLabel}s to, and removes
 		/// {@linkplain AccountLabel}s from, {@linkplain ManagedCustomer}s.
@@ -48,7 +48,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// <p>This method does not support partial failures, and will fail if any
 		/// operation is invalid.</p>
 		/// </summary>
-		Task<ManagedCustomerLabelReturnValue> MutateLabelAsync(IEnumerable<ManagedCustomerLabelOperation> Operations);
+		Task<ManagedCustomerLabelReturnValue> MutateLabelAsync(IEnumerable<ManagedCustomerLabelOperation> operations);
 		/// <summary>
 		/// Modifies the ManagedCustomer forest. These actions are possible (categorized by
 		/// Operator + Link Status):
@@ -73,7 +73,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return results for the given operations
 		/// @throws ApiException with a {@link ManagedCustomerServiceError}
 		/// </summary>
-		Task<MutateLinkResults> MutateLinkAsync(IEnumerable<LinkOperation> Operations);
+		Task<MutateLinkResults> MutateLinkAsync(IEnumerable<LinkOperation> operations);
 		/// <summary>
 		/// Moves client customers to new managers (moving links). Only the following action is possible:
 		///
@@ -86,6 +86,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return results for the given operations
 		/// @throws ApiException with a {@link ManagedCustomerServiceError}
 		/// </summary>
-		Task<MutateManagerResults> MutateManagerAsync(IEnumerable<MoveOperation> Operations);
+		Task<MutateManagerResults> MutateManagerAsync(IEnumerable<MoveOperation> operations);
 	}
 }

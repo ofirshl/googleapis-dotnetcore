@@ -29,7 +29,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The page containing the AdGroupAds that meet the criteria specified by the selector.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<AdGroupAdPage> GetAsync(Selector ServiceSelector);
+		Task<AdGroupAdPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Applies the list of mutate operations (ie. add, set, remove):
 		/// <p>Add - Creates a new {@linkplain AdGroupAd ad group ad}. The
@@ -53,7 +53,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// an AdGroupAd containing an Ad with the id set to the Ad being removed from
 		/// the AdGroup.
 		/// </summary>
-		Task<AdGroupAdReturnValue> MutateAsync(IEnumerable<AdGroupAdOperation> Operations);
+		Task<AdGroupAdReturnValue> MutateAsync(IEnumerable<AdGroupAdOperation> operations);
 		/// <summary>
 		/// Adds labels to the AdGroupAd or removes labels from the AdGroupAd.
 		/// <p>Add - Apply an existing label to an existing {@linkplain AdGroupAd ad group ad}. The
@@ -70,7 +70,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// AdId.
 		/// @throws ApiException when there are one or more errors with the request.
 		/// </summary>
-		Task<AdGroupAdLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupAdLabelOperation> Operations);
+		Task<AdGroupAdLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupAdLabelOperation> operations);
 		/// <summary>
 		/// Returns a list of AdGroupAds based on the query.
 		///
@@ -78,12 +78,12 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of AdGroupAds.
 		/// @throws ApiException if problems occur while parsing the query or fetching AdGroupAds.
 		/// </summary>
-		Task<AdGroupAdPage> QueryAsync(string Query);
+		Task<AdGroupAdPage> QueryAsync(string query);
 		/// <summary>
 		/// Upgrades the url for a set of ads.
 		/// @param operations The list of upgrades to apply.
 		/// @return The list of Ads that were upgraded.
 		/// </summary>
-		Task<IEnumerable<Ad>> UpgradeUrlAsync(IEnumerable<AdUrlUpgrade> Operations);
+		Task<IEnumerable<Ad>> UpgradeUrlAsync(IEnumerable<AdUrlUpgrade> operations);
 	}
 }

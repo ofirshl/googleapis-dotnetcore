@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of Feeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<FeedPage> GetAsync(Selector Selector);
+		Task<FeedPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Add, remove, and set Feeds.
 		///
@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The resulting Feeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<FeedReturnValue> MutateAsync(IEnumerable<FeedOperation> Operations);
+		Task<FeedReturnValue> MutateAsync(IEnumerable<FeedOperation> operations);
 		/// <summary>
 		/// Returns the list of Feed that match the query.
 		///
@@ -32,6 +32,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns A list of Feed.
 		/// @throws ApiException if problems occur while parsing the query or fetching Feed.
 		/// </summary>
-		Task<FeedPage> QueryAsync(string Query);
+		Task<FeedPage> QueryAsync(string query);
 	}
 }

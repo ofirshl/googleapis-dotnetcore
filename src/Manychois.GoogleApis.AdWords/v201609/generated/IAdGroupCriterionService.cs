@@ -25,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return a page (subset) view of the criteria selected
 		/// @throws ApiException when there is at least one error with the request
 		/// </summary>
-		Task<AdGroupCriterionPage> GetAsync(Selector ServiceSelector);
+		Task<AdGroupCriterionPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Adds, removes or updates adgroup criteria.
 		///
@@ -34,7 +34,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return added and updated adgroup criteria (without optional parts)
 		/// @throws ApiException when there is at least one error with the request
 		/// </summary>
-		Task<AdGroupCriterionReturnValue> MutateAsync(IEnumerable<AdGroupCriterionOperation> Operations);
+		Task<AdGroupCriterionReturnValue> MutateAsync(IEnumerable<AdGroupCriterionOperation> operations);
 		/// <summary>
 		/// Adds labels to the AdGroupCriterion or removes labels from the AdGroupCriterion
 		/// <p>Add - Apply an existing label to an existing
@@ -52,7 +52,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// AdGroupId and CriterionId.
 		/// @throws ApiException when there are one or more errors with the request
 		/// </summary>
-		Task<AdGroupCriterionLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupCriterionLabelOperation> Operations);
+		Task<AdGroupCriterionLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupCriterionLabelOperation> operations);
 		/// <summary>
 		/// Returns the list of AdGroupCriterion that match the query.
 		///
@@ -60,6 +60,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns A list of AdGroupCriterion
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<AdGroupCriterionPage> QueryAsync(string Query);
+		Task<AdGroupCriterionPage> QueryAsync(string query);
 	}
 }

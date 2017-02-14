@@ -17,7 +17,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// selector.
 		/// @throws ApiException when there is at least one error with the request
 		/// </summary>
-		Task<LabelPage> GetAsync(Selector ServiceSelector);
+		Task<LabelPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Applies the list of mutate operations.
 		///
@@ -26,7 +26,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The applied {@link Label}s.
 		/// @throws ApiException when there is at least one error with the request
 		/// </summary>
-		Task<LabelReturnValue> MutateAsync(IEnumerable<LabelOperation> Operations);
+		Task<LabelReturnValue> MutateAsync(IEnumerable<LabelOperation> operations);
 		/// <summary>
 		/// Returns the list of {@link Label}s that match the query.
 		///
@@ -34,6 +34,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns  The page containing the {@link Label}s which match the query.
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<LabelPage> QueryAsync(string Query);
+		Task<LabelPage> QueryAsync(string query);
 	}
 }

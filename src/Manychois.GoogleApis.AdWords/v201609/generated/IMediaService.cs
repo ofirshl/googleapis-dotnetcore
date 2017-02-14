@@ -17,7 +17,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param serviceSelector Selects which media objects to return.
 		/// @return A list of {@code Media} objects.
 		/// </summary>
-		Task<MediaPage> GetAsync(Selector ServiceSelector);
+		Task<MediaPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns the list of {@link Media} objects that match the query.
 		///
@@ -25,7 +25,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns A list of {@code Media} objects.
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<MediaPage> QueryAsync(string Query);
+		Task<MediaPage> QueryAsync(string query);
 		/// <summary>
 		/// Uploads new media. Currently, you can upload {@link Image} files and {@link MediaBundle}s.
 		///
@@ -33,6 +33,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// be uploaded.
 		/// @return A list of uploaded media in the same order as the argument list.
 		/// </summary>
-		Task<IEnumerable<Media>> UploadAsync(IEnumerable<Media> Media);
+		Task<IEnumerable<Media>> UploadAsync(IEnumerable<Media> media);
 	}
 }

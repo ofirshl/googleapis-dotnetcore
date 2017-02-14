@@ -22,6 +22,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of offline conversion feed results (in the same order as the operations).
 		/// @throws {@link ApiException} if problems occurred while applying offline conversions.
 		/// </summary>
-		Task<OfflineConversionFeedReturnValue> MutateAsync(IEnumerable<OfflineConversionFeedOperation> Operations);
+		Task<OfflineConversionFeedReturnValue> MutateAsync(IEnumerable<OfflineConversionFeedOperation> operations);
 	}
 }

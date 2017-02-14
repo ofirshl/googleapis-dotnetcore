@@ -72,7 +72,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if errors occurred while
 		/// retrieving the results.
 		/// </summary>
-		Task<TrialPage> GetAsync(Selector Selector);
+		Task<TrialPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Creates new trials, updates properties and controls the life cycle of existing trials.
 		/// See {@link TrialService} for details on the trial life cycle.
@@ -81,7 +81,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if errors occurred while
 		/// processing the request.
 		/// </summary>
-		Task<TrialReturnValue> MutateAsync(IEnumerable<TrialOperation> Operations);
+		Task<TrialReturnValue> MutateAsync(IEnumerable<TrialOperation> operations);
 		/// <summary>
 		/// Loads a TrialPage containing a list of {@link Trial} objects matching the query.
 		///
@@ -92,6 +92,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if errors occurred while
 		/// retrieving the results.
 		/// </summary>
-		Task<TrialPage> QueryAsync(string Query);
+		Task<TrialPage> QueryAsync(string query);
 	}
 }

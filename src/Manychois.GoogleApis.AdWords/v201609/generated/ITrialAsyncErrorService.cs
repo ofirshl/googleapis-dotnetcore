@@ -14,13 +14,13 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws {#link com.google.ads.api.services.common.error.ApiException} if problems occurred
 		/// while retrieving the results.
 		/// </summary>
-		Task<TrialAsyncErrorPage> GetAsync(Selector Selector);
+		Task<TrialAsyncErrorPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Returns a TrialAsyncErrorPage that contains a list of TrialAsyncError matching the query.
 		///
 		/// @throws {#link com.google.ads.api.services.common.error.ApiException} if problems occurred
 		/// while retrieving the results.
 		/// </summary>
-		Task<TrialAsyncErrorPage> QueryAsync(string Query);
+		Task<TrialAsyncErrorPage> QueryAsync(string query);
 	}
 }

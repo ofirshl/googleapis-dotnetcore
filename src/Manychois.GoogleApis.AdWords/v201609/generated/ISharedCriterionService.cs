@@ -15,7 +15,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of SharedCriterion
 		/// @throws ApiException
 		/// </summary>
-		Task<SharedCriterionPage> GetAsync(Selector Selector);
+		Task<SharedCriterionPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Adds, removes criteria in a shared set.
 		///
@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// {@code operations} array.
 		/// @throws ApiException
 		/// </summary>
-		Task<SharedCriterionReturnValue> MutateAsync(IEnumerable<SharedCriterionOperation> Operations);
+		Task<SharedCriterionReturnValue> MutateAsync(IEnumerable<SharedCriterionOperation> operations);
 		/// <summary>
 		/// Returns the list of SharedCriterion that match the query.
 		///
@@ -32,6 +32,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of SharedCriterion.
 		/// @throws ApiException
 		/// </summary>
-		Task<SharedCriterionPage> QueryAsync(string Query);
+		Task<SharedCriterionPage> QueryAsync(string query);
 	}
 }

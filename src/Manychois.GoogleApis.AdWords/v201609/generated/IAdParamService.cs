@@ -33,7 +33,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param serviceSelector Specifies which ad parameters to return.
 		/// @return A list of ad parameters.
 		/// </summary>
-		Task<AdParamPage> GetAsync(Selector ServiceSelector);
+		Task<AdParamPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Sets and removes ad parameters.
 		/// <p class="note"><b>Note:</b> {@code ADD} is not supported. Use {@code SET}
@@ -53,6 +53,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// updated values. For a {@code REMOVE} operation, the returned ad parameter
 		/// will simply be the ad parameter that was removed.
 		/// </summary>
-		Task<IEnumerable<AdParam>> MutateAsync(IEnumerable<AdParamOperation> Operations);
+		Task<IEnumerable<AdParam>> MutateAsync(IEnumerable<AdParamOperation> operations);
 	}
 }

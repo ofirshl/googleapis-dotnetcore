@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if problems
 		/// occurred while retrieving results.
 		/// </summary>
-		Task<BiddingStrategyPage> GetAsync(Selector Selector);
+		Task<BiddingStrategyPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Applies the list of mutate operations.
 		///
@@ -24,13 +24,13 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return the modified list of BiddingStrategy
 		/// @throws ApiException
 		/// </summary>
-		Task<BiddingStrategyReturnValue> MutateAsync(IEnumerable<BiddingStrategyOperation> Operations);
+		Task<BiddingStrategyReturnValue> MutateAsync(IEnumerable<BiddingStrategyOperation> operations);
 		/// <summary>
 		/// Returns a list of bidding strategies that match the query.
 		///
 		/// @param query The SQL-like AWQL query string.
 		/// @throws ApiException when there are one or more errors with the request.
 		/// </summary>
-		Task<BiddingStrategyPage> QueryAsync(string Query);
+		Task<BiddingStrategyPage> QueryAsync(string query);
 	}
 }

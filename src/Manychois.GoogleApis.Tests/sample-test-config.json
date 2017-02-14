@@ -1,0 +1,15 @@
+﻿{
+  "oauth2": {
+    "credentialJsonPath": "",
+    "refreshToken": "",
+    "accessToken": "",
+    "issuedTime": null,
+    "expiresIn": 0
+  },
+  "adWords": {
+    "managerCustomerId":  "",
+    "clientCustomerId": "",
+    "developerToken": "",
+    "campaignId": 12345
+  }
+}

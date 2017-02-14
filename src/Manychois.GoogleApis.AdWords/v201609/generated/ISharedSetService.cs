@@ -16,14 +16,14 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// by the selector
 		/// @throws ApiException
 		/// </summary>
-		Task<SharedSetPage> GetAsync(Selector Selector);
+		Task<SharedSetPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Applies the list of mutate operations.
 		/// @param operations the operations to apply
 		/// @return the modified CriterionList entities
 		/// @throws ApiException
 		/// </summary>
-		Task<SharedSetReturnValue> MutateAsync(IEnumerable<SharedSetOperation> Operations);
+		Task<SharedSetReturnValue> MutateAsync(IEnumerable<SharedSetOperation> operations);
 		/// <summary>
 		/// Returns the list of SharedSet entities that match the query.
 		///
@@ -31,6 +31,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns A list of SharedSet entities
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<SharedSetPage> QueryAsync(string Query);
+		Task<SharedSetPage> QueryAsync(string query);
 	}
 }

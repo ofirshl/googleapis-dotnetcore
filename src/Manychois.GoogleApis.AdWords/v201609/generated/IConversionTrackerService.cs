@@ -22,7 +22,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if problems
 		/// occurred while retrieving results.
 		/// </summary>
-		Task<ConversionTrackerPage> GetAsync(Selector ServiceSelector);
+		Task<ConversionTrackerPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Applies the list of mutate operations such as adding or updating conversion trackers.
 		/// <p class="note"><b>Note:</b> {@link ConversionTrackerOperation} does not support the
@@ -44,7 +44,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws com.google.ads.api.services.common.error.ApiException if problems
 		/// occurred while updating the data.
 		/// </summary>
-		Task<ConversionTrackerReturnValue> MutateAsync(IEnumerable<ConversionTrackerOperation> Operations);
+		Task<ConversionTrackerReturnValue> MutateAsync(IEnumerable<ConversionTrackerOperation> operations);
 		/// <summary>
 		/// Returns a list of conversion trackers that match the query.
 		///
@@ -52,6 +52,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of conversion trackers.
 		/// @throws ApiException if problems occur while parsing the query or fetching conversion trackers.
 		/// </summary>
-		Task<ConversionTrackerPage> QueryAsync(string Query);
+		Task<ConversionTrackerPage> QueryAsync(string query);
 	}
 }

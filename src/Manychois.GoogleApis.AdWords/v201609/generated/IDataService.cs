@@ -19,7 +19,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of bid landscapes.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<AdGroupBidLandscapePage> GetAdGroupBidLandscapeAsync(Selector ServiceSelector);
+		Task<AdGroupBidLandscapePage> GetAdGroupBidLandscapeAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns a list of {@link CriterionBidLandscape}s for the campaign criteria specified in the
 		/// selector. In the result, the returned {@link LandscapePoint}s are grouped into
@@ -31,7 +31,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of bid landscapes.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<CriterionBidLandscapePage> GetCampaignCriterionBidLandscapeAsync(Selector ServiceSelector);
+		Task<CriterionBidLandscapePage> GetCampaignCriterionBidLandscapeAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns a list of {@link CriterionBidLandscape}s for the criteria specified in the selector.
 		/// In the result, the returned {@link LandscapePoint}s are grouped into
@@ -42,7 +42,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of bid landscapes.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<CriterionBidLandscapePage> GetCriterionBidLandscapeAsync(Selector ServiceSelector);
+		Task<CriterionBidLandscapePage> GetCriterionBidLandscapeAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns a list of domain categories that can be used to create {@link WebPage} criterion.
 		///
@@ -50,7 +50,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of domain categories.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<DomainCategoryPage> GetDomainCategoryAsync(Selector ServiceSelector);
+		Task<DomainCategoryPage> GetDomainCategoryAsync(Selector serviceSelector);
 		/// <summary>
 		/// Returns a list of {@link AdGroupBidLandscape}s for the ad groups that match the query. In the
 		/// result, the returned {@link LandscapePoint}s are grouped into {@link AdGroupBidLandscape}s
@@ -61,7 +61,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of bid landscapes.
 		/// @throws ApiException if problems occur while parsing the query or fetching bid landscapes.
 		/// </summary>
-		Task<AdGroupBidLandscapePage> QueryAdGroupBidLandscapeAsync(string Query);
+		Task<AdGroupBidLandscapePage> QueryAdGroupBidLandscapeAsync(string query);
 		/// <summary>
 		/// Returns a list of {@link CriterionBidLandscape}s for the campaign criteria that match the
 		/// query. In the result, the returned {@link LandscapePoint}s are grouped into
@@ -73,7 +73,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of bid landscapes.
 		/// @throws ApiException if problems occur while parsing the query or fetching bid landscapes.
 		/// </summary>
-		Task<CriterionBidLandscapePage> QueryCampaignCriterionBidLandscapeAsync(string Query);
+		Task<CriterionBidLandscapePage> QueryCampaignCriterionBidLandscapeAsync(string query);
 		/// <summary>
 		/// Returns a list of {@link CriterionBidLandscape}s for the criteria that match the query. In the
 		/// result, the returned {@link LandscapePoint}s are grouped into {@link CriterionBidLandscape}s
@@ -84,7 +84,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of bid landscapes.
 		/// @throws ApiException if problems occur while parsing the query or fetching bid landscapes.
 		/// </summary>
-		Task<CriterionBidLandscapePage> QueryCriterionBidLandscapeAsync(string Query);
+		Task<CriterionBidLandscapePage> QueryCriterionBidLandscapeAsync(string query);
 		/// <summary>
 		/// Returns a list of domain categories that can be used to create {@link WebPage} criterion.
 		///
@@ -93,6 +93,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws ApiException if problems occur while parsing the query
 		/// or fetching domain categories.
 		/// </summary>
-		Task<DomainCategoryPage> QueryDomainCategoryAsync(string Query);
+		Task<DomainCategoryPage> QueryDomainCategoryAsync(string query);
 	}
 }

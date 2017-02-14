@@ -18,7 +18,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of location criterion.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<IEnumerable<LocationCriterion>> GetAsync(Selector Selector);
+		Task<IEnumerable<LocationCriterion>> GetAsync(Selector selector);
 		/// <summary>
 		/// Returns the list of {@link LocationCriterion}s that match the query.
 		///
@@ -26,6 +26,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @returns The list of location criteria
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<IEnumerable<LocationCriterion>> QueryAsync(string Query);
+		Task<IEnumerable<LocationCriterion>> QueryAsync(string query);
 	}
 }

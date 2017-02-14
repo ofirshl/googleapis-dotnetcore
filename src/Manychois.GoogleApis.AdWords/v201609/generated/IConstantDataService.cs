@@ -67,7 +67,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of shopping bidding categories.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<IEnumerable<ProductBiddingCategoryData>> GetProductBiddingCategoryDataAsync(Selector Selector);
+		Task<IEnumerable<ProductBiddingCategoryData>> GetProductBiddingCategoryDataAsync(Selector selector);
 		/// <summary>
 		/// Returns a list of user interests.
 		///
@@ -75,7 +75,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of user interests.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<IEnumerable<CriterionUserInterest>> GetUserInterestCriterionAsync(ConstantDataServiceUserInterestTaxonomyType? UserInterestTaxonomyType);
+		Task<IEnumerable<CriterionUserInterest>> GetUserInterestCriterionAsync(ConstantDataServiceUserInterestTaxonomyType? userInterestTaxonomyType);
 		/// <summary>
 		/// Returns a list of content verticals.
 		///

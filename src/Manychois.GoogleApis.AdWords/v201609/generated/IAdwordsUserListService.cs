@@ -15,7 +15,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return a list of UserList entities which meet the selector criteria.
 		/// @throws ApiException if problems occurred while fetching UserList information.
 		/// </summary>
-		Task<UserListPage> GetAsync(Selector ServiceSelector);
+		Task<UserListPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Applies a list of mutate operations (i.e. add, set):
 		///
@@ -26,7 +26,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param operations the operations to apply
 		/// @return a list of UserList objects
 		/// </summary>
-		Task<UserListReturnValue> MutateAsync(IEnumerable<UserListOperation> Operations);
+		Task<UserListReturnValue> MutateAsync(IEnumerable<UserListOperation> operations);
 		/// <summary>
 		/// Mutate members of user lists by either adding or removing their lists of members.
 		/// The following {@link Operator}s are supported: ADD and REMOVE.
@@ -37,7 +37,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return a list of UserList objects
 		/// @throws ApiException when there are one or more errors with the request
 		/// </summary>
-		Task<MutateMembersReturnValue> MutateMembersAsync(IEnumerable<MutateMembersOperation> Operations);
+		Task<MutateMembersReturnValue> MutateMembersAsync(IEnumerable<MutateMembersOperation> operations);
 		/// <summary>
 		/// Returns the list of user lists that match the query.
 		///
@@ -45,6 +45,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of UserList
 		/// @throws ApiException when the query is invalid or there are errors processing the request.
 		/// </summary>
-		Task<UserListPage> QueryAsync(string Query);
+		Task<UserListPage> QueryAsync(string query);
 	}
 }

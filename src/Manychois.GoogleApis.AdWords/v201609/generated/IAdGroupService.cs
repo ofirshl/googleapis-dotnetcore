@@ -19,7 +19,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return List of adgroups identified by the selector.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<AdGroupPage> GetAsync(Selector ServiceSelector);
+		Task<AdGroupPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Adds, updates, or removes ad groups.
 		/// <p class="note"><b>Note:</b> {@link AdGroupOperation} does not support the
@@ -30,7 +30,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// specified in more than one operation.
 		/// @return The updated adgroups.
 		/// </summary>
-		Task<AdGroupReturnValue> MutateAsync(IEnumerable<AdGroupOperation> Operations);
+		Task<AdGroupReturnValue> MutateAsync(IEnumerable<AdGroupOperation> operations);
 		/// <summary>
 		/// Adds labels to the {@linkplain AdGroup ad group} or removes {@linkplain Label label}s from the
 		/// {@linkplain AdGroup ad group}.
@@ -47,7 +47,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// In the case of a remove operation, the returned AdGroupLabel will only have AdGroupId.
 		/// @throws ApiException when there are one or more errors with the request.
 		/// </summary>
-		Task<AdGroupLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupLabelOperation> Operations);
+		Task<AdGroupLabelReturnValue> MutateLabelAsync(IEnumerable<AdGroupLabelOperation> operations);
 		/// <summary>
 		/// Returns the list of ad groups that match the query.
 		///
@@ -55,6 +55,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of adgroups
 		/// @throws ApiException
 		/// </summary>
-		Task<AdGroupPage> QueryAsync(string Query);
+		Task<AdGroupPage> QueryAsync(string query);
 	}
 }

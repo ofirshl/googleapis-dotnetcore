@@ -21,7 +21,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of campaigns.
 		/// @throws ApiException if problems occurred while fetching campaign information.
 		/// </summary>
-		Task<CampaignPage> GetAsync(Selector ServiceSelector);
+		Task<CampaignPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Adds, updates, or removes campaigns.
 		/// <p class="note"><b>Note:</b> {@link CampaignOperation} does not support the
@@ -33,7 +33,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// <code>operations</code> array.
 		/// @throws ApiException if problems occurred while updating campaign information.
 		/// </summary>
-		Task<CampaignReturnValue> MutateAsync(IEnumerable<CampaignOperation> Operations);
+		Task<CampaignReturnValue> MutateAsync(IEnumerable<CampaignOperation> operations);
 		/// <summary>
 		/// Adds labels to the {@linkplain Campaign campaign} or removes {@linkplain Label label}s from the
 		/// {@linkplain Campaign campaign}.
@@ -50,7 +50,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// In the case of a remove operation, the returned CampaignLabel will only have CampaignId.
 		/// @throws ApiException when there are one or more errors with the request.
 		/// </summary>
-		Task<CampaignLabelReturnValue> MutateLabelAsync(IEnumerable<CampaignLabelOperation> Operations);
+		Task<CampaignLabelReturnValue> MutateLabelAsync(IEnumerable<CampaignLabelOperation> operations);
 		/// <summary>
 		/// Returns the list of campaigns that match the query.
 		///
@@ -59,6 +59,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws ApiException if problems occur while parsing the query or fetching campaign
 		/// information.
 		/// </summary>
-		Task<CampaignPage> QueryAsync(string Query);
+		Task<CampaignPage> QueryAsync(string query);
 	}
 }

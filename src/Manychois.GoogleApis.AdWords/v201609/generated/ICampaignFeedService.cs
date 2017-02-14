@@ -16,7 +16,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of CampaignFeeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CampaignFeedPage> GetAsync(Selector Selector);
+		Task<CampaignFeedPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Adds, sets or removes CampaignFeeds.
 		///
@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The resulting Feeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CampaignFeedReturnValue> MutateAsync(IEnumerable<CampaignFeedOperation> Operations);
+		Task<CampaignFeedReturnValue> MutateAsync(IEnumerable<CampaignFeedOperation> operations);
 		/// <summary>
 		/// Returns a list of {@link CampaignFeed}s inside a {@link CampaignFeedPage} that matches
 		/// the query.
@@ -32,6 +32,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @param query The SQL-like AWQL query string.
 		/// @throws ApiException when there are one or more errors with the request.
 		/// </summary>
-		Task<CampaignFeedPage> QueryAsync(string Query);
+		Task<CampaignFeedPage> QueryAsync(string query);
 	}
 }

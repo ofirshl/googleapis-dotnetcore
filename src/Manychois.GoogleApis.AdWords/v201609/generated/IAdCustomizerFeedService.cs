@@ -19,7 +19,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of AdCustomizerFeeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdCustomizerFeedPage> GetAsync(Selector Selector);
+		Task<AdCustomizerFeedPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Adds, removes, or modifies AdCustomizerFeeds.
 		///
@@ -27,6 +27,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The resulting AdCustomizerFeeds.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<AdCustomizerFeedReturnValue> MutateAsync(IEnumerable<AdCustomizerFeedOperation> Operations);
+		Task<AdCustomizerFeedReturnValue> MutateAsync(IEnumerable<AdCustomizerFeedOperation> operations);
 	}
 }

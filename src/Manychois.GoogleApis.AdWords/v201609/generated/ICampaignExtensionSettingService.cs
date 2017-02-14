@@ -18,7 +18,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of CampaignExtensionSettings specified by the selector.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CampaignExtensionSettingPage> GetAsync(Selector Selector);
+		Task<CampaignExtensionSettingPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Applies the list of mutate operations (add, remove, and set).
 		///
@@ -32,7 +32,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The changed {@link CampaignExtensionSetting}s.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CampaignExtensionSettingReturnValue> MutateAsync(IEnumerable<CampaignExtensionSettingOperation> Operations);
+		Task<CampaignExtensionSettingReturnValue> MutateAsync(IEnumerable<CampaignExtensionSettingOperation> operations);
 		/// <summary>
 		/// Returns a list of CampaignExtensionSettings that match the query.
 		///
@@ -40,6 +40,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of CampaignExtensionSettings specified by the query.
 		/// @throws ApiException Indicates a problem with the request.
 		/// </summary>
-		Task<CampaignExtensionSettingPage> QueryAsync(string Query);
+		Task<CampaignExtensionSettingPage> QueryAsync(string query);
 	}
 }

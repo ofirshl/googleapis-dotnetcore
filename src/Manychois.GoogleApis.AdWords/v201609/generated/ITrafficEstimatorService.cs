@@ -42,6 +42,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return Traffic estimation results.
 		/// @throws ApiException if problems occurred while retrieving estimates
 		/// </summary>
-		Task<TrafficEstimatorResult> GetAsync(TrafficEstimatorSelector Selector);
+		Task<TrafficEstimatorResult> GetAsync(TrafficEstimatorSelector selector);
 	}
 }

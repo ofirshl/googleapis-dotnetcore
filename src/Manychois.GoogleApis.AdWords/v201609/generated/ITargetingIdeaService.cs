@@ -29,6 +29,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// {@link TargetingIdeaSelector}.
 		/// @throws ApiException If problems occurred while querying for ideas.
 		/// </summary>
-		Task<TargetingIdeaPage> GetAsync(TargetingIdeaSelector Selector);
+		Task<TargetingIdeaPage> GetAsync(TargetingIdeaSelector selector);
 	}
 }

@@ -24,6 +24,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// changed at each level. All Campaigns that are requested in the selector will be returned,
 		/// regardless of whether or not they have changed, but unchanged AdGroups will be ignored.
 		/// </summary>
-		Task<CustomerChangeData> GetAsync(CustomerSyncSelector Selector);
+		Task<CustomerChangeData> GetAsync(CustomerSyncSelector selector);
 	}
 }

@@ -30,7 +30,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of selected jobs.
 		/// @throws ApiException
 		/// </summary>
-		Task<BatchJobPage> GetAsync(Selector Selector);
+		Task<BatchJobPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Creates or updates a {@code BatchJob}.
 		///
@@ -41,7 +41,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The list of created or updated jobs.
 		/// @throws ApiException
 		/// </summary>
-		Task<BatchJobReturnValue> MutateAsync(IEnumerable<BatchJobOperation> Operations);
+		Task<BatchJobReturnValue> MutateAsync(IEnumerable<BatchJobOperation> operations);
 		/// <summary>
 		/// Returns the list of {@code BatchJob}s that match the query.
 		///
@@ -50,6 +50,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @throws ApiException if problems occur while parsing the query or fetching
 		/// batchjob information.
 		/// </summary>
-		Task<BatchJobPage> QueryAsync(string Query);
+		Task<BatchJobPage> QueryAsync(string query);
 	}
 }

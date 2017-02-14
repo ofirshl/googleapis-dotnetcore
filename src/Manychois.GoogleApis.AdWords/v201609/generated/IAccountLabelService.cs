@@ -26,7 +26,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return response containing lists of labels that meet all the criteria of the selector
 		/// @throws ApiException if a problem occurs fetching the information requested
 		/// </summary>
-		Task<AccountLabelPage> GetAsync(Selector Selector);
+		Task<AccountLabelPage> GetAsync(Selector selector);
 		/// <summary>
 		/// Possible actions:
 		/// <ul>
@@ -41,6 +41,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return the mutated labels, in the same order that they were in as the parameter
 		/// @throws ApiException if problems occurs while modifying label information
 		/// </summary>
-		Task<AccountLabelReturnValue> MutateAsync(IEnumerable<AccountLabelOperation> Operations);
+		Task<AccountLabelReturnValue> MutateAsync(IEnumerable<AccountLabelOperation> operations);
 	}
 }

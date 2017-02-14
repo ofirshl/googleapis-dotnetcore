@@ -24,7 +24,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of campaign criteria.
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<CampaignCriterionPage> GetAsync(Selector ServiceSelector);
+		Task<CampaignCriterionPage> GetAsync(Selector serviceSelector);
 		/// <summary>
 		/// Adds, removes or updates campaign criteria.
 		///
@@ -32,7 +32,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return The added campaign criteria (without any optional parts).
 		/// @throws ApiException when there is at least one error with the request.
 		/// </summary>
-		Task<CampaignCriterionReturnValue> MutateAsync(IEnumerable<CampaignCriterionOperation> Operations);
+		Task<CampaignCriterionReturnValue> MutateAsync(IEnumerable<CampaignCriterionOperation> operations);
 		/// <summary>
 		/// Returns the list of campaign criteria that match the query.
 		///
@@ -40,6 +40,6 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		/// @return A list of campaign criteria.
 		/// @throws ApiException if problems occur while parsing the query or fetching campaign criteria.
 		/// </summary>
-		Task<CampaignCriterionPage> QueryAsync(string Query);
+		Task<CampaignCriterionPage> QueryAsync(string query);
 	}
 }

@@ -330,7 +330,8 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 						string inputs = null;
 						if (op.InputElement.Properties.Count > 0)
 						{
-							inputs = GetPropertyTypeCode(op.InputElement.Properties[0], true) + " " + EscapeKeyword(op.InputElement.Properties[0].CodeName);
+							string inputParamName = EscapeKeyword(StringUtil.ToCamelCaseName(op.InputElement.Properties[0].CodeName));
+							inputs = GetPropertyTypeCode(op.InputElement.Properties[0], true) + " " + inputParamName;
 						}
 						file.Comment(op.Documentation);
 						file.WriteLine($"Task<{outputType}> {op.CodeName}Async({inputs});");
