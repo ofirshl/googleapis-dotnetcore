@@ -19,5 +19,18 @@ namespace Manychois.GoogleApis
 		{
 			return string.Format(System.Globalization.CultureInfo.InvariantCulture, format, args);
 		}
+
+		public static List<string> List(params object[] args)
+		{
+			var list = new List<string>();
+			foreach (var arg in args)
+			{
+				if (arg == null)
+					list.Add(null);
+				else
+					list.Add(arg.ToString());
+			}
+			return list;
+		}
 	}
 }

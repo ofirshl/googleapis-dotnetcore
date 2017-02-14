@@ -17,34 +17,87 @@ namespace Manychois.GoogleApis.Tests.AdWords
 
 		protected IAccountLabelService CreateService()
 		{
-			return CreateService<IAccountLabelService>((x, y, z) => new AccountLabelService(x, y, z), true);
+			return CreateService<IAccountLabelService>((x, y, z) => new AccountLabelService(x, y, z), useManagerId: true);
 		}
 
 		[Fact]
-		public async Task TestGetAsync_NotNull_Passed()
+		public async Task TestCRUD()
 		{
 			IAccountLabelService service = CreateService();
+			long labelId = 0;
+			string labelName = StringUtility.Format("AccLbl{0}", DateTime.Now.Ticks);
+
+			// Create
+			var createOp = new AccountLabelOperation();
+			createOp.Operand = new AccountLabel
+			{
+				Name = labelName
+			};
+			createOp.Operator = Operator.Add;
+
+			var returnValue = await service.MutateAsync(new AccountLabelOperation[] { createOp });
+			var returnLabel = returnValue.Labels[0];
+
+			Assert.Equal(1, returnValue.Labels.Count);
+			Assert.True(returnLabel.Id.HasValue);
+			Assert.Equal(labelName, returnLabel.Name);
+
+			labelId = returnLabel.Id.Value;
+
+			// Read
 			var selector = new Selector();
-			selector.Fields = new List<string>();
-			selector.Fields.Add("LabelId");
-			selector.Fields.Add("AccountLabels");
-			var accountLabelPage = await service.GetAsync(selector);
-			Assert.NotNull(accountLabelPage);
-		}
+			selector.Fields = StringUtility.List("LabelId", "LabelName");
 
-		[Fact]
-		public async Task TestMutateAsync_Add_Passed()
-		{
-			IAccountLabelService service = CreateService();
-			var operation = new AccountLabelOperation();
-			operation.Operand = new AccountLabel();
-			operation.Operand.Name = string.Format(System.Globalization.CultureInfo.InvariantCulture, "AccLbl{0:yyMMddHHmmss}", DateTime.UtcNow);
-			operation.Operator = Operator.Add;
+			var idPredicate = new Predicate
+			{
+				Field = "LabelId",
+				Operator = PredicateOperator.Equals,
+				Values = StringUtility.List(labelId)
+			};
+			selector.Predicates = new List<Predicate>();
+			selector.Predicates.Add(idPredicate);
 
-			var returnValue = await service.MutateAsync(new AccountLabelOperation[] { operation });
-			var returnedLabel = returnValue.Labels[0];
-			Assert.True(returnedLabel.Id.HasValue);
-			Assert.Equal(operation.Operand.Name, returnedLabel.Name);
+			var page = await service.GetAsync(selector);
+			returnLabel = page.Labels[0];
+
+			Assert.Equal(1, page.Labels.Count);
+			Assert.Equal(labelId, returnLabel.Id.Value);
+			Assert.Equal(labelName, returnLabel.Name);
+
+			// Update
+			labelName = labelName + "-new";
+
+			var setOp = new AccountLabelOperation();
+			setOp.Operand = new AccountLabel
+			{
+				Id = labelId,
+				Name = labelName
+			};
+			setOp.Operator = Operator.Set;
+
+			returnValue = await service.MutateAsync(new AccountLabelOperation[] { setOp });
+			returnLabel = returnValue.Labels[0];
+
+			Assert.Equal(1, returnValue.Labels.Count);
+			Assert.Equal(labelId, returnLabel.Id.Value);
+			Assert.Equal(labelName, returnLabel.Name);
+
+			// delete
+			var removeOp = new AccountLabelOperation();
+			removeOp.Operand = new AccountLabel
+			{
+				Id = labelId
+			};
+			removeOp.Operator = Operator.Remove;
+
+			returnValue = await service.MutateAsync(new AccountLabelOperation[] { removeOp });
+
+			Assert.Equal(1, returnValue.Labels.Count);
+			Assert.Equal(labelId, returnLabel.Id.Value);
+			Assert.Equal(labelName, returnLabel.Name);
+
+			page = await service.GetAsync(selector);
+			Assert.Null(page.Labels);
 		}
 	}
 }
