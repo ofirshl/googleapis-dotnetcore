@@ -45,17 +45,9 @@ namespace Manychois.GoogleApis.Tests.AdWords
 			labelId = returnLabel.Id.Value;
 
 			// Read
-			var selector = new Selector();
-			selector.Fields = StringUtility.List("LabelId", "LabelName");
-
-			var idPredicate = new Predicate
-			{
-				Field = "LabelId",
-				Operator = PredicateOperator.Equals,
-				Values = StringUtility.List(labelId)
-			};
-			selector.Predicates = new List<Predicate>();
-			selector.Predicates.Add(idPredicate);
+			var selector = new Selector<AccountLabelServiceField>()
+				.AddFields(AccountLabelServiceField.LabelId, AccountLabelServiceField.LabelName)
+				.AddPredicate(AccountLabelServiceField.LabelId, PredicateOperator.Equals, labelId);
 
 			var page = await service.GetAsync(selector);
 			returnLabel = page.Labels[0];
