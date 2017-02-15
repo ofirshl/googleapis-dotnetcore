@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Manychois.GoogleApis.DevConsole.AdWords
@@ -53,6 +54,43 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 				CodeService(s, directory, namespaceName);
 			}
 			CodeEnumExtensions(wsdl, directory, namespaceName);
+		}
+
+		public void CodeSelectorEnums(List<string> wsdlFiles, string directory, string namespaceName)
+		{
+			var regex = new Regex(@"This field can be selected using the value ""([^""]+)""");
+			var enumValues = new Dictionary<string, HashSet<string>>();
+			foreach (var file in wsdlFiles)
+			{
+				var hashSet = new HashSet<string>();
+				var content = File.ReadAllText(file);
+				foreach (Match match in regex.Matches(content))
+				{
+					hashSet.Add(match.Groups[1].Value);
+				}
+				enumValues.Add(Path.GetFileNameWithoutExtension(file), hashSet);
+			}
+			using (var file = new CodeFile(directory, "SelectorEnums.cs"))
+			{
+				using (var nsScope = file.CreateNamespaceScope(namespaceName))
+				{
+					foreach (var kvp in enumValues.OrderBy(x => x.Key))
+					{
+						if (kvp.Value.Count == 0) continue;
+
+						file.WriteLine($"public enum {kvp.Key}Field");
+						file.Ocb();
+						var values = kvp.Value.OrderBy(x => x).ToList();
+						var lastValue = values.Last();
+						foreach (var v in values)
+						{
+							file.WriteLine(v + (v == lastValue ? "" : ","));
+						}
+						file.Ccb();
+						file.WriteLine("");
+					}
+				}
+			}
 		}
 
 		private void CodeEnums(WsdlStructure wsdl, string directory, string namespaceName)

@@ -13,9 +13,9 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 	{
 		public void Run()
 		{
+			var wsdlFiles = Directory.GetFiles(@"AdWords\v201609\wsdl", "*.wsdl").OrderByDescending(x => x).ToList();
 			var wsdl = new WsdlStructure();
-			foreach (var file in Directory.GetFiles(@"AdWords\v201609\wsdl", "*.wsdl")
-				.OrderByDescending(x => x))
+			foreach (var file in wsdlFiles)
 			{
 				var set = new XmlSchemaSet();
 				var sd = ServiceDescription.Read(file);
@@ -37,7 +37,10 @@ namespace Manychois.GoogleApis.DevConsole.AdWords
 			wsdl.Compile();
 
 			var programmer = new Programmer();
-			programmer.Code(wsdl, @"Manychois.GoogleApis.AdWords\v201609\generated", "Manychois.GoogleApis.AdWords.v201609");
+			var targetNamespace = "Manychois.GoogleApis.AdWords.v201609";
+			var outputDir = @"Manychois.GoogleApis.AdWords\v201609\generated";
+			programmer.Code(wsdl, outputDir, targetNamespace);
+			programmer.CodeSelectorEnums(wsdlFiles, outputDir, targetNamespace);
 		}
 	}
 }
