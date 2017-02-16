@@ -3,7 +3,7 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "copyToOutput": {
-      "includeFiles": [ "appsettings.json", "NLog.config" ]
+      "includeFiles": [ "NLog.config" ]
     } 
   },
 
