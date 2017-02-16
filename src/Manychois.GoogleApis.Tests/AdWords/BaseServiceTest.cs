@@ -78,7 +78,7 @@ namespace Manychois.GoogleApis.Tests.AdWords
 			config.ClientCustomerId = testConfig.AdWords.ClientCustomerId;
 			config.DeveloperToken = testConfig.AdWords.DeveloperToken;
 			config.EnableGzipCompression = true;
-			config.IncludeZeroImpressions = false;
+			config.IncludeZeroImpressions = true; // report of test account always has no data
 			config.PartialFailure = false;
 			config.SkipColumnHeader = false;
 			config.SkipReportHeader = false;

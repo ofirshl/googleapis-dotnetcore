@@ -45,7 +45,7 @@ namespace Manychois.GoogleApis.AdWords.v201609
 		{
 			var reportParams = new Dictionary<string, string>();
 			reportParams.Add("__fmt", format.ToXmlValue());
-			reportParams.Add("__rdguery", awql);
+			reportParams.Add("__rdquery", awql);
 
 			bool enableGzip = format == DownloadFormat.GzippedCsv || format == DownloadFormat.GzippedXml;
 
