@@ -80,6 +80,18 @@ namespace Manychois.GoogleApis.Tests.AdWords
 			public string ClientCustomerId { get; set; }
 			public string DeveloperToken { get; set; }
 			public long CampaignId { get; set; }
+
+			public long AdGroupId { get; set; }
+
+			/// <summary>
+			/// Used for testing AdGroupAdService.MutateLabel
+			/// </summary>
+			public long AdId { get; set; }
+
+			/// <summary>
+			/// Used for testing AdGroupAdService.MutateLabel
+			/// </summary>
+			public string LabelText { get; set; }
 		}
 	}
 }

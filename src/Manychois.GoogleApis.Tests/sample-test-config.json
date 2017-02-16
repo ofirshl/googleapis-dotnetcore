@@ -10,6 +10,9 @@
     "managerCustomerId":  "",
     "clientCustomerId": "",
     "developerToken": "",
-    "campaignId": 12345
+    "campaignId": 12345,
+    "adGroupId": 23456,
+    "adId":  34567,
+    "labelText" :  ""
   }
 }
