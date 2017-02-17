@@ -1,6 +1,9 @@
 ﻿{
   "version": "2016.9.2",
-
+  "description": "A .Net Core client library for AdWords API.",
+  "copyright": "Copyright (c) 2017 Siu Pang Tommy Choi",
+  "title": "Google AdWords API .Net Core Client Library",
+  "authors": [ "Siu Pang Tommy Choi" ],
   "dependencies": {
     "Manychois.GoogleApis": "1.0.1",
     "Microsoft.Extensions.Logging.Abstractions": "1.1.0",
@@ -13,5 +16,14 @@
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
+  },
+
+  "packOptions": {
+    "summary": "A .Net Core client library for AdWords API.",
+    "tags": [ "google", "googleapi", "adwords" ],
+    "owners": [ "manychois" ],
+    "projectUrl": "https://github.com/manychois/googleapis-dotnetcore",
+    "licenseUrl": "https://opensource.org/licenses/MIT",
+    "releaseNotes": "Support only version v201609."
   }
 }

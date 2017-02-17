@@ -1,6 +1,9 @@
 ﻿{
   "version": "1.0.1",
-
+  "description": "It provides common utilities, especially OAuth2 authentication, for other Google API client libraries.",
+  "copyright": "Copyright (c) 2017 Siu Pang Tommy Choi",
+  "title": "Google API Common Utility",
+  "authors": [ "Siu Pang Tommy Choi" ],
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "Newtonsoft.Json": "9.0.1",
@@ -12,5 +15,13 @@
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
+  },
+
+  "packOptions": {
+    "summary": "It provides common utilities, especially OAuth2 authentication, for other Google API client libraries.",
+    "tags": [ "google", "googleapi", "oauth2" ],
+    "owners": [ "manychois" ],
+    "projectUrl": "https://github.com/manychois/googleapis-dotnetcore",
+    "licenseUrl": "https://opensource.org/licenses/MIT"
   }
 }
