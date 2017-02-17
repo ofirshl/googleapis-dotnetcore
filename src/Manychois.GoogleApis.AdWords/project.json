@@ -3,7 +3,7 @@
   "description": "A .Net Core client library for AdWords API.",
   "copyright": "Copyright (c) 2017 Siu Pang Tommy Choi",
   "title": "Google AdWords API .Net Core Client Library",
-  "authors": [ "Siu Pang Tommy Choi" ],
+  "authors": [ "manychois" ],
   "dependencies": {
     "Manychois.GoogleApis": "1.0.1",
     "Microsoft.Extensions.Logging.Abstractions": "1.1.0",

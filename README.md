@@ -12,11 +12,18 @@ Class library (.Net Core) - It provides common utilities, especially OAuth2 auth
 ### Manychois.GoogleApis.AdWords
 Class library (.Net Core) - Client library for AdWords API. [Click here for more information](docs/AdWords/README.md)
 
+### Manychois.GoogleApis.CodeCoverage
+Class library (.Net 4.6.1) - Use OpenCover and ReportGenerator to visualize unit test coverage result. Execute run.bat to generate the coverage report.
+
+
 ### Manychois.GoogleApis.DevConsole
 Console Application (.Net 4.6.1) - The code builder of the generated files used in Manychois.GoogleApis.AdWords. People who are interested in providing AdWords client library in other programming languages may find it useful.
 
 ### Manychois.GoogleApis.Examples
 Console Application (.Net Core) - It provides some samples of the client libraries. It will not run properly without changing the source code and filling in correct configurations.
+
+### Manychois.GoogleApis.Tests
+Class library (.Net Core) - Unit test project in xUnit.net.
 
 ## License
 [The MIT License](LICENSE.md)

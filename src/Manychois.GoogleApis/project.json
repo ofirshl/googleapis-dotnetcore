@@ -3,7 +3,7 @@
   "description": "It provides common utilities, especially OAuth2 authentication, for other Google API client libraries.",
   "copyright": "Copyright (c) 2017 Siu Pang Tommy Choi",
   "title": "Google API Common Utility",
-  "authors": [ "Siu Pang Tommy Choi" ],
+  "authors": [ "manychois" ],
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "Newtonsoft.Json": "9.0.1",
